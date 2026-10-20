@@ -1,0 +1,13 @@
+model = "gpt-6.1-sol"
+model_reasoning_effort = "medium"
+approval_policy = "never"
+sandbox_mode = "workspace-write"
+web_search = "disabled"
+
+[agents]
+enabled = true
+max_concurrent_threads_per_session = 1
+
+[memories]
+use_memories = false
+generate_memories = false

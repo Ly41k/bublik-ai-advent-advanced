@@ -1,0 +1,19 @@
+{
+  "modified": [
+    "README.md",
+    "docs/MAC_HANDOFF.md",
+    "pyproject.toml",
+    "scripts/run_checks.py",
+    "tests/test_api.py",
+    "tests/test_architecture.py",
+    "tests/test_domain.py",
+    "tests/test_repository.py",
+    "tests/test_service.py",
+    "tests/test_status_api.py",
+    "tests/test_status_service.py"
+  ],
+  "added": [
+    "tests/test_foundation_gate.py"
+  ],
+  "business_source_changes": []
+}

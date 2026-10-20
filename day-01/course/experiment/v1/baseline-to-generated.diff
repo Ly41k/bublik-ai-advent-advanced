@@ -1,0 +1,230 @@
+--- baseline/src/bublik/api/routes.py
++++ v1/src/bublik/api/routes.py
+@@ -6,7 +6,12 @@
+ from fastapi import APIRouter, Depends, HTTPException, status
+ 
+ from bublik.api.dependencies import get_task_service
+-from bublik.api.schemas import CreateTaskRequest, HealthResponse, TaskResponse
++from bublik.api.schemas import (
++    CreateTaskRequest,
++    HealthResponse,
++    TaskResponse,
++    UpdateTaskStatusRequest,
++)
+ from bublik.application.service import TaskService
+ from bublik.domain.errors import TaskNotFoundError
+ 
+@@ -35,3 +40,15 @@
+     except TaskNotFoundError as error:
+         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(error)) from error
+     return TaskResponse.model_validate(task)
++
++
++@router.patch("/tasks/{task_id}/status", response_model=TaskResponse)
++def update_task_status(
++    task_id: UUID, payload: UpdateTaskStatusRequest, service: TaskServiceDependency
++) -> TaskResponse:
++    """Update a task's status and map an absent task to HTTP 404."""
++    try:
++        task = service.update_task_status(task_id, payload.status)
++    except TaskNotFoundError as error:
++        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(error)) from error
++    return TaskResponse.model_validate(task)
+--- baseline/src/bublik/api/schemas.py
++++ v1/src/bublik/api/schemas.py
+@@ -26,6 +26,14 @@
+     title: TaskTitle
+ 
+ 
++class UpdateTaskStatusRequest(BaseModel):
++    """Only a supported status is writable through the status endpoint."""
++
++    model_config = ConfigDict(extra="forbid")
++
++    status: TaskStatus
++
++
+ class TaskResponse(BaseModel):
+     """Public task representation mapped from a domain value."""
+ 
+--- baseline/src/bublik/application/service.py
++++ v1/src/bublik/application/service.py
+@@ -1,14 +1,15 @@
+ """Task use cases independent of HTTP and storage implementation."""
+ 
++from dataclasses import replace
+ from uuid import UUID, uuid4
+ 
+ from bublik.application.repository import TaskRepository
+ from bublik.domain.errors import TaskNotFoundError
+-from bublik.domain.task import Task
++from bublik.domain.task import Task, TaskStatus
+ 
+ 
+ class TaskService:
+-    """Create and retrieve tasks through a repository port."""
++    """Create, retrieve and update tasks through a repository port."""
+ 
+     def __init__(self, repository: TaskRepository) -> None:
+         self._repository = repository
+@@ -19,6 +20,14 @@
+         self._repository.save(task)
+         return task
+ 
++    def update_task_status(self, task_id: UUID, status: TaskStatus) -> Task:
++        """Persist a validated status while preserving the task's identity and title."""
++        validated_status = TaskStatus(status)
++        task = self.get_task(task_id)
++        updated = replace(task, status=validated_status)
++        self._repository.save(updated)
++        return updated
++
+     def get_task(self, task_id: UUID) -> Task:
+         """Return a task or raise a typed domain error."""
+         task = self._repository.get(task_id)
+--- baseline/tests/test_status_api.py
++++ v1/tests/test_status_api.py
+@@ -0,0 +1,72 @@
++"""HTTP contract and persistence for task status updates."""
++
++from uuid import uuid4
++
++import pytest
++from fastapi.testclient import TestClient
++
++
++def test_status_updates_in_both_directions_and_repeated_updates(client: TestClient) -> None:
++    original = client.post("/tasks", json={"title": "  First task  "}).json()
++    other = client.post("/tasks", json={"title": "Other task"}).json()
++    path = f"/tasks/{original['id']}"
++
++    for status in ("todo", "done", "done", "todo"):
++        response = client.patch(f"{path}/status", json={"status": status})
++        expected = {**original, "status": status}
++        assert response.status_code == 200
++        assert response.json() == expected
++        fetched = client.get(path)
++        assert fetched.status_code == 200
++        assert fetched.json() == expected
++        assert client.get(f"/tasks/{other['id']}").json() == other
++
++
++@pytest.mark.parametrize("status", ["todo", "done"])
++def test_unknown_task_status_update(client: TestClient, status: str) -> None:
++    original = client.post("/tasks", json={"title": "Existing task"}).json()
++    response = client.patch(f"/tasks/{uuid4()}/status", json={"status": status})
++    assert response.status_code == 404
++    assert response.json() == {"detail": "Task not found"}
++    assert client.get(f"/tasks/{original['id']}").json() == original
++
++
++@pytest.mark.parametrize("initial_status", ["todo", "done"])
++@pytest.mark.parametrize(
++    "payload",
++    [
++        {},
++        {"status": "invalid"},
++        {"status": "DONE"},
++        {"status": ""},
++        {"status": " done "},
++        {"status": None},
++        {"status": 1},
++        {"status": True},
++        {"status": []},
++        {"status": {}},
++        {"status": "done", "title": "Changed title"},
++        {"status": "done", "id": str(uuid4())},
++        {"status": "done", "extra": "value"},
++        None,
++        [],
++        "done",
++    ],
++)
++def test_invalid_status_payload_preserves_task(
++    client: TestClient, initial_status: str, payload: object
++) -> None:
++    original = client.post("/tasks", json={"title": "Unchanged task"}).json()
++    path = f"/tasks/{original['id']}"
++    assert client.patch(f"{path}/status", json={"status": initial_status}).status_code == 200
++    expected = {**original, "status": initial_status}
++
++    assert client.patch(f"{path}/status", json=payload).status_code == 422
++    assert client.get(path).json() == expected
++
++
++def test_invalid_status_task_identifier_preserves_task(client: TestClient) -> None:
++    original = client.post("/tasks", json={"title": "Unchanged task"}).json()
++    response = client.patch("/tasks/not-a-uuid/status", json={"status": "done"})
++    assert response.status_code == 422
++    assert client.get(f"/tasks/{original['id']}").json() == original
+--- baseline/tests/test_status_service.py
++++ v1/tests/test_status_service.py
+@@ -0,0 +1,68 @@
++"""Status updates through the application service and repository port."""
++
++from uuid import UUID, uuid4
++
++import pytest
++
++from bublik.application.service import TaskService
++from bublik.domain.errors import TaskNotFoundError
++from bublik.domain.task import Task, TaskStatus
++
++
++class RecordingRepository:
++    """Implement replacement semantics and record writes through the port."""
++
++    def __init__(self) -> None:
++        self.tasks: dict[UUID, Task] = {}
++        self.saved: list[Task] = []
++
++    def save(self, task: Task) -> None:
++        self.tasks[task.id] = task
++        self.saved.append(task)
++
++    def get(self, task_id: UUID) -> Task | None:
++        return self.tasks.get(task_id)
++
++
++def test_status_transitions_are_persisted_and_preserve_other_values() -> None:
++    repository = RecordingRepository()
++    service = TaskService(repository)
++    original = service.create_task("First task")
++    other = service.create_task("Other task")
++
++    for status in (TaskStatus.TODO, TaskStatus.DONE, TaskStatus.DONE, TaskStatus.TODO):
++        updated = service.update_task_status(original.id, status)
++        assert updated == Task(id=original.id, title=original.title, status=status)
++        assert repository.saved[-1] == updated
++        assert service.get_task(original.id) == updated
++        assert service.get_task(other.id) == other
++
++    assert original.status is TaskStatus.TODO
++
++
++def test_unknown_task_status_update_does_not_write() -> None:
++    repository = RecordingRepository()
++    service = TaskService(repository)
++    original = service.create_task("Existing task")
++    task_id = uuid4()
++
++    with pytest.raises(TaskNotFoundError) as captured:
++        service.update_task_status(task_id, TaskStatus.DONE)
++
++    assert captured.value.task_id == task_id
++    assert str(captured.value) == "Task not found"
++    assert repository.saved == [original]
++    assert service.get_task(original.id) == original
++
++
++@pytest.mark.parametrize("status", ["invalid", "DONE", "", None, 1, True, [], {}])
++def test_invalid_service_status_does_not_write(status: TaskStatus) -> None:
++    repository = RecordingRepository()
++    service = TaskService(repository)
++    original = service.create_task("Unchanged task")
++
++    with pytest.raises(ValueError):
++        service.update_task_status(original.id, status)
++
++    assert repository.saved == [original]
++    assert service.get_task(original.id) == original

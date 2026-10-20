@@ -1,0 +1,18 @@
+case,node_id,Generation 1 E1,Generation 2 E1
+1,../../control/acceptance/test_status_contract.py::test_status_round_trip_and_repeated_requests,PASS,PASS
+2,../../control/acceptance/test_status_contract.py::test_unknown_task_returns_exact_error,PASS,PASS
+3,../../control/acceptance/test_status_contract.py::test_malformed_identifier_is_rejected,PASS,PASS
+4,../../control/acceptance/test_status_contract.py::test_invalid_payload_does_not_change_storage[payload0],PASS,PASS
+5,../../control/acceptance/test_status_contract.py::test_invalid_payload_does_not_change_storage[payload1],PASS,PASS
+6,../../control/acceptance/test_status_contract.py::test_invalid_payload_does_not_change_storage[payload2],PASS,PASS
+7,../../control/acceptance/test_status_contract.py::test_invalid_payload_does_not_change_storage[payload3],PASS,PASS
+8,../../control/acceptance/test_status_contract.py::test_invalid_payload_does_not_change_storage[payload4],PASS,PASS
+9,../../control/acceptance/test_status_contract.py::test_invalid_payload_does_not_change_storage[payload5],PASS,PASS
+10,../../control/acceptance/test_status_contract.py::test_invalid_payload_does_not_change_storage[payload6],PASS,PASS
+11,../../control/acceptance/test_status_contract.py::test_invalid_payload_does_not_change_storage[payload7],PASS,PASS
+12,../../control/acceptance/test_status_contract.py::test_invalid_payload_does_not_change_storage[payload8],PASS,PASS
+13,../../control/acceptance/test_status_contract.py::test_invalid_payload_does_not_change_storage[payload9],PASS,PASS
+14,../../control/acceptance/test_status_contract.py::test_invalid_payload_does_not_change_storage[payload10],PASS,PASS
+15,../../control/acceptance/test_status_contract.py::test_invalid_payload_does_not_change_storage[payload11],PASS,PASS
+16,../../control/acceptance/test_status_contract.py::test_missing_body_is_rejected_without_changing_task,PASS,PASS
+17,../../control/acceptance/test_status_contract.py::test_update_does_not_change_another_task,PASS,PASS

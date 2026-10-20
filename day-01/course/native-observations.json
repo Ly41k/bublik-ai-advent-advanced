@@ -1,0 +1,92 @@
+{
+  "scope": "derived facts checked against retained native Mac logs; raw native sessions excluded from public package",
+  "archive_sha256": {
+    "generation1-evidence.zip": "8be56bd84b1da65ae903052e8b7552e652b43fd9a5f9ee5c043f64ff618fda25",
+    "acceptance-root-v1.0.0.zip": "40ca955d6549ff931e9f24b10c444781b1c393f599c126198e34cb86c8b1e938",
+    "generation2-evidence.zip": "7046dde06131b6c0f6e57100ddeb6bfc559e4ff0aad97a62be18b06cb58efbf2"
+  },
+  "variants": {
+    "v1": {
+      "task_name": "status_architecture",
+      "agent_type": "architecture_report",
+      "output_contract": "PASS",
+      "native_child_readonly_call_count": 1,
+      "entry_plaintext_validation": "NOT_CONFIRMABLE_ENCRYPTED_MESSAGE",
+      "config_fingerprint": "a6bb9ed05d53455f93721779184f288ba0ae9270fefaec1775192cad9201c2bf",
+      "skill_fingerprint": "f47888764b94961a212ac17f1ba6aaf90208935410275aa8ccb4ad82d5990090",
+      "native_sources_sha256": {
+        "parent": "46168f0f17b2ec309823761830a7ed2b368beba0cb69d6c70356575a544b1ae5",
+        "child": "7cd9e857ee21c1b05b8b4ba24ee135a311f25e487b91e657b5c2d56afc644c3e"
+      },
+      "usage_by_thread": {
+        "parent": {
+          "native_usage_record_count": 9,
+          "usage_sum": {
+            "input_tokens": 223130,
+            "cached_input_tokens": 179200,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 3554,
+            "reasoning_output_tokens": 255,
+            "total_tokens": 226684
+          },
+          "duration_ms": 96473
+        },
+        "child": {
+          "native_usage_record_count": 2,
+          "usage_sum": {
+            "input_tokens": 39448,
+            "cached_input_tokens": 18048,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 385,
+            "reasoning_output_tokens": 64,
+            "total_tokens": 39833
+          },
+          "duration_ms": 12331
+        }
+      },
+      "launcher_duration_seconds": 101.173,
+      "launcher_turn_start_requests": 1
+    },
+    "v2": {
+      "task_name": "architecture_report",
+      "agent_type": "architecture_report",
+      "output_contract": "PASS",
+      "native_child_readonly_call_count": 1,
+      "entry_plaintext_validation": "NOT_CONFIRMABLE_ENCRYPTED_MESSAGE",
+      "config_fingerprint": "a6bb9ed05d53455f93721779184f288ba0ae9270fefaec1775192cad9201c2bf",
+      "skill_fingerprint": "f47888764b94961a212ac17f1ba6aaf90208935410275aa8ccb4ad82d5990090",
+      "native_sources_sha256": {
+        "parent": "6c15f8d96b200bcbd0a8e5c179e0f7a03e43cb11b2f0e537ae22dee9dc071736",
+        "child": "3d6a4d4295d889fec73ea72c3db108fe63f1aa480181d213aa42238393781a8d"
+      },
+      "usage_by_thread": {
+        "parent": {
+          "native_usage_record_count": 9,
+          "usage_sum": {
+            "input_tokens": 229636,
+            "cached_input_tokens": 197888,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 3972,
+            "reasoning_output_tokens": 272,
+            "total_tokens": 233608
+          },
+          "duration_ms": 94966
+        },
+        "child": {
+          "native_usage_record_count": 2,
+          "usage_sum": {
+            "input_tokens": 39653,
+            "cached_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 333,
+            "reasoning_output_tokens": 25,
+            "total_tokens": 39986
+          },
+          "duration_ms": 11155
+        }
+      },
+      "launcher_duration_seconds": 99.469,
+      "launcher_turn_start_requests": 1
+    }
+  }
+}

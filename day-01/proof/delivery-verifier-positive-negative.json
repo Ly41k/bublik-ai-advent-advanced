@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "positive": {
+    "exit_code": 0,
+    "stdout": "{\"status\": \"PASS\", \"files_verified\": 152, \"scope\": \"delivery_integrity_only\", \"codex_invocations\": 0}\n"
+  },
+  "negative_mutated_readme": {
+    "exit_code": 1,
+    "stdout": "{\"status\":\"BLOCKED\",\"error_code\":\"DELIVERY_INTEGRITY_MISMATCH\"}\n"
+  },
+  "original_modified": false,
+  "model_calls": 0
+}

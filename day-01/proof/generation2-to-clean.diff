@@ -1,0 +1,930 @@
+--- historical-generation2/README.md
++++ clean/README.md
+@@ -1,106 +1,19 @@
+-# Bublik Task Service — AI Advent Challenge Advanced
++# Бублик — чистовая версия Day 1
+ 
+-Independent training project: <https://github.com/Ly41k/bublik-ai-advent-advanced>.
+-No runtime dependency on the previous AI Advent repository.
++Это исправленная копия Generation 2, а не новый модельный запуск. Бизнес-исходники не изменены. Исторические генерации сохранены отдельно.
+ 
+-Gate 1 provides a small baseline. The Rules v1/v2 experiment has **not** run.
+-The future status-change endpoint is intentionally absent.
++Полные установка, запуск, Quality Gate и ограничения: [README_RU.md](../README_RU.md).
++Пошаговая проверка на Mac и настоящие скриншоты: [MAC_FINAL_RU.md](../MAC_FINAL_RU.md).
+ 
+-## Environment and reproducible setup
+-
+-Use **Python 3.13.3**. Mac Codex CLI **0.163.0** is confirmed by the user;
+-keep that version unchanged during the experiment. Do not update dependencies
+-or regenerate either lockfile between runs.
+-
+-`uv.lock` is the universal resolver lock; `requirements.lock` is its hashed
+-export, including development/build dependencies. The commands below need
+-Python and pip, without requiring uv on the Mac:
++Из этой папки после установки закреплённых зависимостей:
+ 
+ ```bash
+-python3 --version
+-python3 -m venv .venv
+-source .venv/bin/activate
+-python -m pip install --require-hashes -r requirements.lock
+-python -m pip install --no-deps --no-build-isolation -e .
+-python scripts/run_checks.py --output local-evidence/mac-baseline-checks.txt
++.venv/bin/python scripts/run_checks.py --output local-evidence/checks-001.json
++.venv/bin/python -m uvicorn bublik.main:create_app --factory --host 127.0.0.1 --port 8000
+ ```
+ 
+-The installed Python must report `3.13.3` before setup. Initial dependency
+-installation needs network access; the service and verification checks do not.
+-If Python or a locked wheel is unavailable, report the failure rather than
+-changing versions silently. Mac execution remains unverified until its log is reviewed.
++Runner требует соседние `control/`, `reference-tooling/` и `tooling_regressions.py`; переносить только app/ недостаточно. Отчёты не перезаписываются. Все функции, включая тестовые, проверяются Ruff ANN.
+ 
+-## Run locally
++API: GET /health; POST /tasks; GET /tasks/{task_id}; PATCH /tasks/{task_id}/status. PATCH принимает ровно status=todo|done; сохраняет id/title; неизвестный UUID — 404; невалидный ввод — 422.
+ 
+-```bash
+-python -m uvicorn bublik.main:create_app --factory --host 127.0.0.1 --port 8000
+-```
+-
+-In a second terminal:
+-
+-```bash
+-curl --fail-with-body http://127.0.0.1:8000/health
+-curl --fail-with-body http://127.0.0.1:8000/tasks \
+-  -H 'Content-Type: application/json' --data '{"title":"Learn Rules"}'
+-```
+-
+-Copy the returned UUID and call `GET /tasks/<UUID>`. Swagger UI is available at
+-<http://127.0.0.1:8000/docs>. Data belongs to one app instance, disappears on
+-restart, and is not shared across workers. Use one worker for this baseline.
+-
+-| Endpoint | Contract |
+-| --- | --- |
+-| `GET /health` | `200`, `{"status":"ok"}` |
+-| `POST /tasks` | JSON `{"title":"..."}`; `201`, `{id,title,status}`; UUID4 and `todo` |
+-| `GET /tasks/{task_id}` | `200`, saved task; missing UUID → `404`, `{"detail":"Task not found"}` |
+-
+-Titles are strings trimmed before enforcing 1–200 characters. Missing, blank,
+-oversized, non-string titles and extra create fields return `422`.
+-A malformed path UUID also returns `422`.
+-
+-## Structure and dependencies
+-
+-| Directory | Responsibility |
+-| --- | --- |
+-| `src/bublik/domain/` | Immutable Task, statuses, validation, typed errors; standard library only |
+-| `src/bublik/application/` | Use cases and the TaskRepository protocol; depends on domain |
+-| `src/bublik/infrastructure/` | In-memory repository; domain values, no HTTP |
+-| `src/bublik/api/` | Pydantic DTOs, DI accessor, thin HTTP handlers |
+-| `src/bublik/main.py` | Composition root; wires concrete storage and service |
+-| `tests/` | Domain, service, storage, HTTP, and import-boundary checks |
+-| `scripts/` | Deterministic local verification; no model calls |
+-| `docs/` | Baseline code references and Mac handoff |
+-| `weeks/week-01/` | Gate reports and recorded evidence |
+-
+-Use absolute imports, `snake_case` modules/functions, `PascalCase` types,
+-`UPPER_CASE` enum members, explicit DTOs and return types. Synchronous handlers
+-match the synchronous in-memory service; do not add async wrappers without I/O.
+-Only the composition root constructs the concrete repository. API imports the
+-application layer, while application and domain never import API or infrastructure.
+-
+-## Verification
+-
+-```bash
+-python -m compileall -q src tests scripts
+-python -c "from bublik.main import create_app; create_app()"
+-python -m ruff check .
+-python -m ruff format --check .
+-python -m pytest -q
+-```
+-
+-`scripts/run_checks.py` runs these commands, logs stdout/stderr, exit codes,
+-environment/package versions, and a source/config SHA-256 manifest. It continues
+-after a failed check and exits nonzero if any check fails. Output must be under
+-`local-evidence/` or `weeks/week-01/evidence/day-01/`. The log is sanitized for
+-local home/workspace/virtualenv paths and contains no credential inventory.
+-
+-## Gate boundaries
+-
+-Real code references: `docs/BASELINE_CODE_EXAMPLES.md`.
+-Transfer instructions: `docs/MAC_HANDOFF.md`.
+-Status: `weeks/week-01/DAY_01.md`.
+-
+-Gate 2 must verify actual global/project instructions, the project skill, and
+-the configured native subagent. This baseline contains no Rules snapshots,
+-project skills, agent TOMLs, or status-change implementation. Do not run
+-Generation 1 or Generation 2 yet. Push, PR publication, and merge need separate approval.
++Rules v2: [AGENTS.md](AGENTS.md). Они сохранены без изменения, включая исторический V1 marker. Skills/subagent configuration также сохранены. Codex CLI и модель для проверок не вызываются.
+--- historical-generation2/docs/MAC_HANDOFF.md
++++ clean/docs/MAC_HANDOFF.md
+@@ -1,82 +1,3 @@
+-# Transfer Gate 1 to the Mac without pushing
++# Перенос чистовой версии
+ 
+-The delivery ZIP contains a self-contained Git bundle, this handoff, baseline
+-and delivery commit identifiers, and `SHA256SUMS`. It contains no `.venv`,
+-Python runtime, caches, credential files, or personal Codex configuration.
+-Keep the original ZIP as received.
+-
+-## 1. Restore a new local working directory
+-
+-Open Terminal in the folder containing the downloaded ZIP:
+-
+-```bash
+-unzip bublik-day01-gate1.zip -d bublik-day01-gate1-transfer
+-cd bublik-day01-gate1-transfer
+-shasum -a 256 -c SHA256SUMS
+-git clone bublik-day01-baseline.bundle bublik-ai-advent-advanced
+-cd bublik-ai-advent-advanced
+-git remote set-url origin https://github.com/Ly41k/bublik-ai-advent-advanced.git
+-git status --short --untracked-files=all
+-git rev-parse baseline/day01-foundation
+-cat weeks/week-01/evidence/day-01/baseline-sha.txt
+-shasum -a 256 -c weeks/week-01/evidence/day-01/baseline-core.sha256
+-```
+-
+-The two baseline SHA values must match, the worktree must be clean, and every
+-core-file checksum must pass. Choose a new destination if either extraction
+-or clone directory already exists; do not overwrite existing work.
+-Setting `origin` only records a URL locally and does not push anything.
+-
+-`main` includes a later evidence-only commit; the lightweight tag
+-`baseline/day01-foundation` identifies the immutable source baseline used by
+-both future generations. `baseline-sha.txt` lives in the evidence commit so
+-that no file needs to contain the hash of its own Git commit.
+-
+-## 2. Confirm the existing Mac tools
+-
+-```bash
+-codex --version
+-codex login status
+-python3 --version
+-```
+-
+-Expected: `codex-cli 0.163.0`, `Logged in using ChatGPT`, `Python 3.13.3`.
+-Do not reinstall or upgrade Codex. Do not copy authentication files into Git.
+-
+-## 3. Install exactly the frozen environment
+-
+-```bash
+-python3 -m venv .venv
+-source .venv/bin/activate
+-python -m pip install --require-hashes -r requirements.lock
+-python -m pip install --no-deps --no-build-isolation -e .
+-python scripts/run_checks.py --output local-evidence/mac-baseline-checks.txt
+-git status --short --untracked-files=all
+-```
+-
+-The dependency installation needs the package index. Checks run in process
+-with FastAPI TestClient and do not need a public server or external API.
+-Only checks actually run on the Mac count as Mac evidence. Return
+-`local-evidence/mac-baseline-checks.txt` for review; it is intentionally ignored
+-until reviewed and copied into the final evidence set.
+-
+-## 4. Stop before the experiment
+-
+-Do not launch the status-change control prompt yet. Gate 2 must:
+-
+-1. Inspect existing global instructions/configuration without exposing secrets.
+-2. Create Rules v1 from actual baseline code and a small quality-gate skill.
+-3. Configure `architecture_report` returning `ArchitectureReport` and test
+-   successful invocation plus missing-input refusal without tool execution.
+-4. Demonstrate the actual loading of global/project instructions, skill,
+-   and agent configuration in **Codex CLI 0.163.0**.
+-5. Freeze the control prompt, acceptance tests, model, reasoning effort,
+-   runtime configuration and common skill/agent definitions.
+-6. Prepare clean independent source copies from the same baseline tag.
+-
+-Use fresh sessions for v1 and v2. Keep previous generation evidence out of the
+-next generation's accessible working context. Separate clones separate Git
+-histories; they do not themselves provide OS-level file-access isolation.
+-
+-No push, PR publication, merge, model-provider API payment, or global
+-configuration replacement is authorized by these handoff commands.
++Актуальные инструкции: [MAC_FINAL_RU.md](../../MAC_FINAL_RU.md). Старый baseline Git bundle не является чистовой версией Day 1. Исторические snapshots не перезаписывать.
+--- historical-generation2/pyproject.toml
++++ clean/pyproject.toml
+@@ -33,6 +33,3 @@
+ 
+ [tool.ruff.lint]
+ select = ["E", "F", "I", "UP", "B", "SIM", "ANN"]
+-
+-[tool.ruff.lint.per-file-ignores]
+-"tests/**/*.py" = ["ANN201"]
+--- historical-generation2/scripts/run_checks.py
++++ clean/scripts/run_checks.py
+@@ -1,11 +1,11 @@
+-"""Run the fixed offline quality gate and preserve actual subprocess results."""
++"""Run the foundation gate with real subprocesses and pinned protected inputs."""
+ 
+ import argparse
+ import hashlib
+ import importlib.metadata
+ import json
+ import platform
+-import shlex
++import re
+ import subprocess
+ import sys
+ import time
+@@ -13,93 +13,197 @@
+ from pathlib import Path
+ 
+ ROOT = Path(__file__).resolve().parents[1]
+-COMMANDS = (
+-    ("compile", ("-m", "compileall", "-q", "src", "tests", "scripts")),
+-    ("import", ("-c", "from bublik.main import create_app; create_app()")),
+-    ("ruff_lint", ("-m", "ruff", "check", ".")),
+-    ("ruff_format", ("-m", "ruff", "format", "--check", ".")),
+-    ("pytest", ("-m", "pytest", "-q")),
+-)
+-
+-
+-def sanitize(text: str) -> str:
+-    """Remove machine-specific paths without changing check outcomes."""
+-    substitutions = sorted(
+-        ((str(ROOT), "<REPO>"), (sys.prefix, "<VENV>"), (str(Path.home()), "<HOME>")),
+-        key=lambda item: len(item[0]),
+-        reverse=True,
++
++
++def digest(path: Path) -> str:
++    """Hash regular inputs; linked inputs are never accepted."""
++    if not path.is_file() or path.is_symlink():
++        raise ValueError("MISSING_OR_LINKED_PROTECTED_INPUT")
++    return hashlib.sha256(path.read_bytes()).hexdigest()
++
++
++def verify_protected(manifest: Path, expected_sha: str) -> None:
++    """Compare bytes and source inventory with an externally pinned manifest."""
++    if not re.fullmatch(r"[0-9a-f]{64}", expected_sha) or digest(manifest) != expected_sha:
++        raise ValueError("PROTECTED_MANIFEST_CHANGED")
++    inputs = json.loads(manifest.read_bytes())
++    files = inputs["files"]
++    if not isinstance(files, dict) or not files:
++        raise ValueError("EMPTY_PROTECTED_MANIFEST")
++    for name, expected in files.items():
++        path = Path(name)
++        if path.is_absolute() or ".." in path.parts or not path.parts:
++            raise ValueError("UNSAFE_PROTECTED_PATH")
++        target = ROOT.parent / path
++        if any(parent.is_symlink() for parent in (target, *target.parents)):
++            raise ValueError("LINKED_PROTECTED_PATH")
++        if digest(target) != expected:
++            raise ValueError("PROTECTED_INPUT_CHANGED:" + name)
++    folders = ("app/src", "app/tests", "app/scripts", "reference-tooling")
++    actual = {
++        path.relative_to(ROOT.parent).as_posix()
++        for folder in folders
++        for path in (ROOT.parent / folder).rglob("*.py")
++    }
++    expected = {
++        name
++        for name in files
++        if name.endswith(".py")
++        and name.startswith(("app/src/", "app/tests/", "app/scripts/", "reference-tooling/"))
++    }
++    if actual != expected:
++        raise ValueError("PROTECTED_SOURCE_INVENTORY_CHANGED")
++
++
++def commands() -> tuple[tuple[str, tuple[str, ...]], ...]:
++    """Use Ruff ANN for all functions and E1 boundaries for acceptance."""
++    acceptance = ROOT.parent / "control/acceptance"
++    return (
++        ("compile", ("-m", "compileall", "-q", "src", "tests", "scripts")),
++        ("import", ("-c", "from bublik.main import create_app; create_app()")),
++        (
++            "ruff_lint_and_annotations",
++            ("-m", "ruff", "check", ".", "../tooling_regressions.py", "../verify_delivery.py"),
++        ),
++        (
++            "ruff_format",
++            (
++                "-m",
++                "ruff",
++                "format",
++                "--check",
++                ".",
++                "../tooling_regressions.py",
++                "../verify_delivery.py",
++            ),
++        ),
++        ("pytest_including_architecture_and_gate_regressions", ("-m", "pytest", "-q")),
++        (
++            "external_acceptance_e1",
++            (
++                "-m",
++                "pytest",
++                "-vv",
++                "-c",
++                str(ROOT / "pyproject.toml"),
++                "--rootdir",
++                str(acceptance),
++                "--confcutdir",
++                str(acceptance),
++                "-p",
++                "no:cacheprovider",
++                "-o",
++                "addopts=--strict-config --strict-markers",
++                str(acceptance / "test_status_contract.py"),
++            ),
++        ),
++        ("tooling_regressions", (str(ROOT.parent / "tooling_regressions.py"),)),
+     )
+-    for original, replacement in substitutions:
+-        text = text.replace(original, replacement)
+-    return text
+-
+-
+-def source_manifest() -> dict[str, str]:
+-    """Hash experiment-relevant files; ignore logs, caches and local state."""
+-    paths = [ROOT / name for name in ("pyproject.toml", "requirements.lock", "uv.lock")]
+-    for folder in ("src", "tests", "scripts"):
+-        paths.extend(sorted((ROOT / folder).rglob("*.py")))
+-    return {
+-        path.relative_to(ROOT).as_posix(): hashlib.sha256(path.read_bytes()).hexdigest()
+-        for path in paths
+-    }
+-
+-
+-def main() -> int:
+-    """Write an auditable report and return the combined status."""
++
++
++def acceptance_ok(code: int, stdout: str) -> bool:
++    """Require seventeen distinct executed cases, not a summary alone."""
++    cases = re.findall(r"^(\S+::\S+) PASSED", stdout, re.MULTILINE)
++    return (
++        code == 0
++        and len(cases) == len(set(cases)) == 17
++        and bool(re.search(r"\b17 passed\b", stdout))
++    )
++
++
++def sanitize(value: str) -> str:
++    """Remove local prefixes from shareable reports."""
++    replacements = [
++        (str(ROOT), "<APP>"),
++        (sys.prefix, "<VENV>"),
++        (str(ROOT.parent), "<PACKAGE>"),
++        (str(Path.home()), "<HOME>"),
++    ]
++    for source, target in sorted(replacements, key=lambda item: -len(item[0])):
++        value = value.replace(source, target)
++    return value
++
++
++def main(argv: list[str] | None = None) -> int:
++    """Fail closed on mandatory failures and preserve existing reports."""
+     parser = argparse.ArgumentParser(description=__doc__)
+     parser.add_argument("--output", type=Path, required=True)
+-    output = parser.parse_args().output
+-    if not output.is_absolute():
+-        output = ROOT / output
+-    output = output.resolve()
+-    permitted = (ROOT / "local-evidence", ROOT / "weeks/week-01/evidence/day-01")
+-    if not any(output.is_relative_to(folder) for folder in permitted):
+-        parser.error("--output must be inside a designated evidence directory")
++    parser.add_argument(
++        "--protected-manifest", type=Path, default=ROOT.parent / "control/protected-inputs.json"
++    )
++    parser.add_argument("--protected-sha256")
++    args = parser.parse_args(argv)
++    output = args.output if args.output.is_absolute() else ROOT / args.output
++    if not output.resolve().is_relative_to(ROOT / "local-evidence") or output.is_symlink():
++        parser.error("output must be inside app/local-evidence")
+     if output.exists():
+-        parser.error("report already exists; use a new filename to preserve evidence")
++        parser.error("report exists: choose a new report name")
++    report: dict[str, object] = {
++        "gate": "BublikFoundationQualityGateV1",
++        "status": "BLOCKED",
++        "timestamp_utc": datetime.now(UTC).isoformat(),
++        "environment": {
++            "os": platform.system(),
++            "machine": platform.machine(),
++            "python": platform.python_version(),
++        },
++        "tool_versions": {
++            name: importlib.metadata.version(name)
++            for name in ("ruff", "pytest", "fastapi", "pydantic", "bublik-task-service")
++        },
++        "protected_manifest_sha256": args.protected_sha256,
++        "codex_invocations": 0,
++        "model_calls": 0,
++        "checks": [],
++        "architecture_check": "tests/test_architecture.py via mandatory pytest",
++        "annotations_check": "Ruff ANN; no tests ANN201 exemption",
++    }
++    checks: list[dict[str, object]] = []
++    report["checks"] = checks
++    try:
++        trusted_sha = args.protected_sha256
++        if trusted_sha is None:
++            trusted_sha = args.protected_manifest.with_suffix(".sha256").read_text().strip()
++        report["protected_manifest_sha256"] = trusted_sha
++        verify_protected(args.protected_manifest, trusted_sha)
++        report["protected_before"] = "PASS"
++        for label, arguments in commands():
++            started = time.monotonic()
++            try:
++                result = subprocess.run(
++                    [sys.executable, *arguments],
++                    cwd=ROOT,
++                    capture_output=True,
++                    text=True,
++                    timeout=120,
++                    check=False,
++                )
++                code, stdout, stderr = result.returncode, result.stdout, result.stderr
++            except (OSError, subprocess.TimeoutExpired) as error:
++                code, stdout, stderr = 124, "", type(error).__name__
++            ok = acceptance_ok(code, stdout) if label == "external_acceptance_e1" else code == 0
++            checks.append(
++                {
++                    "name": label,
++                    "command": [sys.executable, *arguments],
++                    "exit_code": code,
++                    "status": "PASS" if ok else "FAIL",
++                    "stdout": stdout,
++                    "stderr": stderr,
++                    "duration_seconds": round(time.monotonic() - started, 3),
++                }
++            )
++            print(f"{label}: {'PASS' if ok else 'FAIL'} (exit {code})", flush=True)
++        verify_protected(args.protected_manifest, trusted_sha)
++        report["protected_after"] = "PASS"
++        report["status"] = "PASS" if all(c["status"] == "PASS" for c in checks) else "FAIL"
++    except (ValueError, KeyError, TypeError, OSError) as error:
++        report["error_code"] = str(error) if isinstance(error, ValueError) else type(error).__name__
+     output.parent.mkdir(parents=True, exist_ok=True)
+-    packages = {
+-        distribution.metadata["Name"]: distribution.version
+-        for distribution in importlib.metadata.distributions()
+-    }
+-    report = [
+-        "Bublik baseline quality gate",
+-        f"timestamp_utc: {datetime.now(UTC).isoformat()}",
+-        f"execution_os: {platform.system()} {platform.machine()}",
+-        f"python: {platform.python_version()}",
+-        "codex_invocations: 0",
+-        "checks_require_external_network: false",
+-        "packages: " + json.dumps(packages, sort_keys=True),
+-        "source_manifest_sha256: " + json.dumps(source_manifest(), sort_keys=True),
+-    ]
+-    failed = False
+-    for label, arguments in COMMANDS:
+-        command = [sys.executable, *arguments]
+-        started = time.monotonic()
+-        try:
+-            result = subprocess.run(
+-                command, cwd=ROOT, capture_output=True, text=True, timeout=120, check=False
+-            )
+-            code, stdout, stderr = result.returncode, result.stdout, result.stderr
+-        except subprocess.TimeoutExpired as error:
+-            code, stdout, stderr = 124, str(error.stdout or ""), str(error.stderr or "")
+-        duration = time.monotonic() - started
+-        failed = failed or code != 0
+-        report.extend(
+-            (
+-                f"\n[{label}]",
+-                "command: python " + shlex.join(arguments),
+-                f"exit_code: {code}",
+-                f"duration_seconds: {duration:.3f}",
+-                "stdout:\n" + stdout,
+-                "stderr:\n" + stderr,
+-            )
+-        )
+-        print(f"{label}: {'PASS' if code == 0 else 'FAIL'} (exit {code})", flush=True)
+-    report.append("\noverall: " + ("FAIL" if failed else "PASS"))
+-    output.write_text(sanitize("\n".join(report)) + "\n", encoding="utf-8")
+-    return int(failed)
++    with output.open("x", encoding="utf-8") as stream:
++        stream.write(sanitize(json.dumps(report, ensure_ascii=False, indent=2)) + "\n")
++    print("overall: " + str(report["status"]), flush=True)
++    return 0 if report["status"] == "PASS" else 1
+ 
+ 
+ if __name__ == "__main__":
+--- historical-generation2/tests/test_api.py
++++ clean/tests/test_api.py
+@@ -8,13 +8,13 @@
+ from bublik.main import create_app
+ 
+ 
+-def test_health(client: TestClient):
++def test_health(client: TestClient) -> None:
+     response = client.get("/health")
+     assert response.status_code == 200
+     assert response.json() == {"status": "ok"}
+ 
+ 
+-def test_create_and_get_task(client: TestClient):
++def test_create_and_get_task(client: TestClient) -> None:
+     created = client.post("/tasks", json={"title": "  Learn Rules  "})
+     assert created.status_code == 201
+     task = created.json()
+@@ -28,7 +28,7 @@
+ 
+ 
+ @pytest.mark.parametrize("title", ["a", "a" * 200, "  " + "a" * 200 + "  "])
+-def test_create_title_boundaries(client: TestClient, title: str):
++def test_create_title_boundaries(client: TestClient, title: str) -> None:
+     response = client.post("/tasks", json={"title": title})
+     assert response.status_code == 201
+     assert response.json()["title"] == title.strip()
+@@ -48,21 +48,21 @@
+         {"title": "Task", "id": str(uuid4())},
+     ],
+ )
+-def test_invalid_create_payload(client: TestClient, payload: dict[str, object]):
++def test_invalid_create_payload(client: TestClient, payload: dict[str, object]) -> None:
+     assert client.post("/tasks", json=payload).status_code == 422
+ 
+ 
+-def test_unknown_task(client: TestClient):
++def test_unknown_task(client: TestClient) -> None:
+     response = client.get(f"/tasks/{uuid4()}")
+     assert response.status_code == 404
+     assert response.json() == {"detail": "Task not found"}
+ 
+ 
+-def test_invalid_task_identifier(client: TestClient):
++def test_invalid_task_identifier(client: TestClient) -> None:
+     assert client.get("/tasks/not-a-uuid").status_code == 422
+ 
+ 
+-def test_application_instances_do_not_share_tasks(client: TestClient):
++def test_application_instances_do_not_share_tasks(client: TestClient) -> None:
+     task_id = client.post("/tasks", json={"title": "Only in first app"}).json()["id"]
+     with TestClient(create_app()) as second_client:
+         assert second_client.get(f"/tasks/{task_id}").status_code == 404
+--- historical-generation2/tests/test_architecture.py
++++ clean/tests/test_architecture.py
+@@ -22,7 +22,7 @@
+ 
+ 
+ @pytest.mark.parametrize("layer", FORBIDDEN)
+-def test_layer_does_not_import_forbidden_dependencies(layer: str):
++def test_layer_does_not_import_forbidden_dependencies(layer: str) -> None:
+     violations: list[str] = []
+     for path in sorted((SOURCE_ROOT / layer).rglob("*.py")):
+         tree = ast.parse(path.read_text(encoding="utf-8"))
+--- historical-generation2/tests/test_domain.py
++++ clean/tests/test_domain.py
+@@ -9,24 +9,24 @@
+ from bublik.domain.task import Task, TaskStatus
+ 
+ 
+-def test_title_is_trimmed_and_new_task_is_todo():
++def test_title_is_trimmed_and_new_task_is_todo() -> None:
+     task = Task(id=uuid4(), title="  Learn Rules  ")
+     assert task.title == "Learn Rules"
+     assert task.status is TaskStatus.TODO
+ 
+ 
+ @pytest.mark.parametrize("title", ["", "   ", "\t\n", "a" * 201])
+-def test_invalid_title_is_rejected(title: str):
++def test_invalid_title_is_rejected(title: str) -> None:
+     with pytest.raises(InvalidTaskTitleError):
+         Task(id=uuid4(), title=title)
+ 
+ 
+ @pytest.mark.parametrize("title", ["a", "a" * 200, "  " + "a" * 200 + "  "])
+-def test_title_boundaries_apply_after_trimming(title: str):
++def test_title_boundaries_apply_after_trimming(title: str) -> None:
+     assert Task(id=uuid4(), title=title).title == title.strip()
+ 
+ 
+-def test_task_is_immutable():
++def test_task_is_immutable() -> None:
+     task = Task(id=uuid4(), title="Keep the baseline")
+     with pytest.raises(FrozenInstanceError):
+         task.title = "Mutated"
+--- historical-generation2/tests/test_foundation_gate.py
++++ clean/tests/test_foundation_gate.py
+@@ -0,0 +1,185 @@
++"""Execute real Ruff and architecture checks; test gate aggregation on fixtures."""
++
++import hashlib
++import importlib.util
++import json
++import subprocess
++import sys
++from pathlib import Path
++from types import ModuleType
++from unittest.mock import patch
++
++import pytest
++
++ROOT = Path(__file__).resolve().parents[1]
++
++
++def load(name: str, path: Path) -> ModuleType:
++    """Load a local check without executing its CLI entry point."""
++    spec = importlib.util.spec_from_file_location(name, path)
++    assert spec is not None and spec.loader is not None
++    module = importlib.util.module_from_spec(spec)
++    spec.loader.exec_module(module)
++    return module
++
++
++def ruff_fixture(source: str) -> subprocess.CompletedProcess[str]:
++    """Use actual configuration on a synthetic test-module input."""
++    return subprocess.run(
++        [
++            sys.executable,
++            "-m",
++            "ruff",
++            "check",
++            "--config",
++            str(ROOT / "pyproject.toml"),
++            "--no-cache",
++            "--stdin-filename",
++            "tests/test_annotation_fixture.py",
++            "-",
++        ],
++        input=source,
++        cwd=ROOT,
++        capture_output=True,
++        text=True,
++        check=False,
++    )
++
++
++def test_annotations_positive() -> None:
++    result = ruff_fixture("def test_example(value: int) -> None:\n    pass\n")
++    assert result.returncode == 0, result.stdout + result.stderr
++
++
++@pytest.mark.parametrize(
++    ("source", "rule"),
++    [
++        ("def test_example(value: int):\n    pass\n", "ANN201"),
++        ("def test_example(value) -> None:\n    pass\n", "ANN001"),
++    ],
++)
++def test_annotations_negative(source: str, rule: str) -> None:
++    result = ruff_fixture(source)
++    assert result.returncode != 0 and rule in result.stdout
++
++
++def test_architecture_positive_and_negative(tmp_path: Path) -> None:
++    architecture = load("foundation_architecture", ROOT / "tests/test_architecture.py")
++    domain = tmp_path / "bublik/domain"
++    domain.mkdir(parents=True)
++    file = domain / "task.py"
++    with patch.object(architecture, "SOURCE_ROOT", domain.parent):
++        file.write_text("from uuid import UUID\n", encoding="utf-8")
++        architecture.test_layer_does_not_import_forbidden_dependencies("domain")
++        file.write_text("from fastapi import FastAPI\n", encoding="utf-8")
++        with pytest.raises(AssertionError, match="fastapi"):
++            architecture.test_layer_does_not_import_forbidden_dependencies("domain")
++
++
++def fixture_gate(tmp_path: Path) -> tuple[ModuleType, Path, str]:
++    """Create isolated synthetic inputs without modifying protected project files."""
++    gate = load("foundation_checks", ROOT / "scripts/run_checks.py")
++    app = tmp_path / "app"
++    file = app / "src/value.py"
++    file.parent.mkdir(parents=True)
++    file.write_text("value = 1\n", encoding="utf-8")
++    gate.ROOT = app
++    manifest = tmp_path / "protected.json"
++    manifest.write_text(
++        json.dumps({"files": {"app/src/value.py": hashlib.sha256(file.read_bytes()).hexdigest()}}),
++        encoding="utf-8",
++    )
++    return gate, manifest, hashlib.sha256(manifest.read_bytes()).hexdigest()
++
++
++def test_protected_positive_and_modified_negative(tmp_path: Path) -> None:
++    gate, manifest, sha = fixture_gate(tmp_path)
++    gate.verify_protected(manifest, sha)
++    (gate.ROOT / "src/value.py").write_text("value = 2\n", encoding="utf-8")
++    with pytest.raises(ValueError, match="PROTECTED_INPUT_CHANGED"):
++        gate.verify_protected(manifest, sha)
++
++
++def test_new_source_cannot_evade_protection(tmp_path: Path) -> None:
++    gate, manifest, sha = fixture_gate(tmp_path)
++    (gate.ROOT / "src/extra.py").write_text("value = 2\n", encoding="utf-8")
++    with pytest.raises(ValueError, match="PROTECTED_SOURCE_INVENTORY_CHANGED"):
++        gate.verify_protected(manifest, sha)
++
++
++def test_manifest_tampering_blocks_before_subprocesses(tmp_path: Path) -> None:
++    gate, manifest, sha = fixture_gate(tmp_path)
++    manifest.write_text('{"files": {}}', encoding="utf-8")
++    output = gate.ROOT / "local-evidence/blocked.json"
++    with patch.object(gate.subprocess, "run") as run:
++        assert (
++            gate.main(
++                [
++                    "--output",
++                    str(output),
++                    "--protected-manifest",
++                    str(manifest),
++                    "--protected-sha256",
++                    sha,
++                ]
++            )
++            == 1
++        )
++        run.assert_not_called()
++    assert json.loads(output.read_text())["status"] == "BLOCKED"
++
++
++@pytest.mark.parametrize("failed_index", range(7))
++def test_each_mandatory_failure_prevents_pass(tmp_path: Path, failed_index: int) -> None:
++    """Aggregation unit test: synthetic returns are not check execution evidence."""
++    gate, manifest, sha = fixture_gate(tmp_path)
++    passed = "\n".join(f"test.py::test_{i} PASSED" for i in range(17)) + "\n17 passed"
++    returns = [
++        subprocess.CompletedProcess([], 1 if i == failed_index else 0, passed if i == 5 else "", "")
++        for i in range(7)
++    ]
++    output = gate.ROOT / "local-evidence/failed.json"
++    with patch.object(gate.subprocess, "run", side_effect=returns):
++        assert (
++            gate.main(
++                [
++                    "--output",
++                    str(output),
++                    "--protected-manifest",
++                    str(manifest),
++                    "--protected-sha256",
++                    sha,
++                ]
++            )
++            == 1
++        )
++    assert json.loads(output.read_text())["status"] == "FAIL"
++
++
++def test_acceptance_requires_distinct_cases() -> None:
++    gate = load("foundation_acceptance", ROOT / "scripts/run_checks.py")
++    duplicate = "test.py::test_same PASSED\n" * 17 + "17 passed"
++    assert not gate.acceptance_ok(0, duplicate)
++
++
++def test_protected_after_failure_prevents_pass(tmp_path: Path) -> None:
++    gate, manifest, sha = fixture_gate(tmp_path)
++    output = gate.ROOT / "local-evidence/changed.json"
++    with (
++        patch.object(gate, "commands", return_value=()),
++        patch.object(gate, "verify_protected", side_effect=[None, ValueError("POSTCHECK_CHANGED")]),
++    ):
++        assert (
++            gate.main(
++                [
++                    "--output",
++                    str(output),
++                    "--protected-manifest",
++                    str(manifest),
++                    "--protected-sha256",
++                    sha,
++                ]
++            )
++            == 1
++        )
++    assert json.loads(output.read_text())["status"] == "BLOCKED"
+--- historical-generation2/tests/test_repository.py
++++ clean/tests/test_repository.py
+@@ -7,18 +7,18 @@
+ from bublik.infrastructure.memory_repository import InMemoryTaskRepository
+ 
+ 
+-def test_save_and_get_round_trip():
++def test_save_and_get_round_trip() -> None:
+     task = Task(id=uuid4(), title="Stored task")
+     repository = InMemoryTaskRepository()
+     repository.save(task)
+     assert repository.get(task.id) == task
+ 
+ 
+-def test_missing_task_returns_none():
++def test_missing_task_returns_none() -> None:
+     assert InMemoryTaskRepository().get(uuid4()) is None
+ 
+ 
+-def test_save_replaces_the_complete_value_without_mutating_old_value():
++def test_save_replaces_the_complete_value_without_mutating_old_value() -> None:
+     task = Task(id=uuid4(), title="Original")
+     replacement = replace(task, title="Replacement")
+     repository = InMemoryTaskRepository()
+@@ -28,7 +28,7 @@
+     assert task.title == "Original"
+ 
+ 
+-def test_repositories_have_independent_storage():
++def test_repositories_have_independent_storage() -> None:
+     task = Task(id=uuid4(), title="Private to one app")
+     first = InMemoryTaskRepository()
+     first.save(task)
+--- historical-generation2/tests/test_service.py
++++ clean/tests/test_service.py
+@@ -22,7 +22,7 @@
+         return next((task for task in self.saved if task.id == task_id), None)
+ 
+ 
+-def test_create_normalizes_persists_and_can_be_retrieved():
++def test_create_normalizes_persists_and_can_be_retrieved() -> None:
+     repository = RecordingRepository()
+     service = TaskService(repository)
+     task = service.create_task("  Bublik  ")
+@@ -31,19 +31,19 @@
+     assert service.get_task(task.id) == task
+ 
+ 
+-def test_creation_generates_distinct_identifiers():
++def test_creation_generates_distinct_identifiers() -> None:
+     service = TaskService(RecordingRepository())
+     assert service.create_task("First").id != service.create_task("Second").id
+ 
+ 
+-def test_invalid_title_does_not_reach_storage():
++def test_invalid_title_does_not_reach_storage() -> None:
+     repository = RecordingRepository()
+     with pytest.raises(InvalidTaskTitleError):
+         TaskService(repository).create_task("  ")
+     assert repository.saved == []
+ 
+ 
+-def test_missing_task_raises_typed_error():
++def test_missing_task_raises_typed_error() -> None:
+     task_id = uuid4()
+     with pytest.raises(TaskNotFoundError) as captured:
+         TaskService(RecordingRepository()).get_task(task_id)
+--- historical-generation2/tests/test_status_api.py
++++ clean/tests/test_status_api.py
+@@ -6,7 +6,7 @@
+ from fastapi.testclient import TestClient
+ 
+ 
+-def test_status_transitions_and_repeated_updates(client: TestClient):
++def test_status_transitions_and_repeated_updates(client: TestClient) -> None:
+     original = client.post("/tasks", json={"title": "  Keep identity  "}).json()
+     other = client.post("/tasks", json={"title": "Other"}).json()
+ 
+@@ -21,7 +21,7 @@
+         assert client.get(f"/tasks/{other['id']}").json() == other
+ 
+ 
+-def test_unknown_status_task(client: TestClient):
++def test_unknown_status_task(client: TestClient) -> None:
+     original = client.post("/tasks", json={"title": "Existing"}).json()
+     response = client.patch(f"/tasks/{uuid4()}/status", json={"status": "done"})
+     assert response.status_code == 404
+@@ -51,7 +51,7 @@
+ )
+ def test_invalid_status_payload_preserves_tasks(
+     client: TestClient, initial_status: str, payload: object
+-):
++) -> None:
+     original = client.post("/tasks", json={"title": "Unchanged"}).json()
+     other = client.post("/tasks", json={"title": "Other"}).json()
+     setup = client.patch(f"/tasks/{original['id']}/status", json={"status": initial_status})
+@@ -65,7 +65,7 @@
+     assert client.get(f"/tasks/{other['id']}").json() == other
+ 
+ 
+-def test_invalid_status_task_identifier_preserves_task(client: TestClient):
++def test_invalid_status_task_identifier_preserves_task(client: TestClient) -> None:
+     original = client.post("/tasks", json={"title": "Existing"}).json()
+     response = client.patch("/tasks/not-a-uuid/status", json={"status": "done"})
+     assert response.status_code == 422
+--- historical-generation2/tests/test_status_service.py
++++ clean/tests/test_status_service.py
+@@ -33,7 +33,9 @@
+         (TaskStatus.DONE, TaskStatus.DONE),
+     ],
+ )
+-def test_status_update_persists_and_preserves_other_values(initial: TaskStatus, target: TaskStatus):
++def test_status_update_persists_and_preserves_other_values(
++    initial: TaskStatus, target: TaskStatus
++) -> None:
+     repository = StatusRepository()
+     original = Task(id=uuid4(), title="Original title", status=initial)
+     other = Task(id=uuid4(), title="Other task")
+@@ -50,7 +52,7 @@
+     assert original.status == initial
+ 
+ 
+-def test_unknown_status_task_raises_without_writing():
++def test_unknown_status_task_raises_without_writing() -> None:
+     repository = StatusRepository()
+     service = TaskService(repository)
+     existing = service.create_task("Existing")
+@@ -67,7 +69,7 @@
+ 
+ 
+ @pytest.mark.parametrize("invalid_status", ["invalid", "", None, 1, True, [], {}])
+-def test_invalid_status_does_not_write(invalid_status: object):
++def test_invalid_status_does_not_write(invalid_status: object) -> None:
+     repository = StatusRepository()
+     service = TaskService(repository)
+     task = service.create_task("Unchanged")

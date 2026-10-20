@@ -1,0 +1,10 @@
+{
+  "source": "Generation 2 immutable capture",
+  "source_archive_sha256": "7046dde06131b6c0f6e57100ddeb6bfc559e4ff0aad97a62be18b06cb58efbf2",
+  "application_src_bytes_unchanged": true,
+  "dependencies_rules_skill_subagent_bytes_unchanged": true,
+  "existing_tests_ast_unchanged_except_return_annotations": true,
+  "annotations_added": 27,
+  "seven_in_generation2_new_tests": 7,
+  "twenty_in_original_baseline_tests": 20
+}

@@ -1,0 +1,161 @@
+{
+  "status": "GATE_2_PASS",
+  "scope": "Documentary acceptance of retained real Mac Gate 2 diagnostics; no controlled generation acceptance",
+  "mac_environment": {
+    "os": "Darwin arm64 (arm64 user-confirmed at Gate 1)",
+    "python": "3.13.3",
+    "codex_cli": "0.163.0",
+    "authentication": "ChatGPT (preflight/user-confirmed)"
+  },
+  "checks": [
+    {
+      "check": "aggregate_review_required_status",
+      "status": "PASS"
+    },
+    {
+      "check": "evaluator_version",
+      "status": "PASS"
+    },
+    {
+      "check": "aggregate_generations_zero_and_blocked",
+      "status": "PASS"
+    },
+    {
+      "check": "package_integrity_summary",
+      "status": "PASS"
+    },
+    {
+      "check": "package_integrity_success",
+      "status": "PASS"
+    },
+    {
+      "check": "runtime_preflight",
+      "status": "PASS"
+    },
+    {
+      "check": "startup_global_project_instructions",
+      "status": "PASS"
+    },
+    {
+      "check": "quality_gate_execution",
+      "status": "PASS"
+    },
+    {
+      "check": "accepted_missing_trace_retained",
+      "status": "PASS"
+    },
+    {
+      "check": "success_trace_hash_matches_summary",
+      "status": "PASS"
+    },
+    {
+      "check": "agent_missing_original_contract_validator",
+      "status": "PASS"
+    },
+    {
+      "check": "agent_missing_extraction_contract",
+      "status": "PASS"
+    },
+    {
+      "check": "agent_missing_explicit_unique_parent_child",
+      "status": "PASS"
+    },
+    {
+      "check": "agent_missing_native_sources_pinned",
+      "status": "PASS"
+    },
+    {
+      "check": "agent_missing_summary_count_and_status",
+      "status": "PASS"
+    },
+    {
+      "check": "agent_missing_original_hashes_match_aggregate",
+      "status": "PASS"
+    },
+    {
+      "check": "agent_missing_collector_environment_and_zero_generation",
+      "status": "PASS"
+    },
+    {
+      "check": "agent_success_original_contract_validator",
+      "status": "PASS"
+    },
+    {
+      "check": "agent_success_extraction_contract",
+      "status": "PASS"
+    },
+    {
+      "check": "agent_success_explicit_unique_parent_child",
+      "status": "PASS"
+    },
+    {
+      "check": "agent_success_native_sources_pinned",
+      "status": "PASS"
+    },
+    {
+      "check": "agent_success_summary_count_and_status",
+      "status": "PASS"
+    },
+    {
+      "check": "agent_success_original_hashes_match_aggregate",
+      "status": "PASS"
+    },
+    {
+      "check": "agent_success_collector_environment_and_zero_generation",
+      "status": "PASS"
+    },
+    {
+      "check": "success_saved_result_equals_child",
+      "status": "PASS"
+    },
+    {
+      "check": "success_combined_attachment_retained",
+      "status": "PASS"
+    },
+    {
+      "check": "success_actual_mac_cli_settings",
+      "status": "PASS"
+    },
+    {
+      "check": "native_success_command_audit",
+      "status": "PASS"
+    },
+    {
+      "check": "missing_zero_native_calls",
+      "status": "PASS"
+    },
+    {
+      "check": "success_one_native_custom_call",
+      "status": "PASS"
+    },
+    {
+      "check": "source_reference_src/bublik/application/service.py#TaskService",
+      "status": "PASS"
+    },
+    {
+      "check": "source_reference_src/bublik/api/routes.py#create_task",
+      "status": "PASS"
+    },
+    {
+      "check": "source_reference_src/bublik/api/routes.py#get_task",
+      "status": "PASS"
+    },
+    {
+      "check": "source_reference_src/bublik/main.py#create_app",
+      "status": "PASS"
+    },
+    {
+      "check": "success_exact_review_scope",
+      "status": "PASS"
+    }
+  ],
+  "native_missing_child_tools": 0,
+  "native_success_child_tools": 1,
+  "original_evidence_sha256": {
+    "mac-gate2-summary.v2.0.3.json": "2722e842da33a4cf8bf0e097df41e7f3b8e17d99b6b8a041d3c05c330c17bb61",
+    "native-trace.v2.0.3.json": "488608b07b73c5e2087ad8b224d53d8318e73abb6b8b45b0189ea1e5b9f03adb",
+    "native-trace.v2.0.2.json": "b159ef191196195c0ec9d7e910f7da94f8ef4faab24fef525d68e124f22b5a69",
+    "combined-evidence.json": "ba94af97651aa7caefdf834499e69deb614f8af6a235a44e19b6ce9a74fcdbd8"
+  },
+  "new_codex_invocations": 0
+}

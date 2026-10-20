@@ -1,0 +1,142 @@
+{
+  "gate": "BublikFoundationQualityGateV1",
+  "status": "PASS",
+  "timestamp_utc": "2026-10-20T17:07:12.263408+00:00",
+  "environment": {
+    "os": "Linux",
+    "machine": "x86_64",
+    "python": "3.13.3"
+  },
+  "tool_versions": {
+    "ruff": "0.17.1",
+    "pytest": "9.1.1",
+    "fastapi": "0.149.0",
+    "pydantic": "2.14.1",
+    "bublik-task-service": "0.1.0"
+  },
+  "protected_manifest_sha256": "18264b4242d28d27fde55831a12f24404819d30d672bbe332f15559b9c257984",
+  "codex_invocations": 0,
+  "model_calls": 0,
+  "checks": [
+    {
+      "name": "compile",
+      "command": [
+        "<VENV>/bin/python",
+        "-m",
+        "compileall",
+        "-q",
+        "src",
+        "tests",
+        "scripts"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout": "",
+      "stderr": "",
+      "duration_seconds": 0.026
+    },
+    {
+      "name": "import",
+      "command": [
+        "<VENV>/bin/python",
+        "-c",
+        "from bublik.main import create_app; create_app()"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout": "",
+      "stderr": "",
+      "duration_seconds": 0.292
+    },
+    {
+      "name": "ruff_lint_and_annotations",
+      "command": [
+        "<VENV>/bin/python",
+        "-m",
+        "ruff",
+        "check",
+        ".",
+        "../tooling_regressions.py",
+        "../verify_delivery.py"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout": "All checks passed!\n",
+      "stderr": "",
+      "duration_seconds": 0.029
+    },
+    {
+      "name": "ruff_format",
+      "command": [
+        "<VENV>/bin/python",
+        "-m",
+        "ruff",
+        "format",
+        "--check",
+        ".",
+        "../tooling_regressions.py",
+        "../verify_delivery.py"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout": "31 files already formatted\n",
+      "stderr": "",
+      "duration_seconds": 0.028
+    },
+    {
+      "name": "pytest_including_architecture_and_gate_regressions",
+      "command": [
+        "<VENV>/bin/python",
+        "-m",
+        "pytest",
+        "-q"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout": "........................................................................ [ 74%]\n.........................                                                [100%]\n97 passed in 0.90s\n",
+      "stderr": "",
+      "duration_seconds": 1.486
+    },
+    {
+      "name": "external_acceptance_e1",
+      "command": [
+        "<VENV>/bin/python",
+        "-m",
+        "pytest",
+        "-vv",
+        "-c",
+        "<APP>/pyproject.toml",
+        "--rootdir",
+        "<PACKAGE>/control/acceptance",
+        "--confcutdir",
+        "<PACKAGE>/control/acceptance",
+        "-p",
+        "no:cacheprovider",
+        "-o",
+        "addopts=--strict-config --strict-markers",
+        "<PACKAGE>/control/acceptance/test_status_contract.py"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout": "============================= test session starts ==============================\nplatform linux -- Python 3.13.3, pytest-9.1.1, pluggy-1.7.0 -- <VENV>/bin/python\nrootdir: <PACKAGE>/control/acceptance\nconfigfile: ../../app/pyproject.toml\nplugins: anyio-4.15.1\ncollecting ... collected 17 items\n\n../control/acceptance/test_status_contract.py::test_status_round_trip_and_repeated_requests PASSED [  5%]\n../control/acceptance/test_status_contract.py::test_unknown_task_returns_exact_error PASSED [ 11%]\n../control/acceptance/test_status_contract.py::test_malformed_identifier_is_rejected PASSED [ 17%]\n../control/acceptance/test_status_contract.py::test_invalid_payload_does_not_change_storage[payload0] PASSED [ 23%]\n../control/acceptance/test_status_contract.py::test_invalid_payload_does_not_change_storage[payload1] PASSED [ 29%]\n../control/acceptance/test_status_contract.py::test_invalid_payload_does_not_change_storage[payload2] PASSED [ 35%]\n../control/acceptance/test_status_contract.py::test_invalid_payload_does_not_change_storage[payload3] PASSED [ 41%]\n../control/acceptance/test_status_contract.py::test_invalid_payload_does_not_change_storage[payload4] PASSED [ 47%]\n../control/acceptance/test_status_contract.py::test_invalid_payload_does_not_change_storage[payload5] PASSED [ 52%]\n../control/acceptance/test_status_contract.py::test_invalid_payload_does_not_change_storage[payload6] PASSED [ 58%]\n../control/acceptance/test_status_contract.py::test_invalid_payload_does_not_change_storage[payload7] PASSED [ 64%]\n../control/acceptance/test_status_contract.py::test_invalid_payload_does_not_change_storage[payload8] PASSED [ 70%]\n../control/acceptance/test_status_contract.py::test_invalid_payload_does_not_change_storage[payload9] PASSED [ 76%]\n../control/acceptance/test_status_contract.py::test_invalid_payload_does_not_change_storage[payload10] PASSED [ 82%]\n../control/acceptance/test_status_contract.py::test_invalid_payload_does_not_change_storage[payload11] PASSED [ 88%]\n../control/acceptance/test_status_contract.py::test_missing_body_is_rejected_without_changing_task PASSED [ 94%]\n../control/acceptance/test_status_contract.py::test_update_does_not_change_another_task PASSED [100%]\n\n============================== 17 passed in 0.46s ==============================\n",
+      "stderr": "",
+      "duration_seconds": 0.833
+    },
+    {
+      "name": "tooling_regressions",
+      "command": [
+        "<VENV>/bin/python",
+        "<PACKAGE>/tooling_regressions.py"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout": "{\n  \"status\": \"PASS\",\n  \"suites\": [\n    {\n      \"name\": \"native_trace_v203\",\n      \"command\": [\n        \"<VENV>/bin/python\",\n        \"-B\",\n        \"-m\",\n        \"unittest\",\n        \"discover\",\n        \"-s\",\n        \"gate2/diagnostic-fixes/native-trace-v2.0.3\",\n        \"-p\",\n        \"test_*.py\"\n      ],\n      \"exit_code\": 0,\n      \"stdout\": \"{\\\"status\\\": \\\"BLOCKED\\\", \\\"error_code\\\": \\\"INVALID_OUTPUT_NAME\\\"}\\n\",\n      \"stderr\": \"......................................................................................................\\n----------------------------------------------------------------------\\nRan 102 tests in 0.266s\\n\\nOK\\n\"\n    },\n    {\n      \"name\": \"e1\",\n      \"command\": [\n        \"<VENV>/bin/python\",\n        \"-B\",\n        \"-m\",\n        \"unittest\",\n        \"discover\",\n        \"-s\",\n        \"gate3/evaluation-fixes/acceptance-root-v1.0.0\",\n        \"-p\",\n        \"test_*.py\"\n      ],\n      \"exit_code\": 0,\n      \"stdout\": \"\",\n      \"stderr\": \".......\\n----------------------------------------------------------------------\\nRan 7 tests in 0.003s\\n\\nOK\\n\"\n    },\n    {\n      \"name\": \"agent_contracts\",\n      \"command\": [\n        \"<VENV>/bin/python\",\n        \"-B\",\n        \"-m\",\n        \"pytest\",\n        \"-q\",\n        \"-o\",\n        \"addopts=\",\n        \"gate2/tool_tests/test_protocol_validation.py\"\n      ],\n      \"exit_code\": 0,\n      \"stdout\": \".....                                                                    [100%]\\n5 passed in 0.02s\\n\",\n      \"stderr\": \"\"\n    }\n  ],\n  \"codex_invocations\": 0,\n  \"model_calls\": 0\n}\n",
+      "stderr": "",
+      "duration_seconds": 0.83
+    }
+  ],
+  "architecture_check": "tests/test_architecture.py via mandatory pytest",
+  "annotations_check": "Ruff ANN; no tests ANN201 exemption",
+  "protected_before": "PASS",
+  "protected_after": "PASS"
+}

@@ -1,0 +1,137 @@
+[
+  {
+    "path": "tests/test_api.py",
+    "function": "test_health",
+    "historical_generation2_added": false
+  },
+  {
+    "path": "tests/test_api.py",
+    "function": "test_create_and_get_task",
+    "historical_generation2_added": false
+  },
+  {
+    "path": "tests/test_api.py",
+    "function": "test_create_title_boundaries",
+    "historical_generation2_added": false
+  },
+  {
+    "path": "tests/test_api.py",
+    "function": "test_invalid_create_payload",
+    "historical_generation2_added": false
+  },
+  {
+    "path": "tests/test_api.py",
+    "function": "test_unknown_task",
+    "historical_generation2_added": false
+  },
+  {
+    "path": "tests/test_api.py",
+    "function": "test_invalid_task_identifier",
+    "historical_generation2_added": false
+  },
+  {
+    "path": "tests/test_api.py",
+    "function": "test_application_instances_do_not_share_tasks",
+    "historical_generation2_added": false
+  },
+  {
+    "path": "tests/test_architecture.py",
+    "function": "test_layer_does_not_import_forbidden_dependencies",
+    "historical_generation2_added": false
+  },
+  {
+    "path": "tests/test_domain.py",
+    "function": "test_title_is_trimmed_and_new_task_is_todo",
+    "historical_generation2_added": false
+  },
+  {
+    "path": "tests/test_domain.py",
+    "function": "test_invalid_title_is_rejected",
+    "historical_generation2_added": false
+  },
+  {
+    "path": "tests/test_domain.py",
+    "function": "test_title_boundaries_apply_after_trimming",
+    "historical_generation2_added": false
+  },
+  {
+    "path": "tests/test_domain.py",
+    "function": "test_task_is_immutable",
+    "historical_generation2_added": false
+  },
+  {
+    "path": "tests/test_repository.py",
+    "function": "test_save_and_get_round_trip",
+    "historical_generation2_added": false
+  },
+  {
+    "path": "tests/test_repository.py",
+    "function": "test_missing_task_returns_none",
+    "historical_generation2_added": false
+  },
+  {
+    "path": "tests/test_repository.py",
+    "function": "test_save_replaces_the_complete_value_without_mutating_old_value",
+    "historical_generation2_added": false
+  },
+  {
+    "path": "tests/test_repository.py",
+    "function": "test_repositories_have_independent_storage",
+    "historical_generation2_added": false
+  },
+  {
+    "path": "tests/test_service.py",
+    "function": "test_create_normalizes_persists_and_can_be_retrieved",
+    "historical_generation2_added": false
+  },
+  {
+    "path": "tests/test_service.py",
+    "function": "test_creation_generates_distinct_identifiers",
+    "historical_generation2_added": false
+  },
+  {
+    "path": "tests/test_service.py",
+    "function": "test_invalid_title_does_not_reach_storage",
+    "historical_generation2_added": false
+  },
+  {
+    "path": "tests/test_service.py",
+    "function": "test_missing_task_raises_typed_error",
+    "historical_generation2_added": false
+  },
+  {
+    "path": "tests/test_status_api.py",
+    "function": "test_status_transitions_and_repeated_updates",
+    "historical_generation2_added": true
+  },
+  {
+    "path": "tests/test_status_api.py",
+    "function": "test_unknown_status_task",
+    "historical_generation2_added": true
+  },
+  {
+    "path": "tests/test_status_api.py",
+    "function": "test_invalid_status_payload_preserves_tasks",
+    "historical_generation2_added": true
+  },
+  {
+    "path": "tests/test_status_api.py",
+    "function": "test_invalid_status_task_identifier_preserves_task",
+    "historical_generation2_added": true
+  },
+  {
+    "path": "tests/test_status_service.py",
+    "function": "test_status_update_persists_and_preserves_other_values",
+    "historical_generation2_added": true
+  },
+  {
+    "path": "tests/test_status_service.py",
+    "function": "test_unknown_status_task_raises_without_writing",
+    "historical_generation2_added": true
+  },
+  {
+    "path": "tests/test_status_service.py",
+    "function": "test_invalid_status_does_not_write",
+    "historical_generation2_added": true
+  }
+]
