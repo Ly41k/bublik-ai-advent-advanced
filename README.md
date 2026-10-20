@@ -1,5 +1,31 @@
 # Bublik Task Service — AI Advent Challenge Advanced
 
+## Day 1 — Rules: Course Minimum PASS
+
+Чистовая рабочая копия: [`day-01/app/`](day-01/app/).
+Полная документация: [Day 1 — README](day-01/README_RU.md).
+
+- [Матрица обязательных требований: 25/25 PASS](day-01/course/REQUIREMENTS_RU.md).
+- [Финальная Mac-приёмка](day-01/course/FINAL_MAC_ACCEPTANCE_RU.md).
+- [Сравнение независимых Rules v1/v2](day-01/course/COMPARISON_RU.md).
+- [Фактический Mac Quality Gate JSON](day-01/proof/mac-final-2026-10-20/mac-foundation-001.json).
+
+Mac Darwin arm64 / Python 3.13.3: compile/import/Ruff lint+annotations/format PASS;
+97 pytest, 17/17 внешних acceptance cases; native trace/E1/contracts: 102/7/5 PASS.
+Обе исторические генерации прошли 17/17 acceptance. Уточнение Rules v2 исправило
+имя делегированной задачи; улучшение функциональности не заявляется. Исторический
+FAIL v2 по семи аннотациям сохранён; чистовая копия исправлена отдельно.
+
+Baseline commit/tag сохранены. Приватные native sessions, auth и оригиналы
+скриншотов с локальными путями не публикуются; приёмка и SHA доказательств приложены.
+Advanced Maximum — DEFERRED; Bublik Ready — отдельная будущая оценка.
+
+## Историческое описание Gate 1 baseline
+
+Корневые src/tests и заметки ниже относятся к неизменённому исходному baseline,
+а не к актуальной чистовой приёмке Day 1. Для работы и запуска используйте day-01/app/.
+
+
 Independent training project: <https://github.com/Ly41k/bublik-ai-advent-advanced>.
 No runtime dependency on the previous AI Advent repository.
 

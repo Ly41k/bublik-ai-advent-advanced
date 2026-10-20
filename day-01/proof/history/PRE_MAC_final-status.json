@@ -1,0 +1,33 @@
+{
+  "Course Minimum": "BLOCKED_SCREENSHOTS_PENDING",
+  "Foundation Quality Gate": "PASS_LINUX_CPYTHON_3.13.3",
+  "Historical Experiment": {
+    "v1": {
+      "acceptance": 17,
+      "pytest": 84,
+      "annotation_findings": 0
+    },
+    "v2": {
+      "acceptance": 17,
+      "pytest": 81,
+      "annotation_findings": 7,
+      "annotation_status": "HISTORICAL_FAIL_PRESERVED"
+    }
+  },
+  "Advanced Maximum": "DEFERRED",
+  "Bublik Ready": "NOT_ASSESSED_SEPARATE_SCOPE",
+  "clean_pytest_passed": 97,
+  "clean_acceptance_passed": 17,
+  "tooling_native_passed": 102,
+  "tooling_e1_passed": 7,
+  "tooling_contracts_passed": 5,
+  "new_model_calls": 0,
+  "push_merge_publication": false,
+  "screenshot_evidence": "MISSING",
+  "required_next_input": [
+    "real terminal screenshot of clean checks",
+    "real terminal screenshot of Rules v2"
+  ],
+  "work_host_python": "3.12.14",
+  "actual_clean_checks_python": "3.13.3"
+}

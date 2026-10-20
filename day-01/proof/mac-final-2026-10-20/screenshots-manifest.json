@@ -1,0 +1,26 @@
+[
+  {
+    "original_name": "Screenshot 2026-10-20 at 20.23.21.png",
+    "private_package_path": "mac-final/screenshots/01-mac-terminal.png",
+    "sha256": "7085c93e10cf05df87541db5753d129436c9cf2c1a730b904cb1c8b0d13bf754",
+    "dimensions": [
+      2048,
+      1551
+    ],
+    "review": "PASS_VISUALLY_INSPECTED",
+    "observed_content": "Actual terminal invocation, exit 0 and Darwin/arm64/Python3.13.3 summary",
+    "public_image_bytes_included": false
+  },
+  {
+    "original_name": "Screenshot 2026-10-20 at 20.24.13.png",
+    "private_package_path": "mac-final/screenshots/02-mac-terminal.png",
+    "sha256": "8f49c202b21b1ea045a7d46fd50d01dec39feefd137eccdbe36b81a430a9a8b4",
+    "dimensions": [
+      2006,
+      1988
+    ],
+    "review": "PASS_VISUALLY_INSPECTED",
+    "observed_content": "Actual terminal quality summary and approved Rules v2 delegation text",
+    "public_image_bytes_included": false
+  }
+]

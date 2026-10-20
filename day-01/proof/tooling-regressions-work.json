@@ -1,0 +1,58 @@
+{
+  "status": "PASS",
+  "suites": [
+    {
+      "name": "native_trace_v203",
+      "command": [
+        "<VENV>/bin/python",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "gate2/diagnostic-fixes/native-trace-v2.0.3",
+        "-p",
+        "test_*.py"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"status\": \"BLOCKED\", \"error_code\": \"INVALID_OUTPUT_NAME\"}\n",
+      "stderr": "......................................................................................................\n----------------------------------------------------------------------\nRan 102 tests in 0.266s\n\nOK\n"
+    },
+    {
+      "name": "e1",
+      "command": [
+        "<VENV>/bin/python",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "gate3/evaluation-fixes/acceptance-root-v1.0.0",
+        "-p",
+        "test_*.py"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ".......\n----------------------------------------------------------------------\nRan 7 tests in 0.003s\n\nOK\n"
+    },
+    {
+      "name": "agent_contracts",
+      "command": [
+        "<VENV>/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-o",
+        "addopts=",
+        "gate2/tool_tests/test_protocol_validation.py"
+      ],
+      "exit_code": 0,
+      "stdout": ".....                                                                    [100%]\n5 passed in 0.02s\n",
+      "stderr": ""
+    }
+  ],
+  "codex_invocations": 0,
+  "model_calls": 0
+}
+

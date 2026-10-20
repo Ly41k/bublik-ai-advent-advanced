@@ -1,0 +1,13 @@
+--- a/AGENTS.md
++++ b/AGENTS.md
+@@ -168,6 +168,10 @@
+ 
+ ## Delegation and quality gate
+ 
++When invoking ArchitectureReportAgent, use agent_type="architecture_report"
++and task_name="architecture_report" so the task name identifies its returned
++ArchitectureReport type. Keep the existing entry and result contracts.
++
+ Use configured `architecture_report` (ArchitectureReportAgent) for bounded
+ review returning `ArchitectureReport`. Pass all required inputs: `task_spec`,
+ `repo_root`, `review_scope`, `architecture_rules`. Full entry/result contract:

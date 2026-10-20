@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "scope": "Final public package",
+  "raw_native_sessions": false,
+  "auth_files": false,
+  "original_terminal_images": false,
+  "original_images_retained_privately": true,
+  "mac_json": "Original sanitized runner report; no personal absolute paths",
+  "method": "explicit public tree selection, known credential-pattern scan and content review",
+  "not_a_general_secret_detection_guarantee": true,
+  "published": false
+}

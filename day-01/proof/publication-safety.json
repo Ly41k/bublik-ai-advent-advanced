@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "method": "explicit public file tree excludes venv/auth/raw native JSONL; known credential pattern scan; source/content review",
+  "scope": "prepared public package only, not a general secret-detection guarantee",
+  "files_scanned": 153,
+  "raw_native_sessions_included": false,
+  "auth_data_included": false,
+  "published": false
+}

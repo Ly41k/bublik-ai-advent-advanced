@@ -1,0 +1,121 @@
+{
+  "type": "NativeEvidenceExtract",
+  "redaction": "Only selected task-specific fields; parent messages and instruction bodies excluded; cwd normalized",
+  "variants": {
+    "v1": {
+      "model": "gpt-6.1-sol",
+      "effort": "medium",
+      "instructionSources": [
+        "<CODEX_HOME>/AGENTS.md",
+        "<WORKSPACE>/AGENTS.md"
+      ],
+      "parent_source_sha256": "46168f0f17b2ec309823761830a7ed2b368beba0cb69d6c70356575a544b1ae5",
+      "child_source_sha256": "7cd9e857ee21c1b05b8b4ba24ee135a311f25e487b91e657b5c2d56afc644c3e",
+      "explicit_parent_child_link_verified": true,
+      "records": [
+        {
+          "role": "parent",
+          "line": 41,
+          "record_type": "response_item",
+          "call_name": "spawn_agent",
+          "task_name": "status_architecture",
+          "agent_type": "architecture_report",
+          "message_omitted": true
+        },
+        {
+          "role": "child",
+          "line": 18,
+          "record_type": "response_item",
+          "call_name": "exec",
+          "input": "text(await tools.exec_command({cmd:\"cat AGENTS.md src/bublik/application/service.py src/bublik/api/schemas.py src/bublik/api/routes.py\",workdir:\"<WORKSPACE>\",max_output_tokens:12000}));\n"
+        },
+        {
+          "role": "child",
+          "line": 26,
+          "record_type": "response_item",
+          "result": {
+            "status": "SUCCESS",
+            "result_type": "ArchitectureReport",
+            "agent_config_marker": "BUBLIK_ARCHITECTURE_REPORT_V1_20261020",
+            "error_code": null,
+            "missing_fields": [],
+            "result": {
+              "summary": "В проверенных исходных файлах нарушений архитектуры не обнаружено. HTTP-обработчик использует внедрённый TaskService, явные DTO и преобразование TaskNotFoundError в HTTP 404. Сервис зависит от репозиторного порта и доменных типов, проверяет статус до сохранения и создаёт обновлённое значение через dataclasses.replace с сохранением id и title. DTO запроса запрещает лишние поля и использует доменный TaskStatus. Проверка ограничена указанными исходными файлами; тесты не запускались.",
+              "files_reviewed": [
+                "src/bublik/application/service.py",
+                "src/bublik/api/schemas.py",
+                "src/bublik/api/routes.py"
+              ],
+              "findings": []
+            },
+            "evidence": [
+              "AGENTS.md",
+              "src/bublik/application/service.py#TaskService.update_task_status",
+              "src/bublik/api/schemas.py#UpdateTaskStatusRequest",
+              "src/bublik/api/routes.py#update_task_status"
+            ],
+            "performed_actions": 1
+          }
+        }
+      ]
+    },
+    "v2": {
+      "model": "gpt-6.1-sol",
+      "effort": "medium",
+      "instructionSources": [
+        "<CODEX_HOME>/AGENTS.md",
+        "<WORKSPACE>/AGENTS.md"
+      ],
+      "parent_source_sha256": "6c15f8d96b200bcbd0a8e5c179e0f7a03e43cb11b2f0e537ae22dee9dc071736",
+      "child_source_sha256": "3d6a4d4295d889fec73ea72c3db108fe63f1aa480181d213aa42238393781a8d",
+      "explicit_parent_child_link_verified": true,
+      "records": [
+        {
+          "role": "parent",
+          "line": 43,
+          "record_type": "response_item",
+          "call_name": "spawn_agent",
+          "task_name": "architecture_report",
+          "agent_type": "architecture_report",
+          "message_omitted": true
+        },
+        {
+          "role": "child",
+          "line": 18,
+          "record_type": "response_item",
+          "call_name": "exec",
+          "input": "text(await tools.exec_command({cmd:\"cat AGENTS.md src/bublik/domain/errors.py src/bublik/application/service.py src/bublik/api/schemas.py src/bublik/api/routes.py\",workdir:\"<WORKSPACE>\",max_output_tokens:10000}));\n"
+        },
+        {
+          "role": "child",
+          "line": 26,
+          "record_type": "response_item",
+          "result": {
+            "status": "SUCCESS",
+            "result_type": "ArchitectureReport",
+            "agent_config_marker": "BUBLIK_ARCHITECTURE_REPORT_V1_20261020",
+            "error_code": null,
+            "missing_fields": [],
+            "result": {
+              "summary": "В проверенных исходных файлах нарушений архитектуры не выявлено. HTTP-обработчик использует внедрённый TaskService и явные DTO; сервис проверяет статус, создаёт обновлённое значение через dataclasses.replace и сохраняет его через TaskRepository. Domain содержит типизированную ошибку без зависимостей от HTTP. Отсутствующая задача отображается в HTTP 404.",
+              "files_reviewed": [
+                "src/bublik/domain/errors.py",
+                "src/bublik/application/service.py",
+                "src/bublik/api/schemas.py",
+                "src/bublik/api/routes.py"
+              ],
+              "findings": []
+            },
+            "evidence": [
+              "src/bublik/domain/errors.py#InvalidTaskStatusError",
+              "src/bublik/application/service.py#TaskService.update_task_status",
+              "src/bublik/api/schemas.py#UpdateTaskStatusRequest",
+              "src/bublik/api/routes.py#update_task_status"
+            ],
+            "performed_actions": 1
+          }
+        }
+      ]
+    }
+  }
+}

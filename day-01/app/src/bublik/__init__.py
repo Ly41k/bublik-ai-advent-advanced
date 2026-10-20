@@ -1,0 +1,1 @@
+"""Bublik Task Service."""

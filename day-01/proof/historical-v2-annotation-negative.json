@@ -1,0 +1,45 @@
+{
+  "status": "PASS_EXPECTED_FAILURE_DETECTED",
+  "original_source_modified": false,
+  "missing_returns_detected": 7,
+  "checks": [
+    {
+      "source": "tests/test_status_api.py",
+      "command": [
+        "python",
+        "-m",
+        "ruff",
+        "check",
+        "--config",
+        "pyproject.toml",
+        "--select",
+        "ANN",
+        "--stdin-filename",
+        "tests/test_status_api.py",
+        "-"
+      ],
+      "exit_code": 1,
+      "stdout": "ANN201 Missing return type annotation for public function `test_status_transitions_and_repeated_updates`\n  --> tests/test_status_api.py:9:5\n   |\n 9 | def test_status_transitions_and_repeated_updates(client: TestClient):\n   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n10 |     original = client.post(\"/tasks\", json={\"title\": \"  Keep identity  \"}).json()\n11 |     other = client.post(\"/tasks\", json={\"title\": \"Other\"}).json()\n   |\nhelp: Add return type annotation: `None`\n   |\n8  |\n   - def test_status_transitions_and_repeated_updates(client: TestClient):\n9  + def test_status_transitions_and_repeated_updates(client: TestClient) -> None:\n10 |     original = client.post(\"/tasks\", json={\"title\": \"  Keep identity  \"}).json()\n   |\nnote: This is an unsafe fix and may change runtime behavior\n\nANN201 Missing return type annotation for public function `test_unknown_status_task`\n  --> tests/test_status_api.py:24:5\n   |\n24 | def test_unknown_status_task(client: TestClient):\n   |     ^^^^^^^^^^^^^^^^^^^^^^^^\n25 |     original = client.post(\"/tasks\", json={\"title\": \"Existing\"}).json()\n26 |     response = client.patch(f\"/tasks/{uuid4()}/status\", json={\"status\": \"done\"})\n   |\nhelp: Add return type annotation: `None`\n   |\n23 |\n   - def test_unknown_status_task(client: TestClient):\n24 + def test_unknown_status_task(client: TestClient) -> None:\n25 |     original = client.post(\"/tasks\", json={\"title\": \"Existing\"}).json()\n   |\nnote: This is an unsafe fix and may change runtime behavior\n\nANN201 Missing return type annotation for public function `test_invalid_status_payload_preserves_tasks`\n  --> tests/test_status_api.py:52:5\n   |\n50 |     ],\n51 | )\n52 | def test_invalid_status_payload_preserves_tasks(\n   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n53 |     client: TestClient, initial_status: str, payload: object\n54 | ):\n   |\nhelp: Add return type annotation: `None`\n   |\n53 |     client: TestClient, initial_status: str, payload: object\n   - ):\n54 + ) -> None:\n55 |     original = client.post(\"/tasks\", json={\"title\": \"Unchanged\"}).json()\n   |\nnote: This is an unsafe fix and may change runtime behavior\n\nANN201 Missing return type annotation for public function `test_invalid_status_task_identifier_preserves_task`\n  --> tests/test_status_api.py:68:5\n   |\n68 | def test_invalid_status_task_identifier_preserves_task(client: TestClient):\n   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n69 |     original = client.post(\"/tasks\", json={\"title\": \"Existing\"}).json()\n70 |     response = client.patch(\"/tasks/not-a-uuid/status\", json={\"status\": \"done\"})\n   |\nhelp: Add return type annotation: `None`\n   |\n67 |\n   - def test_invalid_status_task_identifier_preserves_task(client: TestClient):\n68 + def test_invalid_status_task_identifier_preserves_task(client: TestClient) -> None:\n69 |     original = client.post(\"/tasks\", json={\"title\": \"Existing\"}).json()\n   |\nnote: This is an unsafe fix and may change runtime behavior\n\nFound 4 errors.\n4 unsafe fixes available with `--fix --unsafe-fixes`.\n",
+      "stderr": ""
+    },
+    {
+      "source": "tests/test_status_service.py",
+      "command": [
+        "python",
+        "-m",
+        "ruff",
+        "check",
+        "--config",
+        "pyproject.toml",
+        "--select",
+        "ANN",
+        "--stdin-filename",
+        "tests/test_status_service.py",
+        "-"
+      ],
+      "exit_code": 1,
+      "stdout": "ANN201 Missing return type annotation for public function `test_status_update_persists_and_preserves_other_values`\n  --> tests/test_status_service.py:36:5\n   |\n34 |     ],\n35 | )\n36 | def test_status_update_persists_and_preserves_other_values(initial: TaskStatus, target: TaskStatus):\n   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n37 |     repository = StatusRepository()\n38 |     original = Task(id=uuid4(), title=\"Original title\", status=initial)\n   |\nhelp: Add return type annotation: `None`\n   |\n35 | )\n   - def test_status_update_persists_and_preserves_other_values(initial: TaskStatus, target: TaskStatus):\n36 + def test_status_update_persists_and_preserves_other_values(initial: TaskStatus, target: TaskStatus) -> None:\n37 |     repository = StatusRepository()\n   |\nnote: This is an unsafe fix and may change runtime behavior\n\nANN201 Missing return type annotation for public function `test_unknown_status_task_raises_without_writing`\n  --> tests/test_status_service.py:53:5\n   |\n53 | def test_unknown_status_task_raises_without_writing():\n   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n54 |     repository = StatusRepository()\n55 |     service = TaskService(repository)\n   |\nhelp: Add return type annotation: `None`\n   |\n52 |\n   - def test_unknown_status_task_raises_without_writing():\n53 + def test_unknown_status_task_raises_without_writing() -> None:\n54 |     repository = StatusRepository()\n   |\nnote: This is an unsafe fix and may change runtime behavior\n\nANN201 Missing return type annotation for public function `test_invalid_status_does_not_write`\n  --> tests/test_status_service.py:70:5\n   |\n69 | @pytest.mark.parametrize(\"invalid_status\", [\"invalid\", \"\", None, 1, True, [], {}])\n70 | def test_invalid_status_does_not_write(invalid_status: object):\n   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n71 |     repository = StatusRepository()\n72 |     service = TaskService(repository)\n   |\nhelp: Add return type annotation: `None`\n   |\n69 | @pytest.mark.parametrize(\"invalid_status\", [\"invalid\", \"\", None, 1, True, [], {}])\n   - def test_invalid_status_does_not_write(invalid_status: object):\n70 + def test_invalid_status_does_not_write(invalid_status: object) -> None:\n71 |     repository = StatusRepository()\n   |\nnote: This is an unsafe fix and may change runtime behavior\n\nFound 3 errors.\n3 unsafe fixes available with `--fix --unsafe-fixes`.\n",
+      "stderr": ""
+    }
+  ]
+}
