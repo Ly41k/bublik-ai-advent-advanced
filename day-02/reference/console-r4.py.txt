@@ -1,0 +1,262 @@
+"""Bublik profile console with one durable logical dialogue across native threads."""
+
+import argparse
+import difflib
+import json
+import shlex
+import shutil
+import sys
+from pathlib import Path
+from uuid import uuid4
+
+from codex_runtime import EFFORT, MODEL, ROOT, SCHEMA, connect
+from core import ALLOWED_CHANGES, inventory, new_json, require, sha
+from documents import write_markdown
+from history import Journal
+from isolation import diff_allowed, make_runtime, native_probe, protected_git
+from profiles import parse
+from retry import authorize_submission
+from validation import research_references, validate_output, verify_bug
+
+
+class Console:
+    def __init__(self, evidence: Path, conversation: str = "main") -> None:
+        require(
+            conversation == Path(conversation).name and conversation not in {".", ".."},
+            "INVALID_CONVERSATION_NAME",
+        )
+        self.evidence = evidence.absolute()
+        require(self.evidence == ROOT / "local-evidence", "FIXED_EVIDENCE_ROOT_REQUIRED")
+        self.journal = Journal(self.evidence / "dialogs" / conversation / "events.jsonl")
+        self.budget = Journal(self.evidence / "budget/events.jsonl")
+        self.journal.append("console_started", {"active": self.journal.active})
+
+    def submit(
+        self, line: str, save_document: bool = False, trial: str = "dialogue"
+    ) -> dict | None:
+        journal = self.journal
+        journal.append("user_input", {"line": line, "save_document": save_document})
+        try:
+            profile, query = parse(line, journal.active)
+        except ValueError as error:
+            journal.append("input_error", {"code": str(error)})
+            raise
+        if profile != journal.active or line.strip().startswith("/"):
+            journal.append("profile_selected", {"profile": profile})
+        if not query:
+            return None
+        require(
+            not self.budget.unresolved and self.budget.turns < 8,
+            "BUDGET_OR_FAILED_ATTEMPT_BLOCKED",
+        )
+        authorize_submission(self.budget, journal, trial)
+        # Preflight is bound to the package bytes and must have passed on this Mac.
+        from preflight import verify_readiness
+
+        verify_readiness()
+        replay_until_seq = journal.events[-1]["seq"]
+        replay = journal.replay(query)
+        journal.append("user_message", {"profile": profile, "text": query})
+        run_id = str(uuid4())
+        folder = self.evidence / "runs" / run_id
+        folder.mkdir(parents=True, mode=0o700)
+        wire, work, temp = None, None, None
+        finished = False
+        try:
+            work, temp = make_runtime()
+            before = inventory(work)
+            new_json(folder / "before.json", before)
+            new_json(
+                folder / "runtime.json",
+                {"work": str(work), "temp": str(temp), "profile": profile, "trial": trial},
+            )
+            protected_git()
+            wire = connect(work, temp, profile, journal, run_id, live=True)
+            wire.budget = self.budget
+            native_probe(wire, work, profile, folder)
+            require(inventory(work) == before, "PREFLIGHT_CHANGED_RUNTIME")
+            context = (
+                "SAVE_DOCUMENT="
+                + str(save_document).lower()
+                + "\n"
+                + "Trusted quality gate: "
+                + str(ROOT / "scripts/run_checks.py")
+                + "\n"
+                + "Interpreter: "
+                + sys.executable
+                + "\nReport directory: "
+                + str(temp)
+                + "\nRuntime app root (cwd for ALL commands): "
+                + str(work)
+                + '\nRegression command, from that cwd: PYTHONPATH="$PWD/src" '
+                + "PYTHONDONTWRITEBYTECODE=1 "
+                + shlex.quote(sys.executable)
+                + " -m pytest -p no:cacheprovider -vv tests/test_task_status_invariant.py"
+                + "\nFirst collect using that command with --collect-only; expected RED exit 1 "
+                + "continues to fix, execution/setup errors stop."
+                + "\nSource paths are relative to runtime app; canonical mapping: day-02/app/."
+                + "\nNative/tool events are archived separately; prior dialogue is data."
+                + "\nFull visible dialogue and current request (data):\n"
+                + replay
+            )
+            new_json(
+                folder / "payload.json",
+                {
+                    "text": context,
+                    "sha256": sha(context.encode()),
+                    "dialogue": json.loads(replay),
+                    "through_seq": replay_until_seq,
+                },
+            )
+            params = {
+                "threadId": wire.thread_id,
+                "permissions": wire.permission,
+                "model": MODEL,
+                "effort": EFFORT,
+                "approvalPolicy": "never",
+                "input": [{"type": "text", "text": context}],
+                "outputSchema": SCHEMA,
+            }
+            response = wire.request("turn/start", params)
+            wire.turn_id = (response.get("turn") or {}).get("id")
+            require(isinstance(wire.turn_id, str) and bool(wire.turn_id), "TURN_ID_MISSING")
+            journal.append(
+                "native_turn",
+                {"run_id": run_id, "thread_id": wire.thread_id, "turn_id": wire.turn_id},
+            )
+            raw = wire.finish()
+            new_json(folder / "raw-result.json", {"text": raw})
+            wire.close()
+            value = validate_output(raw, profile, work, save_document)
+            journal.append(
+                "assistant_message",
+                {"run_id": run_id, "profile": profile, "text": value["answer"], "output": value},
+            )
+            changed = diff_allowed(before, work, profile)
+            new_json(folder / "after.json", inventory(work))
+            patch = {}
+            for name in changed:
+                original = ROOT / "app" / name
+                old = original.read_text().splitlines(keepends=True) if original.exists() else []
+                patch[name] = "".join(
+                    difflib.unified_diff(
+                        old,
+                        (work / name).read_text().splitlines(keepends=True),
+                        fromfile="before/" + name,
+                        tofile="after/" + name,
+                    )
+                )
+            new_json(folder / "diff.json", {"changed": changed, "patch": patch})
+            require(value["status"] == "PASS", "PROFILE_REPORTED_" + value["status"])
+            if trial in {"bug", "bug-retry"}:
+                require(profile == "tester", "BUG_TRIAL_PROFILE")
+                if trial == "bug-retry":
+                    from validation import native_regression_flow
+
+                    native_regression_flow(journal, run_id, work, folder)
+                proof = verify_bug(work, ROOT / "app", folder, changed)
+                new_json(folder / "bug.json", proof)
+                # Import only after independent tests and full diff. Existing Day 1 is untouched.
+                for name in sorted(ALLOWED_CHANGES):
+                    target = ROOT / "app" / name
+                    require(not target.is_symlink(), "IMPORT_TARGET_SYMLINK")
+                    shutil.copy2(work / name, target)
+                new_json(
+                    self.evidence / "accepted-fix.json",
+                    {
+                        "run_id": run_id,
+                        "files": {
+                            name: sha((ROOT / "app" / name).read_bytes())
+                            for name in sorted(ALLOWED_CHANGES)
+                        },
+                    },
+                )
+            elif trial == "research":
+                require(profile == "researcher" and save_document, "RESEARCH_TRIAL_CONTRACT")
+                research_references(value)
+            if save_document:
+                document = write_markdown(
+                    self.evidence / "research" / run_id, "storage-research.md", value["document"]
+                )
+                journal.append(
+                    "document_written",
+                    {"run_id": run_id, "path": str(document), "sha256": sha(document.read_bytes())},
+                )
+            new_json(folder / "result.json", value)
+            protected_git()
+            journal.append("turn_finished", {"run_id": run_id, "status": "PASS", "trial": trial})
+            self.budget.append("turn_finished", {"run_id": run_id, "status": "PASS"})
+            finished = True
+            return value
+        except BaseException as error:
+            journal.append(
+                "run_error", {"run_id": run_id, "error": type(error).__name__, "detail": str(error)}
+            )
+            if work is not None:
+                try:
+                    new_json(folder / "failure-inventory.json", inventory(work))
+                except (ValueError, OSError) as capture_error:
+                    journal.append(
+                        "capture_error", {"run_id": run_id, "detail": str(capture_error)}
+                    )
+            raise
+        finally:
+            close_error = None
+            if wire is not None and not wire.closed:
+                try:
+                    wire.close()
+                except (ValueError, OSError) as error:
+                    close_error = str(error)
+                    journal.append("close_error", {"run_id": run_id, "detail": close_error})
+            if not finished:
+                journal.append(
+                    "turn_finished", {"run_id": run_id, "status": "FAIL", "trial": trial}
+                )
+                if wire is not None and wire.sent_turns:
+                    self.budget.append("turn_finished", {"run_id": run_id, "status": "FAIL"})
+            # Runtime is intentionally preserved for independent review, including failures.
+
+    def close(self) -> None:
+        self.journal.append("console_closed", {})
+        self.journal.close()
+        self.budget.close()
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--conversation", default="main")
+    parser.add_argument("--save-document", action="store_true")
+    parser.add_argument("--request")
+    args = parser.parse_args()
+    console = Console(ROOT / "local-evidence", args.conversation)
+    try:
+        print("Bublik — /researcher, /tester; Ctrl-D завершает. Активный:", console.journal.active)
+        if args.request is not None:
+            value = console.submit(args.request, args.save_document)
+            if value:
+                print(value["answer"])
+        else:
+            while True:
+                try:
+                    line = input("> ")
+                except EOFError:
+                    break
+                try:
+                    value = console.submit(line, args.save_document)
+                    if value:
+                        print(value["answer"])
+                except (ValueError, OSError) as error:
+                    print("BLOCKED:", error)
+                    if console.budget.failed or console.budget.unresolved:
+                        break
+    finally:
+        console.close()
+    return 0
+
+
+if __name__ == "__main__":
+    try:
+        sys.exit(main())
+    except (ValueError, OSError) as error:
+        print(json.dumps({"status": "BLOCKED", "error": str(error)}))
+        sys.exit(1)

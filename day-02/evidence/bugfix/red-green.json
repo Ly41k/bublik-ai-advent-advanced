@@ -1,0 +1,31 @@
+{
+  "scope": "SANITIZED_ORIGINAL_NATIVE_OBSERVATIONS",
+  "source_sha256": "6400125689810c20477ab03eb365b927c9255ef854cfff8d189133ccdc5aac49",
+  "original_turn": 2,
+  "original_execution": "FAIL",
+  "original_model_status": "BLOCKED",
+  "independent_saved_patch_status": "PASS_HISTORICAL_MAC",
+  "observations": [
+    {
+      "state": "COLLECTED",
+      "exit_code": 0,
+      "original_command_redacted": "/bin/zsh -lc \"command_text='PYTHONPATH=\\\"\"'$PWD/src\" PYTHONDONTWRITEBYTECODE=1 <PRIVATE_HOME_PATH> -m pytest -p no:cacheprovider -vv tests/test_task_status_invariant.py --collect-only'\"'\nprintf '%s\\\\n' \\\"\"'$command_text\" > <PRIVATE_RUNTIME_PATH>\nPYTHONPATH=\"$PWD/src\" PYTHONDONTWRITEBYTECODE=1 <PRIVATE_HOME_PATH> -m pytest -p no:cacheprovider -vv tests/test_task_status_invariant.py --collect-only > <PRIVATE_RUNTIME_PATH> 2> <PRIVATE_RUNTIME_PATH>\nresult_code=$?\nprintf '\"'%s\\\\n' \\\"\"'$result_code\" > <PRIVATE_RUNTIME_PATH>\ncat <PRIVATE_RUNTIME_PATH> <PRIVATE_RUNTIME_PATH>\nexit \"$result_code\"'",
+      "native_output_original_sha256": "48507aa7b973045ab48ef8c5e540b2b5030c5d6b3ddba00140ecbbd26ead0d16",
+      "public_log": "evidence/bugfix/collected.log"
+    },
+    {
+      "state": "RED_EXPECTED",
+      "exit_code": 1,
+      "original_command_redacted": "/bin/zsh -lc \"command_text='PYTHONPATH=\\\"\"'$PWD/src\" PYTHONDONTWRITEBYTECODE=1 <PRIVATE_HOME_PATH> -m pytest -p no:cacheprovider -vv tests/test_task_status_invariant.py'\"'\nprintf '%s\\\\n' \\\"\"'$command_text\" > <PRIVATE_RUNTIME_PATH>\nPYTHONPATH=\"$PWD/src\" PYTHONDONTWRITEBYTECODE=1 <PRIVATE_HOME_PATH> -m pytest -p no:cacheprovider -vv tests/test_task_status_invariant.py > <PRIVATE_RUNTIME_PATH> 2> <PRIVATE_RUNTIME_PATH>\nresult_code=$?\nprintf '\"'%s\\\\n' \\\"\"'$result_code\" > <PRIVATE_RUNTIME_PATH>\ncat <PRIVATE_RUNTIME_PATH> <PRIVATE_RUNTIME_PATH>\nexit \"$result_code\"'",
+      "native_output_original_sha256": "c4c9335ae2d72f47f526401b65be7c16ce2c05da8c0d2b8360b9cfbf2d2255cf",
+      "public_log": "evidence/bugfix/red_expected.log"
+    },
+    {
+      "state": "GREEN",
+      "exit_code": 0,
+      "original_command_redacted": "/bin/zsh -lc \"command_text='PYTHONPATH=\\\"\"'$PWD/src\" PYTHONDONTWRITEBYTECODE=1 <PRIVATE_HOME_PATH> -m pytest -p no:cacheprovider -vv tests/test_task_status_invariant.py'\"'\nprintf '%s\\\\n' \\\"\"'$command_text\" > <PRIVATE_RUNTIME_PATH>\nPYTHONPATH=\"$PWD/src\" PYTHONDONTWRITEBYTECODE=1 <PRIVATE_HOME_PATH> -m pytest -p no:cacheprovider -vv tests/test_task_status_invariant.py > <PRIVATE_RUNTIME_PATH> 2> <PRIVATE_RUNTIME_PATH>\nresult_code=$?\nprintf '\"'%s\\\\n' \\\"\"'$result_code\" > <PRIVATE_RUNTIME_PATH>\ncat <PRIVATE_RUNTIME_PATH> <PRIVATE_RUNTIME_PATH>\nexit \"$result_code\"'",
+      "native_output_original_sha256": "cbe68f820252b0857264e807aadd416eee4de027a124fa82dd1875c9426d5835",
+      "public_log": "evidence/bugfix/green.log"
+    }
+  ]
+}

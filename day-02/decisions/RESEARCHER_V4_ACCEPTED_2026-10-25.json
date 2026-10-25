@@ -1,0 +1,35 @@
+{
+  "task_id": "BUBLIK-D2-RESEARCHER-FINAL-DECISION",
+  "record_type": "EXPLICIT_USER_FINAL_DECISION",
+  "date": "2026-10-25",
+  "timezone": "Europe/Kyiv",
+  "source": "User message BUBLIK-D2-RESEARCHER-FINAL-DECISION in this conversation",
+  "target": {
+    "profile": "Researcher",
+    "version": "v4",
+    "absolute_turn": 10,
+    "run_id": "50804f10-db32-4362-ae9b-ffdb6f949ac2",
+    "raw_result_sha256": "c1b5ac8c5cf1a6d5156ff687236b6ccd716ccca5685cda4297d45510691e9f64",
+    "profile_sha256": "b8e3299866fcbd93474ac50a7b0b47d73c49c29617f3ca61fa70b0b97dce2d57",
+    "developer_instructions_sha256": "9f84c623da409d4541cc2924f0e783e4fe27fc4195bc7d8654a2ba9b1a826a08"
+  },
+  "technical_status": "PASS_WITH_EXISTING_EXPORT_LIMITATION",
+  "user_acceptance": "ACCEPTED",
+  "scope": "Existing v4 result is sufficient for Day 2 Course Minimum; final overall Day 2 decision remains Control",
+  "researcher_v5": "DEFERRED_NOT_RUN",
+  "turn11": "CANCELLED",
+  "model_budget": "10/11",
+  "new_model_turns": 0,
+  "historical_fail_blocked": "PRESERVED",
+  "original_turn10_receipt": "MISSING",
+  "historical_reconstruction": "PERMANENTLY_STOPPED",
+  "supersedes": "Previous current v4 human NOT_GIVEN/PENDING; does not alter historical reviews or model outputs",
+  "authorization": {
+    "git_staging_preflight": true,
+    "commit": false,
+    "push": false,
+    "create_pr": false,
+    "merge": false,
+    "day3": false
+  }
+}

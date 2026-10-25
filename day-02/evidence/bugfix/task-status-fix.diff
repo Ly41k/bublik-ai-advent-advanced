@@ -1,0 +1,21 @@
+--- a/src/bublik/domain/task.py
++++ b/src/bublik/domain/task.py
+@@ -4,7 +4,7 @@
+ from enum import StrEnum
+ from uuid import UUID
+ 
+-from bublik.domain.errors import InvalidTaskTitleError
++from bublik.domain.errors import InvalidTaskStatusError, InvalidTaskTitleError
+ 
+ 
+ class TaskStatus(StrEnum):
+@@ -26,4 +26,9 @@
+         title = self.title.strip()
+         if not 1 <= len(title) <= 200:
+             raise InvalidTaskTitleError("Task title must contain 1–200 characters")
++        try:
++            status = TaskStatus(self.status)
++        except (TypeError, ValueError) as error:
++            raise InvalidTaskStatusError("Invalid task status") from error
+         object.__setattr__(self, "title", title)
++        object.__setattr__(self, "status", status)

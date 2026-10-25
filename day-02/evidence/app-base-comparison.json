@@ -1,0 +1,220 @@
+{
+  "base_sha": "3c2ed09a2e5c9e35a70e18b11dfe0a29a675db66",
+  "day1_written": false,
+  "entries": [
+    {
+      "path": ".agents/skills/quality-gate/SKILL.md",
+      "day2_git_blob": "35159ef5cc36ffc19d8d8bc32e06f8d603d8e063",
+      "main_day1_git_blob": "d157e50cdbff45e0525f5418be616043f427f5e0",
+      "status": "DAY2_COPY_DIFFERS"
+    },
+    {
+      "path": ".codex/config.toml",
+      "day2_git_blob": "990155003345ddc2ef9f5fd176e261f95359a9f2",
+      "main_day1_git_blob": "803cc850151baea2af9c57d0c827b0662afdc6a4",
+      "status": "DAY2_COPY_DIFFERS"
+    },
+    {
+      "path": ".python-version",
+      "day2_git_blob": "2c20ac9bea3af95dc318980f59bfdde641917474",
+      "main_day1_git_blob": "2c20ac9bea3af95dc318980f59bfdde641917474",
+      "status": "BYTE_IDENTICAL"
+    },
+    {
+      "path": "AGENTS.md",
+      "day2_git_blob": "31073a3b74bd7a98b137297d31f5bc41cbab4e56",
+      "main_day1_git_blob": "b8cf7eef5331542950900bf337ea9f5160d4930e",
+      "status": "DAY2_COPY_DIFFERS"
+    },
+    {
+      "path": "README.md",
+      "day2_git_blob": "8534a8ccafebee55d70f76dc9c5b0123133f736d",
+      "main_day1_git_blob": "8534a8ccafebee55d70f76dc9c5b0123133f736d",
+      "status": "BYTE_IDENTICAL"
+    },
+    {
+      "path": "docs/BASELINE_CODE_EXAMPLES.md",
+      "day2_git_blob": "fe64f2b338df9da1227284a31022de3a027ea606",
+      "main_day1_git_blob": "fe64f2b338df9da1227284a31022de3a027ea606",
+      "status": "BYTE_IDENTICAL"
+    },
+    {
+      "path": "docs/MAC_HANDOFF.md",
+      "day2_git_blob": "36c57aec1943d2d0f4e921941b6ca3b36ef528a3",
+      "main_day1_git_blob": "36c57aec1943d2d0f4e921941b6ca3b36ef528a3",
+      "status": "BYTE_IDENTICAL"
+    },
+    {
+      "path": "pyproject.toml",
+      "day2_git_blob": "c7742a660845e1527f7bad4f231901649aaf0c5b",
+      "main_day1_git_blob": "c7742a660845e1527f7bad4f231901649aaf0c5b",
+      "status": "BYTE_IDENTICAL"
+    },
+    {
+      "path": "requirements.lock",
+      "day2_git_blob": "b94040ab34415d27eefb2f330b5d3584911849c3",
+      "main_day1_git_blob": "b94040ab34415d27eefb2f330b5d3584911849c3",
+      "status": "BYTE_IDENTICAL"
+    },
+    {
+      "path": "scripts/run_checks.py",
+      "day2_git_blob": "956b5e78086d14f832f1f6c1e4ac99ee9ec62e36",
+      "main_day1_git_blob": "956b5e78086d14f832f1f6c1e4ac99ee9ec62e36",
+      "status": "BYTE_IDENTICAL"
+    },
+    {
+      "path": "src/bublik/__init__.py",
+      "day2_git_blob": "06410fe2fadcee4b0526e440e9a43f0557a9a191",
+      "main_day1_git_blob": "06410fe2fadcee4b0526e440e9a43f0557a9a191",
+      "status": "BYTE_IDENTICAL"
+    },
+    {
+      "path": "src/bublik/api/__init__.py",
+      "day2_git_blob": "9e8a0b1c473577a1712d6bb03331fb524f12830e",
+      "main_day1_git_blob": "9e8a0b1c473577a1712d6bb03331fb524f12830e",
+      "status": "BYTE_IDENTICAL"
+    },
+    {
+      "path": "src/bublik/api/dependencies.py",
+      "day2_git_blob": "53a2ef1177b8661f10a23610fd9d1bd060bfe9e2",
+      "main_day1_git_blob": "53a2ef1177b8661f10a23610fd9d1bd060bfe9e2",
+      "status": "BYTE_IDENTICAL"
+    },
+    {
+      "path": "src/bublik/api/routes.py",
+      "day2_git_blob": "83c6492a500c4d4e2eef2b591543eaf9d72e1728",
+      "main_day1_git_blob": "83c6492a500c4d4e2eef2b591543eaf9d72e1728",
+      "status": "BYTE_IDENTICAL"
+    },
+    {
+      "path": "src/bublik/api/schemas.py",
+      "day2_git_blob": "1363e42465d2dc3af3faa6a447b4e6ca096172b1",
+      "main_day1_git_blob": "1363e42465d2dc3af3faa6a447b4e6ca096172b1",
+      "status": "BYTE_IDENTICAL"
+    },
+    {
+      "path": "src/bublik/application/__init__.py",
+      "day2_git_blob": "4680e65350b20a5874211eefd007172a55a851a8",
+      "main_day1_git_blob": "4680e65350b20a5874211eefd007172a55a851a8",
+      "status": "BYTE_IDENTICAL"
+    },
+    {
+      "path": "src/bublik/application/repository.py",
+      "day2_git_blob": "df94d4d620f3ca65ebed12920625e0209c4bbb18",
+      "main_day1_git_blob": "df94d4d620f3ca65ebed12920625e0209c4bbb18",
+      "status": "BYTE_IDENTICAL"
+    },
+    {
+      "path": "src/bublik/application/service.py",
+      "day2_git_blob": "2480b57c4abadce953112dc02880ed3e59226685",
+      "main_day1_git_blob": "2480b57c4abadce953112dc02880ed3e59226685",
+      "status": "BYTE_IDENTICAL"
+    },
+    {
+      "path": "src/bublik/domain/__init__.py",
+      "day2_git_blob": "da3b372281190d7720591b02e193bba71b0c52db",
+      "main_day1_git_blob": "da3b372281190d7720591b02e193bba71b0c52db",
+      "status": "BYTE_IDENTICAL"
+    },
+    {
+      "path": "src/bublik/domain/errors.py",
+      "day2_git_blob": "3602479ff6f21cb2afaa8f8346fc07b9b15f43d7",
+      "main_day1_git_blob": "3602479ff6f21cb2afaa8f8346fc07b9b15f43d7",
+      "status": "BYTE_IDENTICAL"
+    },
+    {
+      "path": "src/bublik/domain/task.py",
+      "day2_git_blob": "c0d66431a7b9b6829b5b0b473a2a7d1f72042fca",
+      "main_day1_git_blob": "2dfb9c34267f580804621c0cecfa74b7b946e481",
+      "status": "DAY2_COPY_DIFFERS"
+    },
+    {
+      "path": "src/bublik/infrastructure/__init__.py",
+      "day2_git_blob": "d26d2414d3acef3ff87a8332d41f93cac5e84e98",
+      "main_day1_git_blob": "d26d2414d3acef3ff87a8332d41f93cac5e84e98",
+      "status": "BYTE_IDENTICAL"
+    },
+    {
+      "path": "src/bublik/infrastructure/memory_repository.py",
+      "day2_git_blob": "2630de2a6ab729c79300a403bc064044244e6dfb",
+      "main_day1_git_blob": "2630de2a6ab729c79300a403bc064044244e6dfb",
+      "status": "BYTE_IDENTICAL"
+    },
+    {
+      "path": "src/bublik/main.py",
+      "day2_git_blob": "3cc7cd6e89ac2fc2e3188cc6b77c8bced6013bab",
+      "main_day1_git_blob": "3cc7cd6e89ac2fc2e3188cc6b77c8bced6013bab",
+      "status": "BYTE_IDENTICAL"
+    },
+    {
+      "path": "tests/conftest.py",
+      "day2_git_blob": "e210879ae2356f5bf9e801e541ba6804b2d25165",
+      "main_day1_git_blob": "e210879ae2356f5bf9e801e541ba6804b2d25165",
+      "status": "BYTE_IDENTICAL"
+    },
+    {
+      "path": "tests/test_api.py",
+      "day2_git_blob": "94afe5c24c9d02bb010345150e305ca7a9fac768",
+      "main_day1_git_blob": "94afe5c24c9d02bb010345150e305ca7a9fac768",
+      "status": "BYTE_IDENTICAL"
+    },
+    {
+      "path": "tests/test_architecture.py",
+      "day2_git_blob": "877a926285f9f5bdc2944601b83d0e82fb1ec855",
+      "main_day1_git_blob": "877a926285f9f5bdc2944601b83d0e82fb1ec855",
+      "status": "BYTE_IDENTICAL"
+    },
+    {
+      "path": "tests/test_domain.py",
+      "day2_git_blob": "cc99e9d23f0eca54802bcb39f993e9e475c799d5",
+      "main_day1_git_blob": "cc99e9d23f0eca54802bcb39f993e9e475c799d5",
+      "status": "BYTE_IDENTICAL"
+    },
+    {
+      "path": "tests/test_foundation_gate.py",
+      "day2_git_blob": "da858a084a2114d1ca034cfca5bf4b0826abbaf1",
+      "main_day1_git_blob": "da858a084a2114d1ca034cfca5bf4b0826abbaf1",
+      "status": "BYTE_IDENTICAL"
+    },
+    {
+      "path": "tests/test_repository.py",
+      "day2_git_blob": "57892ebca0cbec906ffe38eb47121ab914b9d55c",
+      "main_day1_git_blob": "57892ebca0cbec906ffe38eb47121ab914b9d55c",
+      "status": "BYTE_IDENTICAL"
+    },
+    {
+      "path": "tests/test_service.py",
+      "day2_git_blob": "8691af008589be6f85dd984bc6e1c0e331526a74",
+      "main_day1_git_blob": "8691af008589be6f85dd984bc6e1c0e331526a74",
+      "status": "BYTE_IDENTICAL"
+    },
+    {
+      "path": "tests/test_status_api.py",
+      "day2_git_blob": "5f93c1a0e4589fe032ee90d3c5ad01af8b1aacfe",
+      "main_day1_git_blob": "5f93c1a0e4589fe032ee90d3c5ad01af8b1aacfe",
+      "status": "BYTE_IDENTICAL"
+    },
+    {
+      "path": "tests/test_status_service.py",
+      "day2_git_blob": "dedd7aad8fed5ea5ebd47bca6e43fb37ef3f301d",
+      "main_day1_git_blob": "dedd7aad8fed5ea5ebd47bca6e43fb37ef3f301d",
+      "status": "BYTE_IDENTICAL"
+    },
+    {
+      "path": "tests/test_task_status_invariant.py",
+      "day2_git_blob": "2dd3f9a4b772eb27fb0ff10c71c0b68b1dc434fd",
+      "main_day1_git_blob": null,
+      "status": "NEW_DAY2_FILE"
+    },
+    {
+      "path": "uv.lock",
+      "day2_git_blob": "3ed3c10bc7cd69287ae4f904508f3f2b232de0d5",
+      "main_day1_git_blob": "3ed3c10bc7cd69287ae4f904508f3f2b232de0d5",
+      "status": "BYTE_IDENTICAL"
+    }
+  ],
+  "main_day1_files_not_in_day2_copy": [
+    ".codex/agents/architecture_report.toml",
+    ".gitignore"
+  ]
+}

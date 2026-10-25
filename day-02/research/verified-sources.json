@@ -1,0 +1,167 @@
+[
+  {
+    "turn": 3,
+    "path": "src/bublik/infrastructure/memory_repository.py",
+    "quote": "    def __init__(self) -> None:\n        self._tasks: dict[UUID, Task] = {}\n        self._lock = Lock()",
+    "sha256": "7bbd048d3dc66e6ba585c3d8a5f8ff507701699e86fa6a82b2328564b77bfbf2",
+    "symbol": "InMemoryTaskRepository.__init__",
+    "symbol_start_line": 12,
+    "symbol_end_line": 14,
+    "verified": "SHA_AND_SYMBOL_OWNED_QUOTE_PASS",
+    "public_source": "../app/src/bublik/infrastructure/memory_repository.py"
+  },
+  {
+    "turn": 3,
+    "path": "src/bublik/application/service.py",
+    "quote": "    def __init__(self, repository: TaskRepository) -> None:\n        self._repository = repository",
+    "sha256": "3e2a2ef8b29464bbb3fe6bdf86e5ada64cf315d05f781849cb435a15979e7d1c",
+    "symbol": "TaskService.__init__",
+    "symbol_start_line": 14,
+    "symbol_end_line": 15,
+    "verified": "SHA_AND_SYMBOL_OWNED_QUOTE_PASS",
+    "public_source": "../app/src/bublik/application/service.py"
+  },
+  {
+    "turn": 3,
+    "path": "src/bublik/application/repository.py",
+    "quote": "class TaskRepository(Protocol):\n    \"\"\"Store tasks by identifier; save replaces an existing value.\"\"\"\n\n    def save(self, task: Task) -> None:\n        \"\"\"Persist the complete task value.\"\"\"\n        ...\n\n    def get(self, task_id: UUID) -> Task | None:\n        \"\"\"Return a task, or None when it is absent.\"\"\"\n        ...",
+    "sha256": "2c189cbe4ba09c43606f049fac69155cd4ee45d75a71670b0a6771bef766430f",
+    "symbol": "TaskRepository",
+    "symbol_start_line": 9,
+    "symbol_end_line": 18,
+    "verified": "SHA_AND_SYMBOL_OWNED_QUOTE_PASS",
+    "public_source": "../app/src/bublik/application/repository.py"
+  },
+  {
+    "turn": 3,
+    "path": "src/bublik/main.py",
+    "quote": "def create_app() -> FastAPI:\n    \"\"\"Create an application with its own repository and service.\"\"\"\n    app = FastAPI(title=\"Bublik Task Service\", version=\"0.1.0\")\n    app.state.task_service = TaskService(InMemoryTaskRepository())\n    app.include_router(router)\n    return app",
+    "sha256": "a2f9609fba57ba1a4292930a827a3233b3f4ab829cc6dcbebaa9c0d2ecf5406f",
+    "symbol": "create_app",
+    "symbol_start_line": 10,
+    "symbol_end_line": 15,
+    "verified": "SHA_AND_SYMBOL_OWNED_QUOTE_PASS",
+    "public_source": "../app/src/bublik/main.py"
+  },
+  {
+    "turn": 3,
+    "path": "src/bublik/api/dependencies.py",
+    "quote": "    service = request.app.state.task_service\n    if not isinstance(service, TaskService):\n        raise TypeError(\"Application task service is not configured\")\n    return service",
+    "sha256": "08f9dc2baad342663d9f080ca15dd193c832f4b423d5a715a89b9c99ab8cc120",
+    "symbol": "get_task_service",
+    "symbol_start_line": 8,
+    "symbol_end_line": 13,
+    "verified": "SHA_AND_SYMBOL_OWNED_QUOTE_PASS",
+    "public_source": "../app/src/bublik/api/dependencies.py"
+  },
+  {
+    "turn": 3,
+    "path": "tests/test_api.py",
+    "quote": "def test_application_instances_do_not_share_tasks(client: TestClient) -> None:\n    task_id = client.post(\"/tasks\", json={\"title\": \"Only in first app\"}).json()[\"id\"]\n    with TestClient(create_app()) as second_client:\n        assert second_client.get(f\"/tasks/{task_id}\").status_code == 404",
+    "sha256": "87e0ddc62e105cc20f280ba3c430c804810a6d18ffe5433d84dd1cd5a7fad304",
+    "symbol": "test_application_instances_do_not_share_tasks",
+    "symbol_start_line": 65,
+    "symbol_end_line": 68,
+    "verified": "SHA_AND_SYMBOL_OWNED_QUOTE_PASS",
+    "public_source": "../app/tests/test_api.py"
+  },
+  {
+    "turn": 3,
+    "path": "src/bublik/api/routes.py",
+    "quote": "    try:\n        task = service.get_task(task_id)\n    except TaskNotFoundError as error:\n        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(error)) from error\n    return TaskResponse.model_validate(task)",
+    "sha256": "5ed91abac2b725a6b3a984274a25f415df28094f8ba4895cf269b702ae02e657",
+    "symbol": "get_task",
+    "symbol_start_line": 47,
+    "symbol_end_line": 54,
+    "verified": "SHA_AND_SYMBOL_OWNED_QUOTE_PASS",
+    "public_source": "../app/src/bublik/api/routes.py"
+  },
+  {
+    "turn": 3,
+    "path": "src/bublik/domain/task.py",
+    "quote": "        try:\n            status = TaskStatus(self.status)\n        except (TypeError, ValueError) as error:\n            raise InvalidTaskStatusError(\"Invalid task status\") from error",
+    "sha256": "14277bd2a7d9fb2986493df226d3ac7482bdeb39bfff7e5c6fefa4ec5d4b7695",
+    "symbol": "Task.__post_init__",
+    "symbol_start_line": 25,
+    "symbol_end_line": 34,
+    "verified": "SHA_AND_SYMBOL_OWNED_QUOTE_PASS",
+    "public_source": "../app/src/bublik/domain/task.py"
+  },
+  {
+    "turn": 3,
+    "path": "docs/BASELINE_CODE_EXAMPLES.md",
+    "quote": "The application consumes typed `save(Task)` and `get(UUID)` operations. Its\nservice does not construct or import the in-memory implementation.",
+    "sha256": "8829da569328a8b9a3f1b61425c6129f840d8fdd49b755138298f44a921854b2",
+    "symbol": "TaskRepository",
+    "symbol_start_line": 1,
+    "symbol_end_line": 67,
+    "verified": "SHA_AND_DOCUMENT_QUOTE_PASS_NOT_AST",
+    "public_source": "../app/docs/BASELINE_CODE_EXAMPLES.md"
+  },
+  {
+    "turn": 10,
+    "path": "src/bublik/domain/task.py",
+    "quote": "        try:\n            status = TaskStatus(self.status)\n        except (TypeError, ValueError) as error:\n            raise InvalidTaskStatusError(\"Invalid task status\") from error\n        object.__setattr__(self, \"title\", title)\n        object.__setattr__(self, \"status\", status)",
+    "sha256": "14277bd2a7d9fb2986493df226d3ac7482bdeb39bfff7e5c6fefa4ec5d4b7695",
+    "symbol": "Task.__post_init__",
+    "symbol_start_line": 25,
+    "symbol_end_line": 34,
+    "verified": "SHA_AND_SYMBOL_OWNED_QUOTE_PASS",
+    "public_source": "../app/src/bublik/domain/task.py"
+  },
+  {
+    "turn": 10,
+    "path": "src/bublik/main.py",
+    "quote": "    app.state.task_service = TaskService(InMemoryTaskRepository())\n    app.include_router(router)\n    return app",
+    "sha256": "a2f9609fba57ba1a4292930a827a3233b3f4ab829cc6dcbebaa9c0d2ecf5406f",
+    "symbol": "create_app",
+    "symbol_start_line": 10,
+    "symbol_end_line": 15,
+    "verified": "SHA_AND_SYMBOL_OWNED_QUOTE_PASS",
+    "public_source": "../app/src/bublik/main.py"
+  },
+  {
+    "turn": 10,
+    "path": "src/bublik/application/service.py",
+    "quote": "    def __init__(self, repository: TaskRepository) -> None:\n        self._repository = repository",
+    "sha256": "3e2a2ef8b29464bbb3fe6bdf86e5ada64cf315d05f781849cb435a15979e7d1c",
+    "symbol": "TaskService.__init__",
+    "symbol_start_line": 14,
+    "symbol_end_line": 15,
+    "verified": "SHA_AND_SYMBOL_OWNED_QUOTE_PASS",
+    "public_source": "../app/src/bublik/application/service.py"
+  },
+  {
+    "turn": 10,
+    "path": "src/bublik/application/service.py",
+    "quote": "        task = self.get_task(task_id)\n        updated = replace(task, status=validated_status)\n        self._repository.save(updated)\n        return updated",
+    "sha256": "3e2a2ef8b29464bbb3fe6bdf86e5ada64cf315d05f781849cb435a15979e7d1c",
+    "symbol": "TaskService.update_task_status",
+    "symbol_start_line": 23,
+    "symbol_end_line": 32,
+    "verified": "SHA_AND_SYMBOL_OWNED_QUOTE_PASS",
+    "public_source": "../app/src/bublik/application/service.py"
+  },
+  {
+    "turn": 10,
+    "path": "src/bublik/application/repository.py",
+    "quote": "class TaskRepository(Protocol):\n    \"\"\"Store tasks by identifier; save replaces an existing value.\"\"\"\n\n    def save(self, task: Task) -> None:\n        \"\"\"Persist the complete task value.\"\"\"\n        ...\n\n    def get(self, task_id: UUID) -> Task | None:\n        \"\"\"Return a task, or None when it is absent.\"\"\"\n        ...",
+    "sha256": "2c189cbe4ba09c43606f049fac69155cd4ee45d75a71670b0a6771bef766430f",
+    "symbol": "TaskRepository",
+    "symbol_start_line": 9,
+    "symbol_end_line": 18,
+    "verified": "SHA_AND_SYMBOL_OWNED_QUOTE_PASS",
+    "public_source": "../app/src/bublik/application/repository.py"
+  },
+  {
+    "turn": 10,
+    "path": "src/bublik/infrastructure/memory_repository.py",
+    "quote": "    def __init__(self) -> None:\n        self._tasks: dict[UUID, Task] = {}\n        self._lock = Lock()\n\n    def save(self, task: Task) -> None:\n        \"\"\"Insert or replace one complete task value.\"\"\"\n        with self._lock:\n            self._tasks[task.id] = task\n\n    def get(self, task_id: UUID) -> Task | None:\n        \"\"\"Read a value without exposing the mutable storage container.\"\"\"\n        with self._lock:\n            return self._tasks.get(task_id)",
+    "sha256": "7bbd048d3dc66e6ba585c3d8a5f8ff507701699e86fa6a82b2328564b77bfbf2",
+    "symbol": "InMemoryTaskRepository",
+    "symbol_start_line": 9,
+    "symbol_end_line": 24,
+    "verified": "SHA_AND_SYMBOL_OWNED_QUOTE_PASS",
+    "public_source": "../app/src/bublik/infrastructure/memory_repository.py"
+  }
+]

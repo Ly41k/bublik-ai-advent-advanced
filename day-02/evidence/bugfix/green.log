@@ -1,0 +1,22 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.13.3, pytest-9.1.1, pluggy-1.7.0 -- <PRIVATE_HOME_PATH>
+rootdir: <PRIVATE_RUNTIME_PATH>
+configfile: pyproject.toml
+plugins: anyio-4.15.1
+collecting ... collected 13 items
+
+tests/test_task_status_invariant.py::test_constructor_rejects_invalid_status[None] PASSED [  7%]
+tests/test_task_status_invariant.py::test_constructor_rejects_invalid_status[42] PASSED [ 15%]
+tests/test_task_status_invariant.py::test_constructor_rejects_invalid_status[invalid-status] PASSED [ 23%]
+tests/test_task_status_invariant.py::test_constructor_rejects_invalid_status[status3] PASSED [ 30%]
+tests/test_task_status_invariant.py::test_constructor_rejects_invalid_status[status4] PASSED [ 38%]
+tests/test_task_status_invariant.py::test_replace_rejects_invalid_status[None] PASSED [ 46%]
+tests/test_task_status_invariant.py::test_replace_rejects_invalid_status[42] PASSED [ 53%]
+tests/test_task_status_invariant.py::test_replace_rejects_invalid_status[invalid-status] PASSED [ 61%]
+tests/test_task_status_invariant.py::test_replace_rejects_invalid_status[status3] PASSED [ 69%]
+tests/test_task_status_invariant.py::test_replace_rejects_invalid_status[status4] PASSED [ 76%]
+tests/test_task_status_invariant.py::test_supported_status_survives_construction_and_replace[todo] PASSED [ 84%]
+tests/test_task_status_invariant.py::test_supported_status_survives_construction_and_replace[done] PASSED [ 92%]
+tests/test_task_status_invariant.py::test_default_status_is_todo PASSED  [100%]
+
+============================== 13 passed in 0.01s ==============================
