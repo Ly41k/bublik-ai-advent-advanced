@@ -1,0 +1,13 @@
+{
+  "command": [
+    "python",
+    "-m",
+    "pytest",
+    "-q"
+  ],
+  "cwd": "day-02/app",
+  "env": {
+    "PYTHONPATH": "src"
+  },
+  "exit_code": 1
+}

@@ -1,0 +1,9 @@
+{
+  "command": [
+    "node",
+    "--check"
+  ],
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": ""
+}

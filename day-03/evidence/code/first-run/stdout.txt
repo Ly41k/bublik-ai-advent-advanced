@@ -1,0 +1,22 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.3, pytest-9.1.1, pluggy-1.7.0 -- /workspace/scratch/b0d13eb0cb28/.venv313/bin/python
+cachedir: .pytest_cache
+rootdir: /workspace/scratch/b0d13eb0cb28/bublik-ai-advent-advanced/day-03/app
+configfile: pyproject.toml
+plugins: anyio-4.15.1, cov-7.1.0
+collecting ... collected 11 items
+
+tests/test_d3_dependencies.py::test_resolver_returns_the_exact_application_service PASSED [  9%]
+tests/test_d3_dependencies.py::test_resolver_rejects_misconfigured_service[None] PASSED [ 18%]
+tests/test_d3_dependencies.py::test_resolver_rejects_misconfigured_service[not a service] PASSED [ 27%]
+tests/test_d3_dependencies.py::test_resolver_rejects_misconfigured_service[invalid_service2] PASSED [ 36%]
+tests/test_d3_dependencies.py::test_misconfigured_service_fails_http_without_breaking_health PASSED [ 45%]
+tests/test_d3_service_failures.py::test_create_propagates_original_storage_failure PASSED [ 54%]
+tests/test_d3_service_failures.py::test_get_propagates_read_failure_instead_of_not_found PASSED [ 63%]
+tests/test_d3_service_failures.py::test_failed_update_does_not_mutate_the_original_value PASSED [ 72%]
+tests/test_d3_service_failures.py::test_invalid_status_is_rejected_before_repository_access PASSED [ 81%]
+tests/test_d3_memory_concurrency.py::test_parallel_save_and_read_preserves_every_distinct_task PASSED [ 90%]
+tests/test_d3_memory_concurrency.py::test_replacing_one_identity_preserves_its_sibling_with_the_same_title PASSED [100%]
+
+- generated xml file: /workspace/scratch/b0d13eb0cb28/bublik-ai-advent-advanced/day-03/evidence/code/first-run/junit.xml -
+============================== 11 passed in 0.05s ==============================

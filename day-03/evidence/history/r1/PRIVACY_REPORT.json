@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "scope": "All candidate files before adding privacy report and manifest; delivery archive excludes runtime tooling/caches. Filenames plus known secret-signature scan, reviewed MCP/app logs.",
+  "files_scanned": 91,
+  "secret_signature_findings": [],
+  "forbidden_path_findings": [],
+  "private_codex_journals_included": false,
+  "machine_bound_config_or_database_files_included": false,
+  "screenshots_included": 0,
+  "notes": [
+    "Runtime logs contain ephemeral workspace/interpreter/tmp socket paths. These are execution diagnostics, not copied host configuration.",
+    "No credentials, browser profiles, auth files, environment dump or Codex journals were collected.",
+    "Historical Day 2 is not part of this archive."
+  ]
+}

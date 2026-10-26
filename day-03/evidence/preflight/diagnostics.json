@@ -1,0 +1,33 @@
+{
+  "resolved": [
+    {
+      "component": "environment.packaging",
+      "observation": "Initial copied baseline run: 9 failed, 101 passed; bublik-task-service distribution metadata missing. Installed editable Day 3 app; subsequent baseline 110/110 PASS."
+    },
+    {
+      "component": "browser.install.chromium",
+      "observation": "Standard playwright install chromium failed: End of central directory record signature not found. Standard Firefox install succeeded."
+    },
+    {
+      "component": "local-network-session",
+      "observation": "Separate tool executions have isolated loopback namespaces; app and MCP now run as children of one stdio client invocation."
+    },
+    {
+      "component": "mcp.client",
+      "observation": "Initial handshake client used nanosecond JSON-RPC IDs beyond JavaScript safe integers; changed to milliseconds before successful initialize/tools/list. No UI scenario had started."
+    }
+  ],
+  "blockers": [
+    {
+      "component": "environment.browser_mcp",
+      "error": "listen EPERM: operation not permitted /tmp/pw-7505d64a/browser/browser-e70e66.sock",
+      "evidence": [
+        "evidence/preflight/browser-health.json",
+        "evidence/preflight/screenshot-attempt.json"
+      ],
+      "status": "BLOCKED",
+      "security_changes": false,
+      "screenshots_created": 0
+    }
+  ]
+}

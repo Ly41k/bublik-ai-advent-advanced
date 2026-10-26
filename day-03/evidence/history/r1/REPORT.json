@@ -1,0 +1,168 @@
+{
+  "task_id": "BUBLIK-D3-COURSE-MINIMUM",
+  "candidate_version": "r1",
+  "created_utc": "2026-10-26T05:46:34.306597+00:00",
+  "course_minimum_status": "BLOCKED",
+  "delivery_status": "LOCAL_PARTIAL_CANDIDATE",
+  "baseline_sha": "6d0a0d73ba535b947a88eb08e5f54044ce6f9582",
+  "head_sha": "6d0a0d73ba535b947a88eb08e5f54044ce6f9582",
+  "feature_branch": "feat/day-03-course-minimum",
+  "candidate_is_uncommitted": true,
+  "protected_trees": {
+    "day-01": "ba4f0fc673214937a8ad76bee613d7d43837f2e9",
+    "day-02": "2eee394cad89b451d501ee79340c048a00f3d648"
+  },
+  "gates": {
+    "Gate 0": "BLOCKED",
+    "Gate 1": "PARTIAL",
+    "Gate 2": "PASS",
+    "Gate 3": "BLOCKED",
+    "Gate 4": "PARTIAL",
+    "Gate 5": "PARTIAL"
+  },
+  "code_testing": {
+    "status": "PASS",
+    "agent": "CodeTestingReportAgent",
+    "modules": [
+      {
+        "module": "bublik.api.dependencies",
+        "source": "app/src/bublik/api/dependencies.py",
+        "test_file": "tests/test_d3_dependencies.py",
+        "gap": "Existing HTTP tests exercise only correctly wired services. Wrong service types and the resulting HTTP 500 integration behavior are not checked."
+      },
+      {
+        "module": "bublik.application.service",
+        "source": "app/src/bublik/application/service.py",
+        "test_file": "tests/test_d3_service_failures.py",
+        "gap": "Existing tests check domain errors and successful repository calls, but not propagation of repository read/write failures or validation-before-read ordering."
+      },
+      {
+        "module": "bublik.infrastructure.memory_repository",
+        "source": "app/src/bublik/infrastructure/memory_repository.py",
+        "test_file": "tests/test_d3_memory_concurrency.py",
+        "gap": "Existing tests use one thread and individual task values. Concurrent writes/reads of distinct identifiers and preservation of siblings during replacement are not exercised."
+      }
+    ],
+    "first_exit_code": 0,
+    "first_tests_passed": 11,
+    "first_run_result": "evidence/code/first-run/result.json",
+    "first_stdout": "evidence/code/first-run/stdout.txt",
+    "first_stderr": "evidence/code/first-run/stderr.txt",
+    "generation_snapshot": "evidence/code/first-run/generation/tests/",
+    "prompt": "prompts/code-testing.txt",
+    "production_unchanged_during_generation_and_first_run": true,
+    "subsequent_change": "main.py import order only; original source preserved; final full suite 121 PASS"
+  },
+  "baseline_tests": {
+    "initial_status": "FAIL",
+    "initial_passed": 101,
+    "initial_failed": 9,
+    "cause": "Editable package metadata missing",
+    "after_environment_setup_passed": 110,
+    "day03_before_generation_passed": 110
+  },
+  "final_checks": {
+    "pytest_passed": 121,
+    "pytest_exit_code": 0,
+    "ruff_exit_code": 0,
+    "logs": "evidence/final/"
+  },
+  "mcp": {
+    "package": "@playwright/mcp",
+    "package_version": "0.0.83",
+    "server_version": "1.64.0-alpha-1790635538000",
+    "browser": "firefox",
+    "transport": "stdio",
+    "initialize": "PASS",
+    "tools_list": "PASS",
+    "browser_navigation": "BLOCKED",
+    "screenshot_attempt": "BLOCKED",
+    "json_rpc_records": 4,
+    "tools_call_records": 2,
+    "preflight_records": [
+      "evidence/preflight/mcp-initialize.json",
+      "evidence/preflight/mcp-tools.json",
+      "evidence/preflight/browser-health.json",
+      "evidence/preflight/screenshot-attempt.json"
+    ],
+    "failure": "listen EPERM: operation not permitted (Playwright internal Unix socket)",
+    "security_controls_bypassed": false
+  },
+  "ui_smoke": [
+    {
+      "id": "UI-01",
+      "scenario": "scenarios/UI-01.md",
+      "version": "1.0.0",
+      "scenario_sha256": "9665c1ea02a272270d592d10067446770b0613ab28ebcb184c505d54738896ac",
+      "status": "BLOCKED",
+      "execution": "NOT_RUN",
+      "assertions_executed": 0,
+      "mcp_scenario_calls": 0,
+      "screenshots": [],
+      "probable_component": "environment.browser_mcp",
+      "blocker_evidence": [
+        "evidence/preflight/browser-health.json",
+        "evidence/preflight/screenshot-attempt.json"
+      ]
+    },
+    {
+      "id": "UI-02",
+      "scenario": "scenarios/UI-02.md",
+      "version": "1.0.0",
+      "scenario_sha256": "838d1924b545157dbec54299638a3ca9cb83518d59c87ad168cdbe2e6348d5c3",
+      "status": "BLOCKED",
+      "execution": "NOT_RUN",
+      "assertions_executed": 0,
+      "mcp_scenario_calls": 0,
+      "screenshots": [],
+      "probable_component": "environment.browser_mcp",
+      "blocker_evidence": [
+        "evidence/preflight/browser-health.json",
+        "evidence/preflight/screenshot-attempt.json"
+      ]
+    },
+    {
+      "id": "UI-03",
+      "scenario": "scenarios/UI-03.md",
+      "version": "1.0.0",
+      "scenario_sha256": "438bf40f3c7fe0aeb84022efc58e23bf6ae0a6329b1575e3de71bc993412eec4",
+      "status": "BLOCKED",
+      "execution": "NOT_RUN",
+      "assertions_executed": 0,
+      "mcp_scenario_calls": 0,
+      "screenshots": [],
+      "probable_component": "environment.browser_mcp",
+      "blocker_evidence": [
+        "evidence/preflight/browser-health.json",
+        "evidence/preflight/screenshot-attempt.json"
+      ]
+    }
+  ],
+  "screenshots": {
+    "count": 0,
+    "paths": [],
+    "expected_minimum_on_complete_execution": 9,
+    "reason": "Browser launch blocked before any scenario step; no screenshots fabricated"
+  },
+  "workflow": {
+    "document": "AGENT_WORKFLOW_RU.md",
+    "version": "1.0.0",
+    "status": "PARTIAL",
+    "end_to_end_completed": false
+  },
+  "blockers": [
+    {
+      "id": "D3-BROWSER-MCP-EPERM",
+      "component": "environment.browser_mcp",
+      "status": "OPEN",
+      "required_next_step": "Execute real MCP scenarios in an environment that permits the standard Playwright internal browser socket. Preserve existing code first-run evidence."
+    }
+  ],
+  "git_actions": {
+    "commit": false,
+    "push": false,
+    "pr": false,
+    "merge": false
+  },
+  "artifact_binding": "baseline commit + uncommitted source hashes in SHA256_MANIFEST.json; no candidate commit SHA exists"
+}

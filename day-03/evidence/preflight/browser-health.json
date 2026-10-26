@@ -1,0 +1,28 @@
+{
+  "started_utc": "2026-10-26T05:39:33.388958+00:00",
+  "finished_utc": "2026-10-26T05:39:33.932176+00:00",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1792993173388,
+    "method": "tools/call",
+    "params": {
+      "name": "browser_navigate",
+      "arguments": {
+        "url": "http://127.0.0.1:8003/health"
+      }
+    }
+  },
+  "response": {
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "### Error\nError: async initializeServer: listen EPERM: operation not permitted /tmp/pw-7505d64a/browser/browser-e70e66.sock"
+        }
+      ],
+      "isError": true
+    },
+    "jsonrpc": "2.0",
+    "id": 1792993173388
+  }
+}

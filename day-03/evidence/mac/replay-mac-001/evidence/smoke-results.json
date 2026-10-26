@@ -1,0 +1,192 @@
+{
+  "task_id": "BUBLIK-D3-MAC-SMOKE-001",
+  "scenario_version": "1.0.0",
+  "execution": "Real Playwright MCP",
+  "server": "playwright-day3",
+  "browser": "Firefox/156.0 (observed navigator.userAgent)",
+  "base_url": "http://127.0.0.1:8003",
+  "status": "PASS",
+  "scenarios": {
+    "UI-01": "PASS",
+    "UI-02": "PASS",
+    "UI-03": "PASS"
+  },
+  "new_png_count": 9,
+  "mcp_call_count": 31,
+  "steps": [
+    {
+      "scenario": "UI-01",
+      "step": 1,
+      "status": "PASS",
+      "assertion": "Task title и Create присутствуют; список Tasks пуст.",
+      "calls": [
+        "mcp-calls/001.json",
+        "mcp-calls/002.json",
+        "mcp-calls/003.json",
+        "mcp-calls/004.json"
+      ],
+      "screenshot": "replay-mac-001/evidence/screenshots/UI-01/step-01.png",
+      "sha256": "a59925183f4a0732d8eb2fd6fae76673e4e85b45c2af8875798381f480f2918a",
+      "png": {
+        "readable": true,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "scenario": "UI-01",
+      "step": 2,
+      "status": "PASS",
+      "assertion": "Значение Task title равно UI-01 Bublik task.",
+      "calls": [
+        "mcp-calls/005.json",
+        "mcp-calls/006.json",
+        "mcp-calls/007.json"
+      ],
+      "screenshot": "replay-mac-001/evidence/screenshots/UI-01/step-02.png",
+      "sha256": "da2489e5fc6d03727272cff2410c75ff45e1027841b06d87e2c1c3ff1e973011",
+      "png": {
+        "readable": true,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "scenario": "UI-01",
+      "step": 3,
+      "status": "PASS",
+      "assertion": "Ровно одна listitem, title UI-01 Bublik task, status todo.",
+      "calls": [
+        "mcp-calls/008.json",
+        "mcp-calls/009.json",
+        "mcp-calls/010.json"
+      ],
+      "screenshot": "replay-mac-001/evidence/screenshots/UI-01/step-03.png",
+      "sha256": "4c5b7539c8f2cd3796209dfcf6a2ca0b9e34c7957abef6f4385ed6bb9d7b08f5",
+      "png": {
+        "readable": true,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "scenario": "UI-02",
+      "step": 1,
+      "status": "PASS",
+      "assertion": "Отображаемый список Tasks пуст.",
+      "calls": [
+        "mcp-calls/011.json",
+        "mcp-calls/012.json",
+        "mcp-calls/013.json"
+      ],
+      "screenshot": "replay-mac-001/evidence/screenshots/UI-02/step-01.png",
+      "sha256": "8e61df2ae02cc0d5657c420edc92da60a84161f560382f928ea0311ecfe00588",
+      "png": {
+        "readable": true,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "scenario": "UI-02",
+      "step": 2,
+      "status": "PASS",
+      "assertion": "Значение Task title равно UI-02 Bublik task.",
+      "calls": [
+        "mcp-calls/014.json",
+        "mcp-calls/015.json",
+        "mcp-calls/016.json"
+      ],
+      "screenshot": "replay-mac-001/evidence/screenshots/UI-02/step-02.png",
+      "sha256": "d49d5872b7215e1bd6c729313e585f4442310b1cc92900a1b6997c20ea3e0af2",
+      "png": {
+        "readable": true,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "scenario": "UI-02",
+      "step": 3,
+      "status": "PASS",
+      "assertion": "Одна задача UI-02 Bublik task, status todo; task ID f2bae8cd-f73f-40b7-af0a-da1b2cdca882.",
+      "calls": [
+        "mcp-calls/017.json",
+        "mcp-calls/018.json",
+        "mcp-calls/019.json",
+        "mcp-calls/020.json"
+      ],
+      "screenshot": "replay-mac-001/evidence/screenshots/UI-02/step-03.png",
+      "sha256": "aaae510923f62a27489c0b4136d808a107ffe4dd5867960dafc61ed3d755b750",
+      "png": {
+        "readable": true,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "scenario": "UI-02",
+      "step": 4,
+      "status": "PASS",
+      "assertion": "Та же задача и ID f2bae8cd-f73f-40b7-af0a-da1b2cdca882; title сохранён, status done, Mark done disabled=true.",
+      "calls": [
+        "mcp-calls/021.json",
+        "mcp-calls/022.json",
+        "mcp-calls/023.json",
+        "mcp-calls/024.json"
+      ],
+      "screenshot": "replay-mac-001/evidence/screenshots/UI-02/step-04.png",
+      "sha256": "ec4944be3ae81b1e8ffeedb400cbe1eab5ff8a26a5ce318397105dd2b63bab48",
+      "png": {
+        "readable": true,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "scenario": "UI-03",
+      "step": 1,
+      "status": "PASS",
+      "assertion": "Пустое поле Task title и ноль строк Tasks.",
+      "calls": [
+        "mcp-calls/025.json",
+        "mcp-calls/026.json",
+        "mcp-calls/027.json"
+      ],
+      "screenshot": "replay-mac-001/evidence/screenshots/UI-03/step-01.png",
+      "sha256": "a59925183f4a0732d8eb2fd6fae76673e4e85b45c2af8875798381f480f2918a",
+      "png": {
+        "readable": true,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "scenario": "UI-03",
+      "step": 2,
+      "status": "PASS",
+      "assertion": "Alert: Task title must contain 1–200 characters.; ноль строк Tasks; POST /tasks => [422] Unprocessable Content.",
+      "calls": [
+        "mcp-calls/028.json",
+        "mcp-calls/029.json",
+        "mcp-calls/030.json",
+        "mcp-calls/031.json"
+      ],
+      "screenshot": "replay-mac-001/evidence/screenshots/UI-03/step-02.png",
+      "sha256": "0f61ef20d5b3c54961c3b01d7771fe2ce281033de31283156be3eda6c1c7fa21",
+      "png": {
+        "readable": true,
+        "width": 1280,
+        "height": 720
+      }
+    }
+  ],
+  "errors": [{"phase":"post-execution ancillary workspace check","command":"git status --short","exit_code":128,"exact_error":"fatal: not a git repository (or any of the parent directories): .git","component":"Git workspace metadata","impact":"Does not affect observed UI smoke PASS; further actions stopped."}],
+  "validation": {
+    "http422": "Expected validation response, not a smoke failure",
+    "absence_of_creation": "UI zero rows + observed HTTP 422; no task-list API used",
+    "png_checks": "file and shasum -a 256 exited 0 for all nine files"
+  },
+  "pytest": "Not repeated; previous 11/11 PASS is user-reported",
+  "historical_evidence": "Preflight and existing evidence not overwritten"
+}

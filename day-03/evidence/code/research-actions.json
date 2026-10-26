@@ -1,0 +1,38 @@
+{
+  "actions": [
+    {
+      "kind": "read",
+      "command": "cat prompts/code-agent-contract.md; cat prompts/code-testing.txt; rg --files app/src app/tests; cat selected app/src files and scripts/run_code_tests.py"
+    },
+    {
+      "kind": "read",
+      "command": "cat app/tests/conftest.py app/tests/test_api.py app/tests/test_domain.py app/tests/test_repository.py app/tests/test_service.py app/tests/test_status_api.py app/tests/test_status_service.py app/tests/test_task_status_invariant.py app/tests/test_architecture.py app/pyproject.toml app/src/bublik/main.py app/src/bublik/api/routes.py"
+    }
+  ],
+  "inspected_input_sha256": {
+    "app/src/bublik/__init__.py": "99d2b15d9afb522cb5b4ba3f9f45595da7c22928d83775e74da64ab5ab5f9a1a",
+    "app/src/bublik/api/__init__.py": "622ac68f5d6f19ae8dd65a4efcd21539fcf3e440adb50e8f891f2001a69f2df6",
+    "app/src/bublik/api/dependencies.py": "08f9dc2baad342663d9f080ca15dd193c832f4b423d5a715a89b9c99ab8cc120",
+    "app/src/bublik/api/routes.py": "5ed91abac2b725a6b3a984274a25f415df28094f8ba4895cf269b702ae02e657",
+    "app/src/bublik/api/schemas.py": "5f1ea9f9ad4041bf188119bc759a046f9620912a8504b9a8d7ac60f1eaa9960b",
+    "app/src/bublik/application/__init__.py": "0b87fefd82e752640c79bbe00b6fc068116d86f15ff46a06a72bf5cfb7086af7",
+    "app/src/bublik/application/repository.py": "2c189cbe4ba09c43606f049fac69155cd4ee45d75a71670b0a6771bef766430f",
+    "app/src/bublik/application/service.py": "3e2a2ef8b29464bbb3fe6bdf86e5ada64cf315d05f781849cb435a15979e7d1c",
+    "app/src/bublik/domain/__init__.py": "8142ec8ee322403256ceb2ed22eece12959b0f6f605213470c06d0fff0415647",
+    "app/src/bublik/domain/errors.py": "ccf423f968603bdec12276099a8d49bd5cb20d162b39b1a2e5751f9ff879bc3c",
+    "app/src/bublik/domain/task.py": "14277bd2a7d9fb2986493df226d3ac7482bdeb39bfff7e5c6fefa4ec5d4b7695",
+    "app/src/bublik/infrastructure/__init__.py": "914d6798b1c71ef3544d1cdeac5f10e49bb7d48e0a0fdf4f1e39382a4be36f6e",
+    "app/src/bublik/infrastructure/memory_repository.py": "7bbd048d3dc66e6ba585c3d8a5f8ff507701699e86fa6a82b2328564b77bfbf2",
+    "app/src/bublik/main.py": "872e3da7b0165c96b5013e35d8bebb582ae260ea2c13caf57921ac25ab6d76ac",
+    "app/tests/conftest.py": "1a4599376c768515596171a728c6cd200b80c04f07dabac32522dec8bfacefa9",
+    "app/tests/test_api.py": "87e0ddc62e105cc20f280ba3c430c804810a6d18ffe5433d84dd1cd5a7fad304",
+    "app/tests/test_architecture.py": "dcfbff9386a647bb9e4f636256aacb5b94434893f44ddb5545bda1a07cd01d27",
+    "app/tests/test_domain.py": "4da4bcd58e907775529377a3279ca31463b2b5c5bfa268ae4c1f625f16da8d8d",
+    "app/tests/test_foundation_gate.py": "91a55c8cad81e79e57b89c25b6d1930edd57e8d851b782f4ad9465c0f215c25d",
+    "app/tests/test_repository.py": "39c691df0c9ef522cbc38697a60c0c1bb980adfab7e2937d82c2583edc8b24d8",
+    "app/tests/test_service.py": "59746202ca50a1459e1e71d53474bb644d3ee8d3d36c194f81d1a66129bf622c",
+    "app/tests/test_status_api.py": "c66568d808bcee08ed9efe0885f0ca65e5b48bdcbd659c01687a4cfcb411d619",
+    "app/tests/test_status_service.py": "30d076b3a374012924a7f307107bfce7c4d180d1f0bb3fa6afba2205911e249c",
+    "app/tests/test_task_status_invariant.py": "109b66c87aecf55f6bb4c1b8ec049bf2150d9b32dcb6384c495e857268e6216d"
+  }
+}

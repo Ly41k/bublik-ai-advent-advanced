@@ -1,0 +1,15 @@
+{
+  "sequence": 30,
+  "tool": "mcp__playwright_day3__browser_network_requests",
+  "arguments": {
+    "static": false
+  },
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "### Result\n2. [POST] http://127.0.0.1:8003/tasks => [422] Unprocessable Content\n\nNote: 1 static request not shown, run with \"static\" option to see it."
+      }
+    ]
+  }
+}

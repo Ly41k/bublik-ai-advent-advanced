@@ -1,0 +1,15 @@
+{
+  "sequence": 19,
+  "tool": "mcp__playwright_day3__browser_evaluate",
+  "arguments": {
+    "function": "() => Array.from(document.querySelectorAll('li')).map(el => ({text:el.textContent,attributes:Array.from(el.attributes).map(a=>[a.name,a.value]),html:el.outerHTML}))"
+  },
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "### Result\n[\n  {\n    \"text\": \"UI-02 Bublik tasktodoMark done\",\n    \"attributes\": [\n      [\n        \"data-task-id\",\n        \"f2bae8cd-f73f-40b7-af0a-da1b2cdca882\"\n      ]\n    ],\n    \"html\": \"<li data-task-id=\\\"f2bae8cd-f73f-40b7-af0a-da1b2cdca882\\\"><span class=\\\"title\\\">UI-02 Bublik task</span><span class=\\\"status\\\">todo</span><button type=\\\"button\\\">Mark done</button></li>\"\n  }\n]\n### Ran Playwright code\n```js\nawait page.evaluate('() => Array.from(document.querySelectorAll(\\'li\\')).map(el => ({text:el.textContent,attributes:Array.from(el.attributes).map(a=>[a.name,a.value]),html:el.outerHTML}))');\n```"
+      }
+    ]
+  }
+}

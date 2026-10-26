@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bublik — Tasks</title>
+<style>
+body{font:18px system-ui,sans-serif;max-width:640px;margin:48px auto;padding:0 24px;color:#202839}
+input,button{font:inherit;padding:10px;margin:8px 0}input{width:100%;box-sizing:border-box}
+button{cursor:pointer}li{padding:16px 0;border-bottom:1px solid #ddd}
+[role=alert]{color:#a31a1a} .status{font-weight:bold;margin:0 12px}
+</style>
+<main>
+<h1>Bublik Tasks</h1>
+<form id="create-form" novalidate>
+  <label for="task-title">Task title</label>
+  <input id="task-title" name="title" autocomplete="off" aria-describedby="error">
+  <button id="create" type="submit">Create</button>
+</form>
+<p id="error" role="alert" hidden></p>
+<ul id="tasks" aria-label="Tasks"></ul>
+</main>
+<script>
+const form = document.querySelector('#create-form');
+const input = document.querySelector('#task-title');
+const error = document.querySelector('#error');
+const tasks = document.querySelector('#tasks');
+function showError(message) {
+  error.textContent = message;
+  error.hidden = !message;
+}
+async function request(path, method, payload) {
+  const response = await fetch(path, {
+    method, headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload)
+  });
+  const data = await response.json();
+  if (!response.ok) {
+    throw new Error(response.status === 422
+      ? 'Task title must contain 1–200 characters.'
+      : 'Request failed. Please try again.');
+  }
+  return data;
+}
+function renderTask(task) {
+  const item = document.createElement('li');
+  item.dataset.taskId = task.id;
+  const title = document.createElement('span');
+  title.className = 'title';
+  title.textContent = task.title;
+  const status = document.createElement('span');
+  status.className = 'status';
+  status.textContent = task.status;
+  const done = document.createElement('button');
+  done.type = 'button';
+  done.textContent = 'Mark done';
+  done.disabled = task.status === 'done';
+  done.addEventListener('click', async () => {
+    showError('');
+    done.disabled = true;
+    try {
+      const updated = await request(`/tasks/${task.id}/status`, 'PATCH', {status:'done'});
+      status.textContent = updated.status;
+    } catch (failure) {
+      done.disabled = false;
+      showError(failure.message);
+    }
+  });
+  item.append(title, status, done);
+  tasks.append(item);
+}
+form.addEventListener('submit', async event => {
+  event.preventDefault();
+  showError('');
+  const create = document.querySelector('#create');
+  create.disabled = true;
+  try {
+    const task = await request('/tasks', 'POST', {title:input.value});
+    renderTask(task);
+    input.value = '';
+  } catch (failure) {
+    showError(failure.message);
+  } finally {
+    create.disabled = false;
+  }
+});
+</script>
+</html>

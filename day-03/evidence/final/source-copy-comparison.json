@@ -1,0 +1,24 @@
+{
+  "baseline_app": "day-02/app",
+  "files": {
+    "src/bublik/main.py": "CHANGED",
+    "src/bublik/__init__.py": "UNCHANGED",
+    "src/bublik/domain/errors.py": "UNCHANGED",
+    "src/bublik/domain/task.py": "UNCHANGED",
+    "src/bublik/domain/__init__.py": "UNCHANGED",
+    "src/bublik/infrastructure/memory_repository.py": "UNCHANGED",
+    "src/bublik/infrastructure/__init__.py": "UNCHANGED",
+    "src/bublik/application/service.py": "UNCHANGED",
+    "src/bublik/application/repository.py": "UNCHANGED",
+    "src/bublik/application/__init__.py": "UNCHANGED",
+    "src/bublik/api/dependencies.py": "UNCHANGED",
+    "src/bublik/api/routes.py": "UNCHANGED",
+    "src/bublik/api/schemas.py": "UNCHANGED",
+    "src/bublik/api/__init__.py": "UNCHANGED"
+  },
+  "added_source": [
+    "src/bublik/ui.html"
+  ],
+  "existing_tests_unchanged": true,
+  "dependency_files_unchanged": true
+}
