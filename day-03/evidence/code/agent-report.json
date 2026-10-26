@@ -1,0 +1,80 @@
+{
+  "agent": "CodeTestingReportAgent",
+  "status": "PASS",
+  "scope": "Gate 2 Code Tests only; not Day 3 acceptance",
+  "baseline_sha": "6d0a0d73ba535b947a88eb08e5f54044ce6f9582",
+  "generated_utc": "2026-10-26T05:43:05.753154+00:00",
+  "selected_modules": [
+    {
+      "module": "bublik.api.dependencies",
+      "source": "app/src/bublik/api/dependencies.py",
+      "test_file": "tests/test_d3_dependencies.py",
+      "gap": "Existing HTTP tests exercise only correctly wired services. Wrong service types and the resulting HTTP 500 integration behavior are not checked."
+    },
+    {
+      "module": "bublik.application.service",
+      "source": "app/src/bublik/application/service.py",
+      "test_file": "tests/test_d3_service_failures.py",
+      "gap": "Existing tests check domain errors and successful repository calls, but not propagation of repository read/write failures or validation-before-read ordering."
+    },
+    {
+      "module": "bublik.infrastructure.memory_repository",
+      "source": "app/src/bublik/infrastructure/memory_repository.py",
+      "test_file": "tests/test_d3_memory_concurrency.py",
+      "gap": "Existing tests use one thread and individual task values. Concurrent writes/reads of distinct identifiers and preservation of siblings during replacement are not exercised."
+    }
+  ],
+  "new_test_files": [
+    "tests/test_d3_dependencies.py",
+    "tests/test_d3_service_failures.py",
+    "tests/test_d3_memory_concurrency.py"
+  ],
+  "first_pytest": {
+    "status": "PASS",
+    "exit_code": 0,
+    "tests_passed": 11,
+    "command": [
+      "/workspace/scratch/b0d13eb0cb28/.venv313/bin/python",
+      "-m",
+      "pytest",
+      "-vv",
+      "--junitxml=/workspace/scratch/b0d13eb0cb28/bublik-ai-advent-advanced/day-03/evidence/code/first-run/junit.xml",
+      "tests/test_d3_dependencies.py",
+      "tests/test_d3_service_failures.py",
+      "tests/test_d3_memory_concurrency.py"
+    ],
+    "stdout": "evidence/code/first-run/stdout.txt",
+    "stderr": "evidence/code/first-run/stderr.txt",
+    "result": "evidence/code/first-run/result.json",
+    "junit": "evidence/code/first-run/junit.xml"
+  },
+  "production_unchanged_during_generation_and_run": true,
+  "production_after_sha256": {
+    "src/bublik/__init__.py": "99d2b15d9afb522cb5b4ba3f9f45595da7c22928d83775e74da64ab5ab5f9a1a",
+    "src/bublik/api/__init__.py": "622ac68f5d6f19ae8dd65a4efcd21539fcf3e440adb50e8f891f2001a69f2df6",
+    "src/bublik/api/dependencies.py": "08f9dc2baad342663d9f080ca15dd193c832f4b423d5a715a89b9c99ab8cc120",
+    "src/bublik/api/routes.py": "5ed91abac2b725a6b3a984274a25f415df28094f8ba4895cf269b702ae02e657",
+    "src/bublik/api/schemas.py": "5f1ea9f9ad4041bf188119bc759a046f9620912a8504b9a8d7ac60f1eaa9960b",
+    "src/bublik/application/__init__.py": "0b87fefd82e752640c79bbe00b6fc068116d86f15ff46a06a72bf5cfb7086af7",
+    "src/bublik/application/repository.py": "2c189cbe4ba09c43606f049fac69155cd4ee45d75a71670b0a6771bef766430f",
+    "src/bublik/application/service.py": "3e2a2ef8b29464bbb3fe6bdf86e5ada64cf315d05f781849cb435a15979e7d1c",
+    "src/bublik/domain/__init__.py": "8142ec8ee322403256ceb2ed22eece12959b0f6f605213470c06d0fff0415647",
+    "src/bublik/domain/errors.py": "ccf423f968603bdec12276099a8d49bd5cb20d162b39b1a2e5751f9ff879bc3c",
+    "src/bublik/domain/task.py": "14277bd2a7d9fb2986493df226d3ac7482bdeb39bfff7e5c6fefa4ec5d4b7695",
+    "src/bublik/infrastructure/__init__.py": "914d6798b1c71ef3544d1cdeac5f10e49bb7d48e0a0fdf4f1e39382a4be36f6e",
+    "src/bublik/infrastructure/memory_repository.py": "7bbd048d3dc66e6ba585c3d8a5f8ff507701699e86fa6a82b2328564b77bfbf2",
+    "src/bublik/main.py": "872e3da7b0165c96b5013e35d8bebb582ae260ea2c13caf57921ac25ab6d76ac",
+    "src/bublik/ui.html": "0831e7ab74e20ea590dc5c2bebcb8f86dad527683f1e4a9e31e57f8b9de511f9"
+  },
+  "existing_tests_unchanged": true,
+  "prompt": "prompts/code-testing.txt",
+  "selection": "evidence/code/selection.json",
+  "analysis": "evidence/code/analysis.md",
+  "research_actions": "evidence/code/research-actions.json",
+  "generation_snapshot": "evidence/code/first-run/generation/tests/",
+  "limitations": [
+    "Concurrent storage test checks one bounded workload, not all possible thread schedules.",
+    "No coverage percentage claim; modules chosen from concrete behavior gaps in reviewed tests.",
+    "UI work not part of this agent task."
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "checks": {
+    "ui_http_200": true,
+    "html_form_present": true,
+    "create_201": true,
+    "create_todo": true,
+    "update_done": true,
+    "persisted_done": true,
+    "empty_rejected_422": true
+  },
+  "status": "PASS",
+  "scope": "HTTP/API only; browser UI behavior NOT_VERIFIED"
+}

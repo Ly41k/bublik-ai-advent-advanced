@@ -1,0 +1,474 @@
+{
+  "status": "PASS",
+  "authoritative_markdown_links_checked": 93,
+  "structured_evidence_references_checked": 59,
+  "missing": [],
+  "markdown_links": [
+    {
+      "document": "FINAL_REPORT_RU.md",
+      "target": "SHA256_MANIFEST.json",
+      "exists": true
+    },
+    {
+      "document": "FINAL_REPORT_RU.md",
+      "target": "evidence/assembly/input-integrity.json",
+      "exists": true
+    },
+    {
+      "document": "FINAL_REPORT_RU.md",
+      "target": "evidence/code/agent-report.md",
+      "exists": true
+    },
+    {
+      "document": "FINAL_REPORT_RU.md",
+      "target": "evidence/code/agent-report.json",
+      "exists": true
+    },
+    {
+      "document": "FINAL_REPORT_RU.md",
+      "target": "evidence/code/selection.json",
+      "exists": true
+    },
+    {
+      "document": "FINAL_REPORT_RU.md",
+      "target": "evidence/code/analysis.md",
+      "exists": true
+    },
+    {
+      "document": "FINAL_REPORT_RU.md",
+      "target": "evidence/code/first-run/stdout.txt",
+      "exists": true
+    },
+    {
+      "document": "FINAL_REPORT_RU.md",
+      "target": "evidence/code/first-run/stderr.txt",
+      "exists": true
+    },
+    {
+      "document": "FINAL_REPORT_RU.md",
+      "target": "evidence/code/first-run/result.json",
+      "exists": true
+    },
+    {
+      "document": "FINAL_REPORT_RU.md",
+      "target": "evidence/code/first-run/junit.xml",
+      "exists": true
+    },
+    {
+      "document": "FINAL_REPORT_RU.md",
+      "target": "prompts/code-testing.txt",
+      "exists": true
+    },
+    {
+      "document": "FINAL_REPORT_RU.md",
+      "target": "evidence/final/pytest.stdout.txt",
+      "exists": true
+    },
+    {
+      "document": "FINAL_REPORT_RU.md",
+      "target": "evidence/final/pytest.json",
+      "exists": true
+    },
+    {
+      "document": "FINAL_REPORT_RU.md",
+      "target": "evidence/final/ruff.stdout.txt",
+      "exists": true
+    },
+    {
+      "document": "FINAL_REPORT_RU.md",
+      "target": "evidence/mac/replay-mac-001/evidence/SMOKE_REPORT_RU.md",
+      "exists": true
+    },
+    {
+      "document": "FINAL_REPORT_RU.md",
+      "target": "evidence/mac/replay-mac-001/evidence/smoke-results.json",
+      "exists": true
+    },
+    {
+      "document": "FINAL_REPORT_RU.md",
+      "target": "evidence/mac/replay-mac-001/evidence/SHA256SUMS",
+      "exists": true
+    },
+    {
+      "document": "FINAL_REPORT_RU.md",
+      "target": "evidence/mac/replay-mac-001/evidence/mcp-calls/004.json",
+      "exists": true
+    },
+    {
+      "document": "FINAL_REPORT_RU.md",
+      "target": "evidence/mac/replay-mac-001/evidence/screenshots/UI-01/step-01.png",
+      "exists": true
+    },
+    {
+      "document": "FINAL_REPORT_RU.md",
+      "target": "evidence/mac/replay-mac-001/evidence/mcp-calls/007.json",
+      "exists": true
+    },
+    {
+      "document": "FINAL_REPORT_RU.md",
+      "target": "evidence/mac/replay-mac-001/evidence/screenshots/UI-01/step-02.png",
+      "exists": true
+    },
+    {
+      "document": "FINAL_REPORT_RU.md",
+      "target": "evidence/mac/replay-mac-001/evidence/mcp-calls/010.json",
+      "exists": true
+    },
+    {
+      "document": "FINAL_REPORT_RU.md",
+      "target": "evidence/mac/replay-mac-001/evidence/screenshots/UI-01/step-03.png",
+      "exists": true
+    },
+    {
+      "document": "FINAL_REPORT_RU.md",
+      "target": "evidence/mac/replay-mac-001/evidence/mcp-calls/013.json",
+      "exists": true
+    },
+    {
+      "document": "FINAL_REPORT_RU.md",
+      "target": "evidence/mac/replay-mac-001/evidence/screenshots/UI-02/step-01.png",
+      "exists": true
+    },
+    {
+      "document": "FINAL_REPORT_RU.md",
+      "target": "evidence/mac/replay-mac-001/evidence/mcp-calls/016.json",
+      "exists": true
+    },
+    {
+      "document": "FINAL_REPORT_RU.md",
+      "target": "evidence/mac/replay-mac-001/evidence/screenshots/UI-02/step-02.png",
+      "exists": true
+    },
+    {
+      "document": "FINAL_REPORT_RU.md",
+      "target": "evidence/mac/replay-mac-001/evidence/mcp-calls/020.json",
+      "exists": true
+    },
+    {
+      "document": "FINAL_REPORT_RU.md",
+      "target": "evidence/mac/replay-mac-001/evidence/screenshots/UI-02/step-03.png",
+      "exists": true
+    },
+    {
+      "document": "FINAL_REPORT_RU.md",
+      "target": "evidence/mac/replay-mac-001/evidence/mcp-calls/024.json",
+      "exists": true
+    },
+    {
+      "document": "FINAL_REPORT_RU.md",
+      "target": "evidence/mac/replay-mac-001/evidence/screenshots/UI-02/step-04.png",
+      "exists": true
+    },
+    {
+      "document": "FINAL_REPORT_RU.md",
+      "target": "evidence/mac/replay-mac-001/evidence/mcp-calls/027.json",
+      "exists": true
+    },
+    {
+      "document": "FINAL_REPORT_RU.md",
+      "target": "evidence/mac/replay-mac-001/evidence/screenshots/UI-03/step-01.png",
+      "exists": true
+    },
+    {
+      "document": "FINAL_REPORT_RU.md",
+      "target": "evidence/mac/replay-mac-001/evidence/mcp-calls/031.json",
+      "exists": true
+    },
+    {
+      "document": "FINAL_REPORT_RU.md",
+      "target": "evidence/mac/replay-mac-001/evidence/screenshots/UI-03/step-02.png",
+      "exists": true
+    },
+    {
+      "document": "FINAL_REPORT_RU.md",
+      "target": "evidence/mac/replay-mac-001/evidence/screenshots/preflight.png",
+      "exists": true
+    },
+    {
+      "document": "FINAL_REPORT_RU.md",
+      "target": "evidence/mac/replay-mac-001/evidence/mcp-calls/030.json",
+      "exists": true
+    },
+    {
+      "document": "FINAL_REPORT_RU.md",
+      "target": "evidence/preflight/browser-health.json",
+      "exists": true
+    },
+    {
+      "document": "FINAL_REPORT_RU.md",
+      "target": "evidence/preflight/screenshot-attempt.json",
+      "exists": true
+    },
+    {
+      "document": "FINAL_REPORT_RU.md",
+      "target": "evidence/history/r1/FINAL_REPORT_RU.md",
+      "exists": true
+    },
+    {
+      "document": "FINAL_REPORT_RU.md",
+      "target": "evidence/assembly/git-scope-r2.json",
+      "exists": true
+    },
+    {
+      "document": "FINAL_REPORT_RU.md",
+      "target": "AGENT_WORKFLOW_RU.md",
+      "exists": true
+    },
+    {
+      "document": "FINAL_REPORT_RU.md",
+      "target": "REPORT.json",
+      "exists": true
+    },
+    {
+      "document": "FINAL_REPORT_RU.md",
+      "target": "REQUIREMENTS_RU.md",
+      "exists": true
+    },
+    {
+      "document": "FINAL_REPORT_RU.md",
+      "target": "evidence/assembly/preservation-verification.json",
+      "exists": true
+    },
+    {
+      "document": "FINAL_REPORT_RU.md",
+      "target": "PRIVACY_REPORT_RU.md",
+      "exists": true
+    },
+    {
+      "document": "FINAL_REPORT_RU.md",
+      "target": "evidence/assembly/link-verification.json",
+      "exists": true
+    },
+    {
+      "document": "README_RU.md",
+      "target": "evidence/assembly/input-integrity.json",
+      "exists": true
+    },
+    {
+      "document": "AGENT_WORKFLOW_RU.md",
+      "target": "REPORT.json",
+      "exists": true
+    },
+    {
+      "document": "AGENT_WORKFLOW_RU.md",
+      "target": "evidence/code/agent-report.md",
+      "exists": true
+    },
+    {
+      "document": "AGENT_WORKFLOW_RU.md",
+      "target": "evidence/mac/replay-mac-001/evidence/SMOKE_REPORT_RU.md",
+      "exists": true
+    },
+    {
+      "document": "PRIVACY_REPORT_RU.md",
+      "target": "PRIVACY_REPORT.json",
+      "exists": true
+    },
+    {
+      "document": "PRIVACY_REPORT_RU.md",
+      "target": "evidence/assembly/link-verification.json",
+      "exists": true
+    },
+    {
+      "document": "evidence/mac/replay-mac-001/evidence/SMOKE_REPORT_RU.md",
+      "target": "mcp-calls/001.json",
+      "exists": true
+    },
+    {
+      "document": "evidence/mac/replay-mac-001/evidence/SMOKE_REPORT_RU.md",
+      "target": "mcp-calls/002.json",
+      "exists": true
+    },
+    {
+      "document": "evidence/mac/replay-mac-001/evidence/SMOKE_REPORT_RU.md",
+      "target": "mcp-calls/003.json",
+      "exists": true
+    },
+    {
+      "document": "evidence/mac/replay-mac-001/evidence/SMOKE_REPORT_RU.md",
+      "target": "mcp-calls/004.json",
+      "exists": true
+    },
+    {
+      "document": "evidence/mac/replay-mac-001/evidence/SMOKE_REPORT_RU.md",
+      "target": "screenshots/UI-01/step-01.png",
+      "exists": true
+    },
+    {
+      "document": "evidence/mac/replay-mac-001/evidence/SMOKE_REPORT_RU.md",
+      "target": "mcp-calls/005.json",
+      "exists": true
+    },
+    {
+      "document": "evidence/mac/replay-mac-001/evidence/SMOKE_REPORT_RU.md",
+      "target": "mcp-calls/006.json",
+      "exists": true
+    },
+    {
+      "document": "evidence/mac/replay-mac-001/evidence/SMOKE_REPORT_RU.md",
+      "target": "mcp-calls/007.json",
+      "exists": true
+    },
+    {
+      "document": "evidence/mac/replay-mac-001/evidence/SMOKE_REPORT_RU.md",
+      "target": "screenshots/UI-01/step-02.png",
+      "exists": true
+    },
+    {
+      "document": "evidence/mac/replay-mac-001/evidence/SMOKE_REPORT_RU.md",
+      "target": "mcp-calls/008.json",
+      "exists": true
+    },
+    {
+      "document": "evidence/mac/replay-mac-001/evidence/SMOKE_REPORT_RU.md",
+      "target": "mcp-calls/009.json",
+      "exists": true
+    },
+    {
+      "document": "evidence/mac/replay-mac-001/evidence/SMOKE_REPORT_RU.md",
+      "target": "mcp-calls/010.json",
+      "exists": true
+    },
+    {
+      "document": "evidence/mac/replay-mac-001/evidence/SMOKE_REPORT_RU.md",
+      "target": "screenshots/UI-01/step-03.png",
+      "exists": true
+    },
+    {
+      "document": "evidence/mac/replay-mac-001/evidence/SMOKE_REPORT_RU.md",
+      "target": "mcp-calls/011.json",
+      "exists": true
+    },
+    {
+      "document": "evidence/mac/replay-mac-001/evidence/SMOKE_REPORT_RU.md",
+      "target": "mcp-calls/012.json",
+      "exists": true
+    },
+    {
+      "document": "evidence/mac/replay-mac-001/evidence/SMOKE_REPORT_RU.md",
+      "target": "mcp-calls/013.json",
+      "exists": true
+    },
+    {
+      "document": "evidence/mac/replay-mac-001/evidence/SMOKE_REPORT_RU.md",
+      "target": "screenshots/UI-02/step-01.png",
+      "exists": true
+    },
+    {
+      "document": "evidence/mac/replay-mac-001/evidence/SMOKE_REPORT_RU.md",
+      "target": "mcp-calls/014.json",
+      "exists": true
+    },
+    {
+      "document": "evidence/mac/replay-mac-001/evidence/SMOKE_REPORT_RU.md",
+      "target": "mcp-calls/015.json",
+      "exists": true
+    },
+    {
+      "document": "evidence/mac/replay-mac-001/evidence/SMOKE_REPORT_RU.md",
+      "target": "mcp-calls/016.json",
+      "exists": true
+    },
+    {
+      "document": "evidence/mac/replay-mac-001/evidence/SMOKE_REPORT_RU.md",
+      "target": "screenshots/UI-02/step-02.png",
+      "exists": true
+    },
+    {
+      "document": "evidence/mac/replay-mac-001/evidence/SMOKE_REPORT_RU.md",
+      "target": "mcp-calls/017.json",
+      "exists": true
+    },
+    {
+      "document": "evidence/mac/replay-mac-001/evidence/SMOKE_REPORT_RU.md",
+      "target": "mcp-calls/018.json",
+      "exists": true
+    },
+    {
+      "document": "evidence/mac/replay-mac-001/evidence/SMOKE_REPORT_RU.md",
+      "target": "mcp-calls/019.json",
+      "exists": true
+    },
+    {
+      "document": "evidence/mac/replay-mac-001/evidence/SMOKE_REPORT_RU.md",
+      "target": "mcp-calls/020.json",
+      "exists": true
+    },
+    {
+      "document": "evidence/mac/replay-mac-001/evidence/SMOKE_REPORT_RU.md",
+      "target": "screenshots/UI-02/step-03.png",
+      "exists": true
+    },
+    {
+      "document": "evidence/mac/replay-mac-001/evidence/SMOKE_REPORT_RU.md",
+      "target": "mcp-calls/021.json",
+      "exists": true
+    },
+    {
+      "document": "evidence/mac/replay-mac-001/evidence/SMOKE_REPORT_RU.md",
+      "target": "mcp-calls/022.json",
+      "exists": true
+    },
+    {
+      "document": "evidence/mac/replay-mac-001/evidence/SMOKE_REPORT_RU.md",
+      "target": "mcp-calls/023.json",
+      "exists": true
+    },
+    {
+      "document": "evidence/mac/replay-mac-001/evidence/SMOKE_REPORT_RU.md",
+      "target": "mcp-calls/024.json",
+      "exists": true
+    },
+    {
+      "document": "evidence/mac/replay-mac-001/evidence/SMOKE_REPORT_RU.md",
+      "target": "screenshots/UI-02/step-04.png",
+      "exists": true
+    },
+    {
+      "document": "evidence/mac/replay-mac-001/evidence/SMOKE_REPORT_RU.md",
+      "target": "mcp-calls/025.json",
+      "exists": true
+    },
+    {
+      "document": "evidence/mac/replay-mac-001/evidence/SMOKE_REPORT_RU.md",
+      "target": "mcp-calls/026.json",
+      "exists": true
+    },
+    {
+      "document": "evidence/mac/replay-mac-001/evidence/SMOKE_REPORT_RU.md",
+      "target": "mcp-calls/027.json",
+      "exists": true
+    },
+    {
+      "document": "evidence/mac/replay-mac-001/evidence/SMOKE_REPORT_RU.md",
+      "target": "screenshots/UI-03/step-01.png",
+      "exists": true
+    },
+    {
+      "document": "evidence/mac/replay-mac-001/evidence/SMOKE_REPORT_RU.md",
+      "target": "mcp-calls/028.json",
+      "exists": true
+    },
+    {
+      "document": "evidence/mac/replay-mac-001/evidence/SMOKE_REPORT_RU.md",
+      "target": "mcp-calls/029.json",
+      "exists": true
+    },
+    {
+      "document": "evidence/mac/replay-mac-001/evidence/SMOKE_REPORT_RU.md",
+      "target": "mcp-calls/030.json",
+      "exists": true
+    },
+    {
+      "document": "evidence/mac/replay-mac-001/evidence/SMOKE_REPORT_RU.md",
+      "target": "mcp-calls/031.json",
+      "exists": true
+    },
+    {
+      "document": "evidence/mac/replay-mac-001/evidence/SMOKE_REPORT_RU.md",
+      "target": "screenshots/UI-03/step-02.png",
+      "exists": true
+    }
+  ],
+  "historical_runtime_references": "Some original MCP responses mention .playwright-mcp/*.yml files that were not supplied. Not deliverable links; inline snapshot content preserved. No original records rewritten."
+}

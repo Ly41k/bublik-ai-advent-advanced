@@ -1,0 +1,15 @@
+{
+  "sequence": 23,
+  "tool": "mcp__playwright_day3__browser_evaluate",
+  "arguments": {
+    "function": "() => Array.from(document.querySelectorAll('li')).map(el => ({id:el.getAttribute('data-task-id'),title:el.querySelector('.title')?.textContent,status:el.querySelector('.status')?.textContent,disabled:el.querySelector('button')?.disabled}))"
+  },
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "### Result\n[\n  {\n    \"id\": \"f2bae8cd-f73f-40b7-af0a-da1b2cdca882\",\n    \"title\": \"UI-02 Bublik task\",\n    \"status\": \"done\",\n    \"disabled\": true\n  }\n]\n### Ran Playwright code\n```js\nawait page.evaluate('() => Array.from(document.querySelectorAll(\\'li\\')).map(el => ({id:el.getAttribute(\\'data-task-id\\'),title:el.querySelector(\\'.title\\')?.textContent,status:el.querySelector(\\'.status\\')?.textContent,disabled:el.querySelector(\\'button\\')?.disabled}))');\n```"
+      }
+    ]
+  }
+}

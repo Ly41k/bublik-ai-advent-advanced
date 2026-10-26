@@ -1,0 +1,14 @@
+{
+  "command": [
+    "/workspace/scratch/b0d13eb0cb28/.venv313/bin/python",
+    "-m",
+    "ruff",
+    "check",
+    "--no-cache",
+    "app/src",
+    "app/tests"
+  ],
+  "cwd": ".",
+  "exit_code": 0,
+  "scope": "final regression after import-order-only change; historical first-run is separate"
+}

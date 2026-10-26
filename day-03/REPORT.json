@@ -1,0 +1,451 @@
+{
+  "task_id": "BUBLIK-D3-COURSE-MINIMUM",
+  "candidate_version": "r2",
+  "created_utc": "2026-10-26T06:58:16.867763+00:00",
+  "course_minimum_status": "PASS",
+  "delivery_status": "LOCAL_CANDIDATE_READY_FOR_CONTROL_REVIEW",
+  "baseline_sha": "6d0a0d73ba535b947a88eb08e5f54044ce6f9582",
+  "head_sha": "6d0a0d73ba535b947a88eb08e5f54044ce6f9582",
+  "feature_branch": "feat/day-03-course-minimum",
+  "candidate_is_uncommitted": true,
+  "protected_trees": {
+    "day-01": "ba4f0fc673214937a8ad76bee613d7d43837f2e9",
+    "day-02": "2eee394cad89b451d501ee79340c048a00f3d648"
+  },
+  "gates": {
+    "Gate 0": "PASS",
+    "Gate 1": "PASS",
+    "Gate 2": "PASS",
+    "Gate 3": "PASS",
+    "Gate 4": "PASS",
+    "Gate 5": "PASS"
+  },
+  "code_testing": {
+    "status": "PASS",
+    "agent": "CodeTestingReportAgent",
+    "modules": [
+      {
+        "module": "bublik.api.dependencies",
+        "source": "app/src/bublik/api/dependencies.py",
+        "test_file": "tests/test_d3_dependencies.py",
+        "gap": "Existing HTTP tests exercise only correctly wired services. Wrong service types and the resulting HTTP 500 integration behavior are not checked."
+      },
+      {
+        "module": "bublik.application.service",
+        "source": "app/src/bublik/application/service.py",
+        "test_file": "tests/test_d3_service_failures.py",
+        "gap": "Existing tests check domain errors and successful repository calls, but not propagation of repository read/write failures or validation-before-read ordering."
+      },
+      {
+        "module": "bublik.infrastructure.memory_repository",
+        "source": "app/src/bublik/infrastructure/memory_repository.py",
+        "test_file": "tests/test_d3_memory_concurrency.py",
+        "gap": "Existing tests use one thread and individual task values. Concurrent writes/reads of distinct identifiers and preservation of siblings during replacement are not exercised."
+      }
+    ],
+    "first_exit_code": 0,
+    "first_tests_passed": 11,
+    "first_run_result": "evidence/code/first-run/result.json",
+    "first_stdout": "evidence/code/first-run/stdout.txt",
+    "first_stderr": "evidence/code/first-run/stderr.txt",
+    "generation_snapshot": "evidence/code/first-run/generation/tests/",
+    "prompt": "prompts/code-testing.txt",
+    "production_unchanged_during_generation_and_first_run": true,
+    "subsequent_change": "main.py import order only; original source preserved; final full suite 121 PASS"
+  },
+  "baseline_tests": {
+    "initial_status": "FAIL",
+    "initial_passed": 101,
+    "initial_failed": 9,
+    "cause": "Editable package metadata missing",
+    "after_environment_setup_passed": 110,
+    "day03_before_generation_passed": 110,
+    "evidence_origin": "Original Work r1 archive; immutable historical logs"
+  },
+  "final_checks": {
+    "pytest_passed": 121,
+    "pytest_exit_code": 0,
+    "ruff_exit_code": 0,
+    "logs": "evidence/final/",
+    "evidence_origin": "Original Work r1 archive; 121/121 and Ruff were not rerun during r2"
+  },
+  "mcp": {
+    "status": "PASS",
+    "accepted_environment": "Mac",
+    "control_decision": "MAC_UI_SMOKE_ACCEPTED",
+    "control_decision_source": "User task BUBLIK-D3-FINAL-ASSEMBLY-R2",
+    "server": "playwright-day3",
+    "browser": "Firefox/156.0 (observed navigator.userAgent)",
+    "execution": "Real Playwright MCP",
+    "mcp_call_records": 31,
+    "records_directory": "evidence/mac/replay-mac-001/evidence/mcp-calls",
+    "report": "evidence/mac/replay-mac-001/evidence/SMOKE_REPORT_RU.md",
+    "result": "evidence/mac/replay-mac-001/evidence/smoke-results.json",
+    "original_screenshot_manifest": "evidence/mac/replay-mac-001/evidence/SHA256SUMS",
+    "raw_bytes_preserved": true,
+    "reexecuted_in_r2": false,
+    "historical_work_mcp": "evidence/preflight/browser-health.json"
+  },
+  "ui_smoke": [
+    {
+      "id": "UI-01",
+      "scenario": "scenarios/UI-01.md",
+      "version": "1.0.0",
+      "scenario_sha256": "9665c1ea02a272270d592d10067446770b0613ab28ebcb184c505d54738896ac",
+      "status": "PASS",
+      "execution": "REAL_MCP_ACCEPTED_BY_CONTROL",
+      "steps": [
+        {
+          "scenario": "UI-01",
+          "step": 1,
+          "status": "PASS",
+          "assertion": "Task title и Create присутствуют; список Tasks пуст.",
+          "calls": [
+            "evidence/mac/replay-mac-001/evidence/mcp-calls/001.json",
+            "evidence/mac/replay-mac-001/evidence/mcp-calls/002.json",
+            "evidence/mac/replay-mac-001/evidence/mcp-calls/003.json",
+            "evidence/mac/replay-mac-001/evidence/mcp-calls/004.json"
+          ],
+          "screenshot": "evidence/mac/replay-mac-001/evidence/screenshots/UI-01/step-01.png",
+          "sha256": "a59925183f4a0732d8eb2fd6fae76673e4e85b45c2af8875798381f480f2918a",
+          "png": {
+            "readable": true,
+            "width": 1280,
+            "height": 720
+          }
+        },
+        {
+          "scenario": "UI-01",
+          "step": 2,
+          "status": "PASS",
+          "assertion": "Значение Task title равно UI-01 Bublik task.",
+          "calls": [
+            "evidence/mac/replay-mac-001/evidence/mcp-calls/005.json",
+            "evidence/mac/replay-mac-001/evidence/mcp-calls/006.json",
+            "evidence/mac/replay-mac-001/evidence/mcp-calls/007.json"
+          ],
+          "screenshot": "evidence/mac/replay-mac-001/evidence/screenshots/UI-01/step-02.png",
+          "sha256": "da2489e5fc6d03727272cff2410c75ff45e1027841b06d87e2c1c3ff1e973011",
+          "png": {
+            "readable": true,
+            "width": 1280,
+            "height": 720
+          }
+        },
+        {
+          "scenario": "UI-01",
+          "step": 3,
+          "status": "PASS",
+          "assertion": "Ровно одна listitem, title UI-01 Bublik task, status todo.",
+          "calls": [
+            "evidence/mac/replay-mac-001/evidence/mcp-calls/008.json",
+            "evidence/mac/replay-mac-001/evidence/mcp-calls/009.json",
+            "evidence/mac/replay-mac-001/evidence/mcp-calls/010.json"
+          ],
+          "screenshot": "evidence/mac/replay-mac-001/evidence/screenshots/UI-01/step-03.png",
+          "sha256": "4c5b7539c8f2cd3796209dfcf6a2ca0b9e34c7957abef6f4385ed6bb9d7b08f5",
+          "png": {
+            "readable": true,
+            "width": 1280,
+            "height": 720
+          }
+        }
+      ],
+      "assertions_executed": 3,
+      "mcp_scenario_calls": 10,
+      "screenshots": [
+        "evidence/mac/replay-mac-001/evidence/screenshots/UI-01/step-01.png",
+        "evidence/mac/replay-mac-001/evidence/screenshots/UI-01/step-02.png",
+        "evidence/mac/replay-mac-001/evidence/screenshots/UI-01/step-03.png"
+      ],
+      "probable_component_on_error": null
+    },
+    {
+      "id": "UI-02",
+      "scenario": "scenarios/UI-02.md",
+      "version": "1.0.0",
+      "scenario_sha256": "838d1924b545157dbec54299638a3ca9cb83518d59c87ad168cdbe2e6348d5c3",
+      "status": "PASS",
+      "execution": "REAL_MCP_ACCEPTED_BY_CONTROL",
+      "steps": [
+        {
+          "scenario": "UI-02",
+          "step": 1,
+          "status": "PASS",
+          "assertion": "Отображаемый список Tasks пуст.",
+          "calls": [
+            "evidence/mac/replay-mac-001/evidence/mcp-calls/011.json",
+            "evidence/mac/replay-mac-001/evidence/mcp-calls/012.json",
+            "evidence/mac/replay-mac-001/evidence/mcp-calls/013.json"
+          ],
+          "screenshot": "evidence/mac/replay-mac-001/evidence/screenshots/UI-02/step-01.png",
+          "sha256": "8e61df2ae02cc0d5657c420edc92da60a84161f560382f928ea0311ecfe00588",
+          "png": {
+            "readable": true,
+            "width": 1280,
+            "height": 720
+          }
+        },
+        {
+          "scenario": "UI-02",
+          "step": 2,
+          "status": "PASS",
+          "assertion": "Значение Task title равно UI-02 Bublik task.",
+          "calls": [
+            "evidence/mac/replay-mac-001/evidence/mcp-calls/014.json",
+            "evidence/mac/replay-mac-001/evidence/mcp-calls/015.json",
+            "evidence/mac/replay-mac-001/evidence/mcp-calls/016.json"
+          ],
+          "screenshot": "evidence/mac/replay-mac-001/evidence/screenshots/UI-02/step-02.png",
+          "sha256": "d49d5872b7215e1bd6c729313e585f4442310b1cc92900a1b6997c20ea3e0af2",
+          "png": {
+            "readable": true,
+            "width": 1280,
+            "height": 720
+          }
+        },
+        {
+          "scenario": "UI-02",
+          "step": 3,
+          "status": "PASS",
+          "assertion": "Одна задача UI-02 Bublik task, status todo; task ID f2bae8cd-f73f-40b7-af0a-da1b2cdca882.",
+          "calls": [
+            "evidence/mac/replay-mac-001/evidence/mcp-calls/017.json",
+            "evidence/mac/replay-mac-001/evidence/mcp-calls/018.json",
+            "evidence/mac/replay-mac-001/evidence/mcp-calls/019.json",
+            "evidence/mac/replay-mac-001/evidence/mcp-calls/020.json"
+          ],
+          "screenshot": "evidence/mac/replay-mac-001/evidence/screenshots/UI-02/step-03.png",
+          "sha256": "aaae510923f62a27489c0b4136d808a107ffe4dd5867960dafc61ed3d755b750",
+          "png": {
+            "readable": true,
+            "width": 1280,
+            "height": 720
+          }
+        },
+        {
+          "scenario": "UI-02",
+          "step": 4,
+          "status": "PASS",
+          "assertion": "Та же задача и ID f2bae8cd-f73f-40b7-af0a-da1b2cdca882; title сохранён, status done, Mark done disabled=true.",
+          "calls": [
+            "evidence/mac/replay-mac-001/evidence/mcp-calls/021.json",
+            "evidence/mac/replay-mac-001/evidence/mcp-calls/022.json",
+            "evidence/mac/replay-mac-001/evidence/mcp-calls/023.json",
+            "evidence/mac/replay-mac-001/evidence/mcp-calls/024.json"
+          ],
+          "screenshot": "evidence/mac/replay-mac-001/evidence/screenshots/UI-02/step-04.png",
+          "sha256": "ec4944be3ae81b1e8ffeedb400cbe1eab5ff8a26a5ce318397105dd2b63bab48",
+          "png": {
+            "readable": true,
+            "width": 1280,
+            "height": 720
+          }
+        }
+      ],
+      "assertions_executed": 4,
+      "mcp_scenario_calls": 14,
+      "screenshots": [
+        "evidence/mac/replay-mac-001/evidence/screenshots/UI-02/step-01.png",
+        "evidence/mac/replay-mac-001/evidence/screenshots/UI-02/step-02.png",
+        "evidence/mac/replay-mac-001/evidence/screenshots/UI-02/step-03.png",
+        "evidence/mac/replay-mac-001/evidence/screenshots/UI-02/step-04.png"
+      ],
+      "probable_component_on_error": null
+    },
+    {
+      "id": "UI-03",
+      "scenario": "scenarios/UI-03.md",
+      "version": "1.0.0",
+      "scenario_sha256": "438bf40f3c7fe0aeb84022efc58e23bf6ae0a6329b1575e3de71bc993412eec4",
+      "status": "PASS",
+      "execution": "REAL_MCP_ACCEPTED_BY_CONTROL",
+      "steps": [
+        {
+          "scenario": "UI-03",
+          "step": 1,
+          "status": "PASS",
+          "assertion": "Пустое поле Task title и ноль строк Tasks.",
+          "calls": [
+            "evidence/mac/replay-mac-001/evidence/mcp-calls/025.json",
+            "evidence/mac/replay-mac-001/evidence/mcp-calls/026.json",
+            "evidence/mac/replay-mac-001/evidence/mcp-calls/027.json"
+          ],
+          "screenshot": "evidence/mac/replay-mac-001/evidence/screenshots/UI-03/step-01.png",
+          "sha256": "a59925183f4a0732d8eb2fd6fae76673e4e85b45c2af8875798381f480f2918a",
+          "png": {
+            "readable": true,
+            "width": 1280,
+            "height": 720
+          }
+        },
+        {
+          "scenario": "UI-03",
+          "step": 2,
+          "status": "PASS",
+          "assertion": "Alert: Task title must contain 1–200 characters.; ноль строк Tasks; POST /tasks => [422] Unprocessable Content.",
+          "calls": [
+            "evidence/mac/replay-mac-001/evidence/mcp-calls/028.json",
+            "evidence/mac/replay-mac-001/evidence/mcp-calls/029.json",
+            "evidence/mac/replay-mac-001/evidence/mcp-calls/030.json",
+            "evidence/mac/replay-mac-001/evidence/mcp-calls/031.json"
+          ],
+          "screenshot": "evidence/mac/replay-mac-001/evidence/screenshots/UI-03/step-02.png",
+          "sha256": "0f61ef20d5b3c54961c3b01d7771fe2ce281033de31283156be3eda6c1c7fa21",
+          "png": {
+            "readable": true,
+            "width": 1280,
+            "height": 720
+          }
+        }
+      ],
+      "assertions_executed": 2,
+      "mcp_scenario_calls": 7,
+      "screenshots": [
+        "evidence/mac/replay-mac-001/evidence/screenshots/UI-03/step-01.png",
+        "evidence/mac/replay-mac-001/evidence/screenshots/UI-03/step-02.png"
+      ],
+      "probable_component_on_error": null
+    }
+  ],
+  "screenshots": {
+    "count": 10,
+    "scenario_count": 9,
+    "preflight_count": 1,
+    "paths": [
+      "evidence/mac/replay-mac-001/evidence/screenshots/UI-01/step-01.png",
+      "evidence/mac/replay-mac-001/evidence/screenshots/UI-01/step-02.png",
+      "evidence/mac/replay-mac-001/evidence/screenshots/UI-01/step-03.png",
+      "evidence/mac/replay-mac-001/evidence/screenshots/UI-02/step-01.png",
+      "evidence/mac/replay-mac-001/evidence/screenshots/UI-02/step-02.png",
+      "evidence/mac/replay-mac-001/evidence/screenshots/UI-02/step-03.png",
+      "evidence/mac/replay-mac-001/evidence/screenshots/UI-02/step-04.png",
+      "evidence/mac/replay-mac-001/evidence/screenshots/UI-03/step-01.png",
+      "evidence/mac/replay-mac-001/evidence/screenshots/UI-03/step-02.png",
+      "evidence/mac/replay-mac-001/evidence/screenshots/preflight.png"
+    ],
+    "scenario_paths": [
+      "evidence/mac/replay-mac-001/evidence/screenshots/UI-01/step-01.png",
+      "evidence/mac/replay-mac-001/evidence/screenshots/UI-01/step-02.png",
+      "evidence/mac/replay-mac-001/evidence/screenshots/UI-01/step-03.png",
+      "evidence/mac/replay-mac-001/evidence/screenshots/UI-02/step-01.png",
+      "evidence/mac/replay-mac-001/evidence/screenshots/UI-02/step-02.png",
+      "evidence/mac/replay-mac-001/evidence/screenshots/UI-02/step-03.png",
+      "evidence/mac/replay-mac-001/evidence/screenshots/UI-02/step-04.png",
+      "evidence/mac/replay-mac-001/evidence/screenshots/UI-03/step-01.png",
+      "evidence/mac/replay-mac-001/evidence/screenshots/UI-03/step-02.png"
+    ],
+    "historical_preflight": "evidence/mac/replay-mac-001/evidence/screenshots/preflight.png",
+    "step_sha256_checks": "9/9 PASS",
+    "readability_checks": "10/10 PASS",
+    "note": "Nine accepted step screenshots plus one original preflight PNG; no new PNG generated in assembly."
+  },
+  "workflow": {
+    "document": "AGENT_WORKFLOW_RU.md",
+    "version": "1.0.0",
+    "status": "PASS",
+    "all_required_stages_have_evidence": true,
+    "stages": [
+      "Work: code analysis and agent-generated first-run tests",
+      "Mac: real Playwright MCP UI smoke",
+      "r2: offline assembly of reports and manifests"
+    ],
+    "single_uninterrupted_agent_execution": false,
+    "new_tests_models_or_mcp_in_r2": false,
+    "provenance": "Control accepted code r1 and Mac smoke separately; r2 links accepted evidence, not a new test run."
+  },
+  "blockers": [],
+  "git_actions": {
+    "commit": false,
+    "push": false,
+    "pr": false,
+    "merge": false
+  },
+  "artifact_binding": "baseline commit + uncommitted source hashes in SHA256_MANIFEST.json; no candidate commit SHA exists",
+  "assembly_task_id": "BUBLIK-D3-FINAL-ASSEMBLY-R2",
+  "final_control_review_status": "PENDING",
+  "levels": {
+    "Level 1 — Code Tests": "PASS",
+    "Level 2 — Playwright MCP UI Smoke": "PASS"
+  },
+  "gates_scope": "Gate 0/1 browser readiness established by accepted Mac execution; Work EPERM preserved historically. Gate 5 local assembly, not publishing approval.",
+  "input_archives": [
+    {
+      "input": "r1",
+      "uploaded_name": "bublik-day3-course-minimum-r1-partial(2).zip",
+      "sha256": "418abe3d7d60309122c3f0926912b0da43853ccd5cc88ba4a675cb5b3bcf370b",
+      "sha256_status": "PASS",
+      "path_safety": "PASS",
+      "duplicates_or_case_collisions": 0,
+      "symlinks_or_special_files": 0,
+      "crc": "PASS",
+      "regular_files": 94
+    },
+    {
+      "input": "mac",
+      "uploaded_name": "bublik-day3-mac-smoke-evidence-001(2).zip",
+      "sha256": "e5030fba47ededc019e88abab8bc2173bf2c0f387762f45368f0a12159380d10",
+      "sha256_status": "PASS",
+      "path_safety": "PASS",
+      "duplicates_or_case_collisions": 0,
+      "symlinks_or_special_files": 0,
+      "crc": "PASS",
+      "regular_files": 44
+    }
+  ],
+  "work_mcp_history": {
+    "package": "@playwright/mcp",
+    "package_version": "0.0.83",
+    "server_version": "1.64.0-alpha-1790635538000",
+    "browser": "firefox",
+    "transport": "stdio",
+    "initialize": "PASS",
+    "tools_list": "PASS",
+    "browser_navigation": "BLOCKED",
+    "screenshot_attempt": "BLOCKED",
+    "json_rpc_records": 4,
+    "tools_call_records": 2,
+    "preflight_records": [
+      "evidence/preflight/mcp-initialize.json",
+      "evidence/preflight/mcp-tools.json",
+      "evidence/preflight/browser-health.json",
+      "evidence/preflight/screenshot-attempt.json"
+    ],
+    "failure": "listen EPERM: operation not permitted (Playwright internal Unix socket)",
+    "security_controls_bypassed": false
+  },
+  "historical_issues": [
+    {
+      "id": "D3-BROWSER-MCP-EPERM",
+      "status": "HISTORICAL_WORK_ENVIRONMENT_BLOCKED",
+      "course_minimum_impact": "Resolved by separate accepted Mac smoke, not repaired on Work",
+      "evidence": [
+        "evidence/preflight/browser-health.json",
+        "evidence/preflight/screenshot-attempt.json"
+      ]
+    },
+    {
+      "id": "MAC-GIT-STATUS-128",
+      "component": "Git workspace metadata",
+      "status": "HISTORICAL_NON_BLOCKING",
+      "impact": "Extracted Mac directory lacks .git; does not invalidate UI smoke. Current Git checkout verified independently.",
+      "evidence": "evidence/mac/replay-mac-001/evidence/smoke-results.json"
+    }
+  ],
+  "assembly": {
+    "mode": "OFFLINE_ONLY",
+    "input_integrity": "evidence/assembly/input-integrity.json",
+    "source_code_tests_scenarios_logs_changed": false,
+    "mac_bytes_changed": false,
+    "report_assembly_is_test_execution": false,
+    "r1_historical_documents": "evidence/history/r1/",
+    "verification_script_unchanged_from_r1": true
+  },
+  "limitations": [
+    "Final r2 candidate awaits independent Control Review; publication is not authorized.",
+    "Accepted stages ran in Work and Mac sessions, not one uninterrupted new agent runtime. No tests/MCP/models rerun in r2.",
+    "Mac archive contains inline snapshots but some tool messages also reference runtime .playwright-mcp/*.yml files not supplied; rely on preserved browser_snapshot records.",
+    "Mac preflight success and source association with r1 are accepted from Control task; Mac evidence ZIP does not include a new production source hash or standalone preflight log.",
+    "Historical Work EPERM remains environment-specific. Mac git status exit128 is metadata-related. Neither is an open Course Minimum blocker."
+  ]
+}

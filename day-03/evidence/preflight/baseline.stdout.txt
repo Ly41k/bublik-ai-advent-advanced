@@ -1,0 +1,803 @@
+....................................FFFFFFFF.F.......................... [ 65%]
+......................................                                   [100%]
+=================================== FAILURES ===================================
+______________ test_manifest_tampering_blocks_before_subprocesses ______________
+
+cls = <class 'importlib.metadata.Distribution'>, name = 'bublik-task-service'
+
+    @classmethod
+    def from_name(cls, name: str) -> Distribution:
+        """Return the Distribution for the given package name.
+    
+        :param name: The name of the distribution package to search for.
+        :return: The Distribution instance (or subclass thereof) for the named
+            package, if found.
+        :raises PackageNotFoundError: When the named package's distribution
+            metadata cannot be found.
+        :raises ValueError: When an invalid value is supplied for name.
+        """
+        if not name:
+            raise ValueError("A distribution name is required.")
+        try:
+>           return next(iter(cls.discover(name=name)))
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           StopIteration
+
+/root/.local/share/uv/python/cpython-3.13.3-linux-x86_64-gnu/lib/python3.13/importlib/metadata/__init__.py:407: StopIteration
+
+During handling of the above exception, another exception occurred:
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_manifest_tampering_blocks0')
+
+    def test_manifest_tampering_blocks_before_subprocesses(tmp_path: Path) -> None:
+        gate, manifest, sha = fixture_gate(tmp_path)
+        manifest.write_text('{"files": {}}', encoding="utf-8")
+        output = gate.ROOT / "local-evidence/blocked.json"
+        with patch.object(gate.subprocess, "run") as run:
+            assert (
+>               gate.main(
+                    [
+                        "--output",
+                        str(output),
+                        "--protected-manifest",
+                        str(manifest),
+                        "--protected-sha256",
+                        sha,
+                    ]
+                )
+                == 1
+            )
+
+tests/test_foundation_gate.py:116: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/run_checks.py:151: in main
+    name: importlib.metadata.version(name)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/root/.local/share/uv/python/cpython-3.13.3-linux-x86_64-gnu/lib/python3.13/importlib/metadata/__init__.py:987: in version
+    return distribution(distribution_name).version
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/root/.local/share/uv/python/cpython-3.13.3-linux-x86_64-gnu/lib/python3.13/importlib/metadata/__init__.py:960: in distribution
+    return Distribution.from_name(distribution_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+cls = <class 'importlib.metadata.Distribution'>, name = 'bublik-task-service'
+
+    @classmethod
+    def from_name(cls, name: str) -> Distribution:
+        """Return the Distribution for the given package name.
+    
+        :param name: The name of the distribution package to search for.
+        :return: The Distribution instance (or subclass thereof) for the named
+            package, if found.
+        :raises PackageNotFoundError: When the named package's distribution
+            metadata cannot be found.
+        :raises ValueError: When an invalid value is supplied for name.
+        """
+        if not name:
+            raise ValueError("A distribution name is required.")
+        try:
+            return next(iter(cls.discover(name=name)))
+        except StopIteration:
+>           raise PackageNotFoundError(name)
+E           importlib.metadata.PackageNotFoundError: No package metadata was found for bublik-task-service
+
+/root/.local/share/uv/python/cpython-3.13.3-linux-x86_64-gnu/lib/python3.13/importlib/metadata/__init__.py:409: PackageNotFoundError
+_________________ test_each_mandatory_failure_prevents_pass[0] _________________
+
+cls = <class 'importlib.metadata.Distribution'>, name = 'bublik-task-service'
+
+    @classmethod
+    def from_name(cls, name: str) -> Distribution:
+        """Return the Distribution for the given package name.
+    
+        :param name: The name of the distribution package to search for.
+        :return: The Distribution instance (or subclass thereof) for the named
+            package, if found.
+        :raises PackageNotFoundError: When the named package's distribution
+            metadata cannot be found.
+        :raises ValueError: When an invalid value is supplied for name.
+        """
+        if not name:
+            raise ValueError("A distribution name is required.")
+        try:
+>           return next(iter(cls.discover(name=name)))
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           StopIteration
+
+/root/.local/share/uv/python/cpython-3.13.3-linux-x86_64-gnu/lib/python3.13/importlib/metadata/__init__.py:407: StopIteration
+
+During handling of the above exception, another exception occurred:
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_each_mandatory_failure_pr0')
+failed_index = 0
+
+    @pytest.mark.parametrize("failed_index", range(7))
+    def test_each_mandatory_failure_prevents_pass(tmp_path: Path, failed_index: int) -> None:
+        """Aggregation unit test: synthetic returns are not check execution evidence."""
+        gate, manifest, sha = fixture_gate(tmp_path)
+        passed = "\n".join(f"test.py::test_{i} PASSED" for i in range(17)) + "\n17 passed"
+        returns = [
+            subprocess.CompletedProcess([], 1 if i == failed_index else 0, passed if i == 5 else "", "")
+            for i in range(7)
+        ]
+        output = gate.ROOT / "local-evidence/failed.json"
+        with patch.object(gate.subprocess, "run", side_effect=returns):
+            assert (
+>               gate.main(
+                    [
+                        "--output",
+                        str(output),
+                        "--protected-manifest",
+                        str(manifest),
+                        "--protected-sha256",
+                        sha,
+                    ]
+                )
+                == 1
+            )
+
+tests/test_foundation_gate.py:144: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/run_checks.py:151: in main
+    name: importlib.metadata.version(name)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/root/.local/share/uv/python/cpython-3.13.3-linux-x86_64-gnu/lib/python3.13/importlib/metadata/__init__.py:987: in version
+    return distribution(distribution_name).version
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/root/.local/share/uv/python/cpython-3.13.3-linux-x86_64-gnu/lib/python3.13/importlib/metadata/__init__.py:960: in distribution
+    return Distribution.from_name(distribution_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+cls = <class 'importlib.metadata.Distribution'>, name = 'bublik-task-service'
+
+    @classmethod
+    def from_name(cls, name: str) -> Distribution:
+        """Return the Distribution for the given package name.
+    
+        :param name: The name of the distribution package to search for.
+        :return: The Distribution instance (or subclass thereof) for the named
+            package, if found.
+        :raises PackageNotFoundError: When the named package's distribution
+            metadata cannot be found.
+        :raises ValueError: When an invalid value is supplied for name.
+        """
+        if not name:
+            raise ValueError("A distribution name is required.")
+        try:
+            return next(iter(cls.discover(name=name)))
+        except StopIteration:
+>           raise PackageNotFoundError(name)
+E           importlib.metadata.PackageNotFoundError: No package metadata was found for bublik-task-service
+
+/root/.local/share/uv/python/cpython-3.13.3-linux-x86_64-gnu/lib/python3.13/importlib/metadata/__init__.py:409: PackageNotFoundError
+_________________ test_each_mandatory_failure_prevents_pass[1] _________________
+
+cls = <class 'importlib.metadata.Distribution'>, name = 'bublik-task-service'
+
+    @classmethod
+    def from_name(cls, name: str) -> Distribution:
+        """Return the Distribution for the given package name.
+    
+        :param name: The name of the distribution package to search for.
+        :return: The Distribution instance (or subclass thereof) for the named
+            package, if found.
+        :raises PackageNotFoundError: When the named package's distribution
+            metadata cannot be found.
+        :raises ValueError: When an invalid value is supplied for name.
+        """
+        if not name:
+            raise ValueError("A distribution name is required.")
+        try:
+>           return next(iter(cls.discover(name=name)))
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           StopIteration
+
+/root/.local/share/uv/python/cpython-3.13.3-linux-x86_64-gnu/lib/python3.13/importlib/metadata/__init__.py:407: StopIteration
+
+During handling of the above exception, another exception occurred:
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_each_mandatory_failure_pr1')
+failed_index = 1
+
+    @pytest.mark.parametrize("failed_index", range(7))
+    def test_each_mandatory_failure_prevents_pass(tmp_path: Path, failed_index: int) -> None:
+        """Aggregation unit test: synthetic returns are not check execution evidence."""
+        gate, manifest, sha = fixture_gate(tmp_path)
+        passed = "\n".join(f"test.py::test_{i} PASSED" for i in range(17)) + "\n17 passed"
+        returns = [
+            subprocess.CompletedProcess([], 1 if i == failed_index else 0, passed if i == 5 else "", "")
+            for i in range(7)
+        ]
+        output = gate.ROOT / "local-evidence/failed.json"
+        with patch.object(gate.subprocess, "run", side_effect=returns):
+            assert (
+>               gate.main(
+                    [
+                        "--output",
+                        str(output),
+                        "--protected-manifest",
+                        str(manifest),
+                        "--protected-sha256",
+                        sha,
+                    ]
+                )
+                == 1
+            )
+
+tests/test_foundation_gate.py:144: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/run_checks.py:151: in main
+    name: importlib.metadata.version(name)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/root/.local/share/uv/python/cpython-3.13.3-linux-x86_64-gnu/lib/python3.13/importlib/metadata/__init__.py:987: in version
+    return distribution(distribution_name).version
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/root/.local/share/uv/python/cpython-3.13.3-linux-x86_64-gnu/lib/python3.13/importlib/metadata/__init__.py:960: in distribution
+    return Distribution.from_name(distribution_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+cls = <class 'importlib.metadata.Distribution'>, name = 'bublik-task-service'
+
+    @classmethod
+    def from_name(cls, name: str) -> Distribution:
+        """Return the Distribution for the given package name.
+    
+        :param name: The name of the distribution package to search for.
+        :return: The Distribution instance (or subclass thereof) for the named
+            package, if found.
+        :raises PackageNotFoundError: When the named package's distribution
+            metadata cannot be found.
+        :raises ValueError: When an invalid value is supplied for name.
+        """
+        if not name:
+            raise ValueError("A distribution name is required.")
+        try:
+            return next(iter(cls.discover(name=name)))
+        except StopIteration:
+>           raise PackageNotFoundError(name)
+E           importlib.metadata.PackageNotFoundError: No package metadata was found for bublik-task-service
+
+/root/.local/share/uv/python/cpython-3.13.3-linux-x86_64-gnu/lib/python3.13/importlib/metadata/__init__.py:409: PackageNotFoundError
+_________________ test_each_mandatory_failure_prevents_pass[2] _________________
+
+cls = <class 'importlib.metadata.Distribution'>, name = 'bublik-task-service'
+
+    @classmethod
+    def from_name(cls, name: str) -> Distribution:
+        """Return the Distribution for the given package name.
+    
+        :param name: The name of the distribution package to search for.
+        :return: The Distribution instance (or subclass thereof) for the named
+            package, if found.
+        :raises PackageNotFoundError: When the named package's distribution
+            metadata cannot be found.
+        :raises ValueError: When an invalid value is supplied for name.
+        """
+        if not name:
+            raise ValueError("A distribution name is required.")
+        try:
+>           return next(iter(cls.discover(name=name)))
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           StopIteration
+
+/root/.local/share/uv/python/cpython-3.13.3-linux-x86_64-gnu/lib/python3.13/importlib/metadata/__init__.py:407: StopIteration
+
+During handling of the above exception, another exception occurred:
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_each_mandatory_failure_pr2')
+failed_index = 2
+
+    @pytest.mark.parametrize("failed_index", range(7))
+    def test_each_mandatory_failure_prevents_pass(tmp_path: Path, failed_index: int) -> None:
+        """Aggregation unit test: synthetic returns are not check execution evidence."""
+        gate, manifest, sha = fixture_gate(tmp_path)
+        passed = "\n".join(f"test.py::test_{i} PASSED" for i in range(17)) + "\n17 passed"
+        returns = [
+            subprocess.CompletedProcess([], 1 if i == failed_index else 0, passed if i == 5 else "", "")
+            for i in range(7)
+        ]
+        output = gate.ROOT / "local-evidence/failed.json"
+        with patch.object(gate.subprocess, "run", side_effect=returns):
+            assert (
+>               gate.main(
+                    [
+                        "--output",
+                        str(output),
+                        "--protected-manifest",
+                        str(manifest),
+                        "--protected-sha256",
+                        sha,
+                    ]
+                )
+                == 1
+            )
+
+tests/test_foundation_gate.py:144: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/run_checks.py:151: in main
+    name: importlib.metadata.version(name)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/root/.local/share/uv/python/cpython-3.13.3-linux-x86_64-gnu/lib/python3.13/importlib/metadata/__init__.py:987: in version
+    return distribution(distribution_name).version
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/root/.local/share/uv/python/cpython-3.13.3-linux-x86_64-gnu/lib/python3.13/importlib/metadata/__init__.py:960: in distribution
+    return Distribution.from_name(distribution_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+cls = <class 'importlib.metadata.Distribution'>, name = 'bublik-task-service'
+
+    @classmethod
+    def from_name(cls, name: str) -> Distribution:
+        """Return the Distribution for the given package name.
+    
+        :param name: The name of the distribution package to search for.
+        :return: The Distribution instance (or subclass thereof) for the named
+            package, if found.
+        :raises PackageNotFoundError: When the named package's distribution
+            metadata cannot be found.
+        :raises ValueError: When an invalid value is supplied for name.
+        """
+        if not name:
+            raise ValueError("A distribution name is required.")
+        try:
+            return next(iter(cls.discover(name=name)))
+        except StopIteration:
+>           raise PackageNotFoundError(name)
+E           importlib.metadata.PackageNotFoundError: No package metadata was found for bublik-task-service
+
+/root/.local/share/uv/python/cpython-3.13.3-linux-x86_64-gnu/lib/python3.13/importlib/metadata/__init__.py:409: PackageNotFoundError
+_________________ test_each_mandatory_failure_prevents_pass[3] _________________
+
+cls = <class 'importlib.metadata.Distribution'>, name = 'bublik-task-service'
+
+    @classmethod
+    def from_name(cls, name: str) -> Distribution:
+        """Return the Distribution for the given package name.
+    
+        :param name: The name of the distribution package to search for.
+        :return: The Distribution instance (or subclass thereof) for the named
+            package, if found.
+        :raises PackageNotFoundError: When the named package's distribution
+            metadata cannot be found.
+        :raises ValueError: When an invalid value is supplied for name.
+        """
+        if not name:
+            raise ValueError("A distribution name is required.")
+        try:
+>           return next(iter(cls.discover(name=name)))
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           StopIteration
+
+/root/.local/share/uv/python/cpython-3.13.3-linux-x86_64-gnu/lib/python3.13/importlib/metadata/__init__.py:407: StopIteration
+
+During handling of the above exception, another exception occurred:
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_each_mandatory_failure_pr3')
+failed_index = 3
+
+    @pytest.mark.parametrize("failed_index", range(7))
+    def test_each_mandatory_failure_prevents_pass(tmp_path: Path, failed_index: int) -> None:
+        """Aggregation unit test: synthetic returns are not check execution evidence."""
+        gate, manifest, sha = fixture_gate(tmp_path)
+        passed = "\n".join(f"test.py::test_{i} PASSED" for i in range(17)) + "\n17 passed"
+        returns = [
+            subprocess.CompletedProcess([], 1 if i == failed_index else 0, passed if i == 5 else "", "")
+            for i in range(7)
+        ]
+        output = gate.ROOT / "local-evidence/failed.json"
+        with patch.object(gate.subprocess, "run", side_effect=returns):
+            assert (
+>               gate.main(
+                    [
+                        "--output",
+                        str(output),
+                        "--protected-manifest",
+                        str(manifest),
+                        "--protected-sha256",
+                        sha,
+                    ]
+                )
+                == 1
+            )
+
+tests/test_foundation_gate.py:144: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/run_checks.py:151: in main
+    name: importlib.metadata.version(name)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/root/.local/share/uv/python/cpython-3.13.3-linux-x86_64-gnu/lib/python3.13/importlib/metadata/__init__.py:987: in version
+    return distribution(distribution_name).version
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/root/.local/share/uv/python/cpython-3.13.3-linux-x86_64-gnu/lib/python3.13/importlib/metadata/__init__.py:960: in distribution
+    return Distribution.from_name(distribution_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+cls = <class 'importlib.metadata.Distribution'>, name = 'bublik-task-service'
+
+    @classmethod
+    def from_name(cls, name: str) -> Distribution:
+        """Return the Distribution for the given package name.
+    
+        :param name: The name of the distribution package to search for.
+        :return: The Distribution instance (or subclass thereof) for the named
+            package, if found.
+        :raises PackageNotFoundError: When the named package's distribution
+            metadata cannot be found.
+        :raises ValueError: When an invalid value is supplied for name.
+        """
+        if not name:
+            raise ValueError("A distribution name is required.")
+        try:
+            return next(iter(cls.discover(name=name)))
+        except StopIteration:
+>           raise PackageNotFoundError(name)
+E           importlib.metadata.PackageNotFoundError: No package metadata was found for bublik-task-service
+
+/root/.local/share/uv/python/cpython-3.13.3-linux-x86_64-gnu/lib/python3.13/importlib/metadata/__init__.py:409: PackageNotFoundError
+_________________ test_each_mandatory_failure_prevents_pass[4] _________________
+
+cls = <class 'importlib.metadata.Distribution'>, name = 'bublik-task-service'
+
+    @classmethod
+    def from_name(cls, name: str) -> Distribution:
+        """Return the Distribution for the given package name.
+    
+        :param name: The name of the distribution package to search for.
+        :return: The Distribution instance (or subclass thereof) for the named
+            package, if found.
+        :raises PackageNotFoundError: When the named package's distribution
+            metadata cannot be found.
+        :raises ValueError: When an invalid value is supplied for name.
+        """
+        if not name:
+            raise ValueError("A distribution name is required.")
+        try:
+>           return next(iter(cls.discover(name=name)))
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           StopIteration
+
+/root/.local/share/uv/python/cpython-3.13.3-linux-x86_64-gnu/lib/python3.13/importlib/metadata/__init__.py:407: StopIteration
+
+During handling of the above exception, another exception occurred:
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_each_mandatory_failure_pr4')
+failed_index = 4
+
+    @pytest.mark.parametrize("failed_index", range(7))
+    def test_each_mandatory_failure_prevents_pass(tmp_path: Path, failed_index: int) -> None:
+        """Aggregation unit test: synthetic returns are not check execution evidence."""
+        gate, manifest, sha = fixture_gate(tmp_path)
+        passed = "\n".join(f"test.py::test_{i} PASSED" for i in range(17)) + "\n17 passed"
+        returns = [
+            subprocess.CompletedProcess([], 1 if i == failed_index else 0, passed if i == 5 else "", "")
+            for i in range(7)
+        ]
+        output = gate.ROOT / "local-evidence/failed.json"
+        with patch.object(gate.subprocess, "run", side_effect=returns):
+            assert (
+>               gate.main(
+                    [
+                        "--output",
+                        str(output),
+                        "--protected-manifest",
+                        str(manifest),
+                        "--protected-sha256",
+                        sha,
+                    ]
+                )
+                == 1
+            )
+
+tests/test_foundation_gate.py:144: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/run_checks.py:151: in main
+    name: importlib.metadata.version(name)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/root/.local/share/uv/python/cpython-3.13.3-linux-x86_64-gnu/lib/python3.13/importlib/metadata/__init__.py:987: in version
+    return distribution(distribution_name).version
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/root/.local/share/uv/python/cpython-3.13.3-linux-x86_64-gnu/lib/python3.13/importlib/metadata/__init__.py:960: in distribution
+    return Distribution.from_name(distribution_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+cls = <class 'importlib.metadata.Distribution'>, name = 'bublik-task-service'
+
+    @classmethod
+    def from_name(cls, name: str) -> Distribution:
+        """Return the Distribution for the given package name.
+    
+        :param name: The name of the distribution package to search for.
+        :return: The Distribution instance (or subclass thereof) for the named
+            package, if found.
+        :raises PackageNotFoundError: When the named package's distribution
+            metadata cannot be found.
+        :raises ValueError: When an invalid value is supplied for name.
+        """
+        if not name:
+            raise ValueError("A distribution name is required.")
+        try:
+            return next(iter(cls.discover(name=name)))
+        except StopIteration:
+>           raise PackageNotFoundError(name)
+E           importlib.metadata.PackageNotFoundError: No package metadata was found for bublik-task-service
+
+/root/.local/share/uv/python/cpython-3.13.3-linux-x86_64-gnu/lib/python3.13/importlib/metadata/__init__.py:409: PackageNotFoundError
+_________________ test_each_mandatory_failure_prevents_pass[5] _________________
+
+cls = <class 'importlib.metadata.Distribution'>, name = 'bublik-task-service'
+
+    @classmethod
+    def from_name(cls, name: str) -> Distribution:
+        """Return the Distribution for the given package name.
+    
+        :param name: The name of the distribution package to search for.
+        :return: The Distribution instance (or subclass thereof) for the named
+            package, if found.
+        :raises PackageNotFoundError: When the named package's distribution
+            metadata cannot be found.
+        :raises ValueError: When an invalid value is supplied for name.
+        """
+        if not name:
+            raise ValueError("A distribution name is required.")
+        try:
+>           return next(iter(cls.discover(name=name)))
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           StopIteration
+
+/root/.local/share/uv/python/cpython-3.13.3-linux-x86_64-gnu/lib/python3.13/importlib/metadata/__init__.py:407: StopIteration
+
+During handling of the above exception, another exception occurred:
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_each_mandatory_failure_pr5')
+failed_index = 5
+
+    @pytest.mark.parametrize("failed_index", range(7))
+    def test_each_mandatory_failure_prevents_pass(tmp_path: Path, failed_index: int) -> None:
+        """Aggregation unit test: synthetic returns are not check execution evidence."""
+        gate, manifest, sha = fixture_gate(tmp_path)
+        passed = "\n".join(f"test.py::test_{i} PASSED" for i in range(17)) + "\n17 passed"
+        returns = [
+            subprocess.CompletedProcess([], 1 if i == failed_index else 0, passed if i == 5 else "", "")
+            for i in range(7)
+        ]
+        output = gate.ROOT / "local-evidence/failed.json"
+        with patch.object(gate.subprocess, "run", side_effect=returns):
+            assert (
+>               gate.main(
+                    [
+                        "--output",
+                        str(output),
+                        "--protected-manifest",
+                        str(manifest),
+                        "--protected-sha256",
+                        sha,
+                    ]
+                )
+                == 1
+            )
+
+tests/test_foundation_gate.py:144: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/run_checks.py:151: in main
+    name: importlib.metadata.version(name)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/root/.local/share/uv/python/cpython-3.13.3-linux-x86_64-gnu/lib/python3.13/importlib/metadata/__init__.py:987: in version
+    return distribution(distribution_name).version
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/root/.local/share/uv/python/cpython-3.13.3-linux-x86_64-gnu/lib/python3.13/importlib/metadata/__init__.py:960: in distribution
+    return Distribution.from_name(distribution_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+cls = <class 'importlib.metadata.Distribution'>, name = 'bublik-task-service'
+
+    @classmethod
+    def from_name(cls, name: str) -> Distribution:
+        """Return the Distribution for the given package name.
+    
+        :param name: The name of the distribution package to search for.
+        :return: The Distribution instance (or subclass thereof) for the named
+            package, if found.
+        :raises PackageNotFoundError: When the named package's distribution
+            metadata cannot be found.
+        :raises ValueError: When an invalid value is supplied for name.
+        """
+        if not name:
+            raise ValueError("A distribution name is required.")
+        try:
+            return next(iter(cls.discover(name=name)))
+        except StopIteration:
+>           raise PackageNotFoundError(name)
+E           importlib.metadata.PackageNotFoundError: No package metadata was found for bublik-task-service
+
+/root/.local/share/uv/python/cpython-3.13.3-linux-x86_64-gnu/lib/python3.13/importlib/metadata/__init__.py:409: PackageNotFoundError
+_________________ test_each_mandatory_failure_prevents_pass[6] _________________
+
+cls = <class 'importlib.metadata.Distribution'>, name = 'bublik-task-service'
+
+    @classmethod
+    def from_name(cls, name: str) -> Distribution:
+        """Return the Distribution for the given package name.
+    
+        :param name: The name of the distribution package to search for.
+        :return: The Distribution instance (or subclass thereof) for the named
+            package, if found.
+        :raises PackageNotFoundError: When the named package's distribution
+            metadata cannot be found.
+        :raises ValueError: When an invalid value is supplied for name.
+        """
+        if not name:
+            raise ValueError("A distribution name is required.")
+        try:
+>           return next(iter(cls.discover(name=name)))
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           StopIteration
+
+/root/.local/share/uv/python/cpython-3.13.3-linux-x86_64-gnu/lib/python3.13/importlib/metadata/__init__.py:407: StopIteration
+
+During handling of the above exception, another exception occurred:
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_each_mandatory_failure_pr6')
+failed_index = 6
+
+    @pytest.mark.parametrize("failed_index", range(7))
+    def test_each_mandatory_failure_prevents_pass(tmp_path: Path, failed_index: int) -> None:
+        """Aggregation unit test: synthetic returns are not check execution evidence."""
+        gate, manifest, sha = fixture_gate(tmp_path)
+        passed = "\n".join(f"test.py::test_{i} PASSED" for i in range(17)) + "\n17 passed"
+        returns = [
+            subprocess.CompletedProcess([], 1 if i == failed_index else 0, passed if i == 5 else "", "")
+            for i in range(7)
+        ]
+        output = gate.ROOT / "local-evidence/failed.json"
+        with patch.object(gate.subprocess, "run", side_effect=returns):
+            assert (
+>               gate.main(
+                    [
+                        "--output",
+                        str(output),
+                        "--protected-manifest",
+                        str(manifest),
+                        "--protected-sha256",
+                        sha,
+                    ]
+                )
+                == 1
+            )
+
+tests/test_foundation_gate.py:144: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/run_checks.py:151: in main
+    name: importlib.metadata.version(name)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/root/.local/share/uv/python/cpython-3.13.3-linux-x86_64-gnu/lib/python3.13/importlib/metadata/__init__.py:987: in version
+    return distribution(distribution_name).version
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/root/.local/share/uv/python/cpython-3.13.3-linux-x86_64-gnu/lib/python3.13/importlib/metadata/__init__.py:960: in distribution
+    return Distribution.from_name(distribution_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+cls = <class 'importlib.metadata.Distribution'>, name = 'bublik-task-service'
+
+    @classmethod
+    def from_name(cls, name: str) -> Distribution:
+        """Return the Distribution for the given package name.
+    
+        :param name: The name of the distribution package to search for.
+        :return: The Distribution instance (or subclass thereof) for the named
+            package, if found.
+        :raises PackageNotFoundError: When the named package's distribution
+            metadata cannot be found.
+        :raises ValueError: When an invalid value is supplied for name.
+        """
+        if not name:
+            raise ValueError("A distribution name is required.")
+        try:
+            return next(iter(cls.discover(name=name)))
+        except StopIteration:
+>           raise PackageNotFoundError(name)
+E           importlib.metadata.PackageNotFoundError: No package metadata was found for bublik-task-service
+
+/root/.local/share/uv/python/cpython-3.13.3-linux-x86_64-gnu/lib/python3.13/importlib/metadata/__init__.py:409: PackageNotFoundError
+__________________ test_protected_after_failure_prevents_pass __________________
+
+cls = <class 'importlib.metadata.Distribution'>, name = 'bublik-task-service'
+
+    @classmethod
+    def from_name(cls, name: str) -> Distribution:
+        """Return the Distribution for the given package name.
+    
+        :param name: The name of the distribution package to search for.
+        :return: The Distribution instance (or subclass thereof) for the named
+            package, if found.
+        :raises PackageNotFoundError: When the named package's distribution
+            metadata cannot be found.
+        :raises ValueError: When an invalid value is supplied for name.
+        """
+        if not name:
+            raise ValueError("A distribution name is required.")
+        try:
+>           return next(iter(cls.discover(name=name)))
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           StopIteration
+
+/root/.local/share/uv/python/cpython-3.13.3-linux-x86_64-gnu/lib/python3.13/importlib/metadata/__init__.py:407: StopIteration
+
+During handling of the above exception, another exception occurred:
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_protected_after_failure_p0')
+
+    def test_protected_after_failure_prevents_pass(tmp_path: Path) -> None:
+        gate, manifest, sha = fixture_gate(tmp_path)
+        output = gate.ROOT / "local-evidence/changed.json"
+        with (
+            patch.object(gate, "commands", return_value=()),
+            patch.object(gate, "verify_protected", side_effect=[None, ValueError("POSTCHECK_CHANGED")]),
+        ):
+            assert (
+>               gate.main(
+                    [
+                        "--output",
+                        str(output),
+                        "--protected-manifest",
+                        str(manifest),
+                        "--protected-sha256",
+                        sha,
+                    ]
+                )
+                == 1
+            )
+
+tests/test_foundation_gate.py:173: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/run_checks.py:151: in main
+    name: importlib.metadata.version(name)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/root/.local/share/uv/python/cpython-3.13.3-linux-x86_64-gnu/lib/python3.13/importlib/metadata/__init__.py:987: in version
+    return distribution(distribution_name).version
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/root/.local/share/uv/python/cpython-3.13.3-linux-x86_64-gnu/lib/python3.13/importlib/metadata/__init__.py:960: in distribution
+    return Distribution.from_name(distribution_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+cls = <class 'importlib.metadata.Distribution'>, name = 'bublik-task-service'
+
+    @classmethod
+    def from_name(cls, name: str) -> Distribution:
+        """Return the Distribution for the given package name.
+    
+        :param name: The name of the distribution package to search for.
+        :return: The Distribution instance (or subclass thereof) for the named
+            package, if found.
+        :raises PackageNotFoundError: When the named package's distribution
+            metadata cannot be found.
+        :raises ValueError: When an invalid value is supplied for name.
+        """
+        if not name:
+            raise ValueError("A distribution name is required.")
+        try:
+            return next(iter(cls.discover(name=name)))
+        except StopIteration:
+>           raise PackageNotFoundError(name)
+E           importlib.metadata.PackageNotFoundError: No package metadata was found for bublik-task-service
+
+/root/.local/share/uv/python/cpython-3.13.3-linux-x86_64-gnu/lib/python3.13/importlib/metadata/__init__.py:409: PackageNotFoundError
+=========================== short test summary info ============================
+FAILED tests/test_foundation_gate.py::test_manifest_tampering_blocks_before_subprocesses
+FAILED tests/test_foundation_gate.py::test_each_mandatory_failure_prevents_pass[0]
+FAILED tests/test_foundation_gate.py::test_each_mandatory_failure_prevents_pass[1]
+FAILED tests/test_foundation_gate.py::test_each_mandatory_failure_prevents_pass[2]
+FAILED tests/test_foundation_gate.py::test_each_mandatory_failure_prevents_pass[3]
+FAILED tests/test_foundation_gate.py::test_each_mandatory_failure_prevents_pass[4]
+FAILED tests/test_foundation_gate.py::test_each_mandatory_failure_prevents_pass[5]
+FAILED tests/test_foundation_gate.py::test_each_mandatory_failure_prevents_pass[6]
+FAILED tests/test_foundation_gate.py::test_protected_after_failure_prevents_pass
+9 failed, 101 passed in 1.19s

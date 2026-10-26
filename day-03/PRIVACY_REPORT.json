@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "scope": "Final 150 payload files excluding only the root final manifest, including the archived original manifest, current reports and all original Mac evidence; known-secret signatures and forbidden paths.",
+  "files_scanned": 150,
+  "findings": [],
+  "forbidden_paths": [],
+  "mac_records_preserved": 31,
+  "scenario_screenshots": 9,
+  "extra_original_preflight_screenshots": 1,
+  "screenshots_readability_verified": 10,
+  "visual_privacy_review": "Final UI-01/02/03 images and preflight inspected: local task UI only; source step PNGs already accepted by Control.",
+  "credentials_or_private_codex_journals_included": false,
+  "machine_bound_config_included": false,
+  "accepted_historical_paths": "Original runtime paths and user-agent retained as execution diagnostics; no host configuration copied.",
+  "historical_reports": "r1 privacy report is retained byte-for-byte under evidence/history/r1, current report supersedes its inventory."
+}

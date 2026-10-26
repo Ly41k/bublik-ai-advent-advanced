@@ -1,0 +1,11 @@
+{
+  "command": [
+    "/workspace/scratch/b0d13eb0cb28/.venv313/bin/python",
+    "-m",
+    "pytest",
+    "-q"
+  ],
+  "cwd": "app",
+  "exit_code": 0,
+  "scope": "final regression after import-order-only change; historical first-run is separate"
+}

@@ -1,0 +1,5 @@
+{
+  "change": "Import order only in src/bublik/main.py after successful historical first-run. No test or behavior changes.",
+  "first_run_main_snapshot": "evidence/code/production-at-first-run/src/bublik/main.py",
+  "final_main_sha256": "96af54d8eb7f8af9dd82852a3008b8cfd9b23f5728b4e2db0620e8e341ca6cbe"
+}

@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "r1_files_preserved_via_mapping": 94,
+  "mac_files_byte_identical": 44,
+  "app_files_byte_identical": 32,
+  "scenario_files_byte_identical": 3,
+  "code_evidence_files_byte_identical": 14,
+  "historical_logs_unchanged": true,
+  "original_prompt_and_generation_unchanged": true,
+  "production_changed": false,
+  "verification_script_changed": false,
+  "new_tests_models_mcp_executed": false
+}

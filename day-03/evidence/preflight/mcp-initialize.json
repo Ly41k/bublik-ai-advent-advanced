@@ -1,0 +1,33 @@
+{
+  "started_utc": "2026-10-26T05:39:33.371476+00:00",
+  "finished_utc": "2026-10-26T05:39:33.380665+00:00",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1792993173371,
+    "method": "initialize",
+    "params": {
+      "protocolVersion": "2025-03-26",
+      "capabilities": {},
+      "clientInfo": {
+        "name": "BublikTestingAgent",
+        "version": "1.0.0"
+      }
+    }
+  },
+  "response": {
+    "result": {
+      "protocolVersion": "2025-03-26",
+      "capabilities": {
+        "tools": {
+          "listChanged": true
+        }
+      },
+      "serverInfo": {
+        "name": "Playwright",
+        "version": "1.64.0-alpha-1790635538000"
+      }
+    },
+    "jsonrpc": "2.0",
+    "id": 1792993173371
+  }
+}

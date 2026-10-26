@@ -1,0 +1,25 @@
+{
+  "agent": "CodeTestingReportAgent",
+  "selected_utc": "2026-10-26T05:42:12.652448+00:00",
+  "baseline_sha": "6d0a0d73ba535b947a88eb08e5f54044ce6f9582",
+  "modules": [
+    {
+      "module": "bublik.api.dependencies",
+      "source": "app/src/bublik/api/dependencies.py",
+      "test_file": "tests/test_d3_dependencies.py",
+      "gap": "Existing HTTP tests exercise only correctly wired services. Wrong service types and the resulting HTTP 500 integration behavior are not checked."
+    },
+    {
+      "module": "bublik.application.service",
+      "source": "app/src/bublik/application/service.py",
+      "test_file": "tests/test_d3_service_failures.py",
+      "gap": "Existing tests check domain errors and successful repository calls, but not propagation of repository read/write failures or validation-before-read ordering."
+    },
+    {
+      "module": "bublik.infrastructure.memory_repository",
+      "source": "app/src/bublik/infrastructure/memory_repository.py",
+      "test_file": "tests/test_d3_memory_concurrency.py",
+      "gap": "Existing tests use one thread and individual task values. Concurrent writes/reads of distinct identifiers and preservation of siblings during replacement are not exercised."
+    }
+  ]
+}

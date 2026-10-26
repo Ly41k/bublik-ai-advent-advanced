@@ -1,0 +1,42 @@
+{
+  "started_utc": "2026-10-26T05:42:44.632355+00:00",
+  "command": [
+    "/workspace/scratch/b0d13eb0cb28/.venv313/bin/python",
+    "-m",
+    "pytest",
+    "-vv",
+    "--junitxml=/workspace/scratch/b0d13eb0cb28/bublik-ai-advent-advanced/day-03/evidence/code/first-run/junit.xml",
+    "tests/test_d3_dependencies.py",
+    "tests/test_d3_service_failures.py",
+    "tests/test_d3_memory_concurrency.py"
+  ],
+  "cwd": "day-03/app",
+  "environment": {
+    "PYTHONPATH": "src"
+  },
+  "generated_test_sha256": {
+    "tests/test_d3_dependencies.py": "714d55506ea311c953c7ccf0be26e5a5008717704555c85b9459b3bb3907b912",
+    "tests/test_d3_service_failures.py": "8ebef793f5089d4ca7b6a78faaf0d08b687ea67f4ed7abab5ce8d5717700c52d",
+    "tests/test_d3_memory_concurrency.py": "dbffeb70e117bfd957bdca16dacfc0b6a181190fd1b5b6bf4a628f58268f598e"
+  },
+  "production_sha256": {
+    "src/bublik/__init__.py": "99d2b15d9afb522cb5b4ba3f9f45595da7c22928d83775e74da64ab5ab5f9a1a",
+    "src/bublik/api/__init__.py": "622ac68f5d6f19ae8dd65a4efcd21539fcf3e440adb50e8f891f2001a69f2df6",
+    "src/bublik/api/dependencies.py": "08f9dc2baad342663d9f080ca15dd193c832f4b423d5a715a89b9c99ab8cc120",
+    "src/bublik/api/routes.py": "5ed91abac2b725a6b3a984274a25f415df28094f8ba4895cf269b702ae02e657",
+    "src/bublik/api/schemas.py": "5f1ea9f9ad4041bf188119bc759a046f9620912a8504b9a8d7ac60f1eaa9960b",
+    "src/bublik/application/__init__.py": "0b87fefd82e752640c79bbe00b6fc068116d86f15ff46a06a72bf5cfb7086af7",
+    "src/bublik/application/repository.py": "2c189cbe4ba09c43606f049fac69155cd4ee45d75a71670b0a6771bef766430f",
+    "src/bublik/application/service.py": "3e2a2ef8b29464bbb3fe6bdf86e5ada64cf315d05f781849cb435a15979e7d1c",
+    "src/bublik/domain/__init__.py": "8142ec8ee322403256ceb2ed22eece12959b0f6f605213470c06d0fff0415647",
+    "src/bublik/domain/errors.py": "ccf423f968603bdec12276099a8d49bd5cb20d162b39b1a2e5751f9ff879bc3c",
+    "src/bublik/domain/task.py": "14277bd2a7d9fb2986493df226d3ac7482bdeb39bfff7e5c6fefa4ec5d4b7695",
+    "src/bublik/infrastructure/__init__.py": "914d6798b1c71ef3544d1cdeac5f10e49bb7d48e0a0fdf4f1e39382a4be36f6e",
+    "src/bublik/infrastructure/memory_repository.py": "7bbd048d3dc66e6ba585c3d8a5f8ff507701699e86fa6a82b2328564b77bfbf2",
+    "src/bublik/main.py": "872e3da7b0165c96b5013e35d8bebb582ae260ea2c13caf57921ac25ab6d76ac",
+    "src/bublik/ui.html": "0831e7ab74e20ea590dc5c2bebcb8f86dad527683f1e4a9e31e57f8b9de511f9"
+  },
+  "status": "PASS",
+  "exit_code": 0,
+  "finished_utc": "2026-10-26T05:42:45.123914+00:00"
+}

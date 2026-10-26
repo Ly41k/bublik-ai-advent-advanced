@@ -1,0 +1,31 @@
+{
+  "started_utc": "2026-10-26T05:40:47.917445+00:00",
+  "finished_utc": "2026-10-26T05:40:48.450462+00:00",
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1792993247917,
+    "method": "tools/call",
+    "params": {
+      "name": "browser_take_screenshot",
+      "arguments": {
+        "filename": "evidence/preflight/browser-health.png",
+        "type": "png",
+        "scale": "css",
+        "fullPage": true
+      }
+    }
+  },
+  "response": {
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "### Error\nError: async initializeServer: listen EPERM: operation not permitted /tmp/pw-7505d64a/browser/browser-e9f1df.sock"
+        }
+      ],
+      "isError": true
+    },
+    "jsonrpc": "2.0",
+    "id": 1792993247917
+  }
+}
