@@ -1,0 +1,155 @@
+{
+  "scope": "PUBLIC_DERIVATIVES_ONLY_ORIGINALS_UNMODIFIED",
+  "exports": [
+    {
+      "exported_path": "evidence/turns/turn-01-answer.md",
+      "redactions": {
+        "private_home_paths": 1,
+        "temporary_paths": 1,
+        "workspace_paths": 0,
+        "history_markers": 0
+      },
+      "original_statuses_changed": false
+    },
+    {
+      "exported_path": "evidence/turns/turn-02-answer.md",
+      "redactions": {
+        "private_home_paths": 2,
+        "temporary_paths": 5,
+        "workspace_paths": 0,
+        "history_markers": 0
+      },
+      "original_statuses_changed": false
+    },
+    {
+      "exported_path": "evidence/turns/turn-03-answer.md",
+      "redactions": {
+        "private_home_paths": 0,
+        "temporary_paths": 0,
+        "workspace_paths": 0,
+        "history_markers": 0
+      },
+      "original_statuses_changed": false
+    },
+    {
+      "exported_path": "evidence/turns/turn-04-answer.md",
+      "redactions": {
+        "private_home_paths": 0,
+        "temporary_paths": 0,
+        "workspace_paths": 0,
+        "history_markers": 1
+      },
+      "original_statuses_changed": false
+    },
+    {
+      "exported_path": "evidence/turns/turn-05-answer.md",
+      "redactions": {
+        "private_home_paths": 0,
+        "temporary_paths": 0,
+        "workspace_paths": 0,
+        "history_markers": 1
+      },
+      "original_statuses_changed": false
+    },
+    {
+      "exported_path": "evidence/turns/turn-06-answer.md",
+      "redactions": {
+        "private_home_paths": 1,
+        "temporary_paths": 0,
+        "workspace_paths": 0,
+        "history_markers": 1
+      },
+      "original_statuses_changed": false
+    },
+    {
+      "exported_path": "evidence/turns/turn-07-answer.md",
+      "redactions": {
+        "private_home_paths": 1,
+        "temporary_paths": 1,
+        "workspace_paths": 0,
+        "history_markers": 1
+      },
+      "original_statuses_changed": false
+    },
+    {
+      "exported_path": "evidence/turns/turn-08-answer.md",
+      "redactions": {
+        "private_home_paths": 0,
+        "temporary_paths": 0,
+        "workspace_paths": 0,
+        "history_markers": 2
+      },
+      "original_statuses_changed": false
+    },
+    {
+      "exported_path": "evidence/turns/turn-09-answer.md",
+      "redactions": {
+        "private_home_paths": 0,
+        "temporary_paths": 0,
+        "workspace_paths": 0,
+        "history_markers": 2
+      },
+      "original_statuses_changed": false
+    },
+    {
+      "exported_path": "evidence/turns/turn-10-answer.md",
+      "redactions": {
+        "private_home_paths": 0,
+        "temporary_paths": 0,
+        "workspace_paths": 0,
+        "history_markers": 2
+      },
+      "original_statuses_changed": false
+    },
+    {
+      "exported_path": "evidence/bugfix/collected.log",
+      "redactions": {
+        "private_home_paths": 1,
+        "temporary_paths": 1,
+        "workspace_paths": 0,
+        "history_markers": 0
+      },
+      "original_statuses_changed": false
+    },
+    {
+      "exported_path": "evidence/bugfix/red_expected.log",
+      "redactions": {
+        "private_home_paths": 1,
+        "temporary_paths": 1,
+        "workspace_paths": 0,
+        "history_markers": 0
+      },
+      "original_statuses_changed": false
+    },
+    {
+      "exported_path": "evidence/bugfix/green.log",
+      "redactions": {
+        "private_home_paths": 1,
+        "temporary_paths": 1,
+        "workspace_paths": 0,
+        "history_markers": 0
+      },
+      "original_statuses_changed": false
+    },
+    {
+      "exported_path": "research/storage-research-turn03.md",
+      "redactions": {
+        "private_home_paths": 0,
+        "temporary_paths": 0,
+        "workspace_paths": 0,
+        "history_markers": 1
+      },
+      "original_statuses_changed": false
+    },
+    {
+      "exported_path": "research/researcher-v4-turn10-answer.md",
+      "redactions": {
+        "private_home_paths": 0,
+        "temporary_paths": 0,
+        "workspace_paths": 0,
+        "history_markers": 2
+      },
+      "original_statuses_changed": false
+    }
+  ]
+}

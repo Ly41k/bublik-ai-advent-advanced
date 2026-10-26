@@ -1,0 +1,31 @@
+{
+  "v3": {
+    "technical": "PASS_HISTORICAL",
+    "user_human_signoff": "NOT_ACCEPTED"
+  },
+  "v4": {
+    "actual_turn": 10,
+    "technical": "TECHNICAL_PASS_WITH_DECLARED_EXPORT_LIMITATION",
+    "assistant_editorial": "PARTIAL",
+    "user_human_signoff": "ACCEPTED",
+    "missing_original_admission_receipt": true,
+    "admission_sha256": "ef447a9de38fea919770df6fa33db48b4245f27e1da5b3096c81f881507a8579",
+    "receipt_reconstruction": "PERMANENTLY_STOPPED_RECEIPT_STAYS_MISSING",
+    "previous_current_status_as_of_r1": "NOT_GIVEN",
+    "decision_record": "../decisions/RESEARCHER_V4_ACCEPTED_2026-10-25.json"
+  },
+  "v5": {
+    "offline_contract_tests": "38_PASS_HISTORICAL",
+    "integration_regressions": "91_PASS_HISTORICAL",
+    "native_loaded": "NOT_RUN",
+    "actual_model_answer": "NOT_RUN",
+    "user_human_signoff": "NOT_GIVEN",
+    "state": "DEFERRED_NOT_RUN",
+    "additional_trial_required": false
+  },
+  "current_model_budget": "10/11",
+  "new_model_turns": 0,
+  "human_decision_inferred": false,
+  "turn11": "CANCELLED",
+  "current_decision_source": "BUBLIK-D2-RESEARCHER-FINAL-DECISION"
+}

@@ -1,0 +1,55 @@
+{
+  "active_public_instruction_exports": {
+    "tester": "bug_fix_engineer-v3",
+    "researcher": "researcher-v4"
+  },
+  "scope": "Offline instruction selection only; not native deployment",
+  "versions": {
+    "6bca5743c38b1281d7ef72082f2b463f0425418b16dee7578e21b5a6e4a1a2cf": {
+      "name": "bug_fix_engineer-v1.md",
+      "profile_sha256": "35133f7885abd844605a207904631dcdc3e924f60c60504fea5de8fc7096326b",
+      "instruction_channel": "developerInstructions"
+    },
+    "691ce8c8f316960efb32ee88673f6048bbe20163ec9a4387d1ca631ff26aa224": {
+      "name": "bug_fix_engineer-v2.md",
+      "profile_sha256": "8a5485203953fdc8651c8e584606e2a03a38bab7be7645583f73bc35708b0a9d",
+      "instruction_channel": "developerInstructions"
+    },
+    "4c9247225f296cef3a895ad87952083404bbec4d439ceacead704bdc0f942e68": {
+      "name": "bug_fix_engineer-v3.md",
+      "profile_sha256": "e010112da8fabf00658c6b7e20c0f1acf6842969ec51e6a2f9d086c6e62f7c0c",
+      "instruction_channel": "developerInstructions"
+    },
+    "ace8adca2502bc377a847551f753adca22e12cb30765ea5dd54ab08936f8e1e3": {
+      "name": "researcher-v1.md",
+      "profile_sha256": "b68ae5a8dd54c3dbe3c594c38bd0cb9204e779e882464226662ead0d6dfd76b8",
+      "instruction_channel": "developerInstructions"
+    },
+    "48ed541ecc1c6a23ec3eb08ab975eb59262b4ee52066514292089acaa0bd96c4": {
+      "name": "researcher-v2.md",
+      "profile_sha256": "d68621d17bee33183f6276fc3ec6625dfbce2642e332a82a2c80145271c4296d",
+      "instruction_channel": "developerInstructions"
+    },
+    "3cb72312ce49299314d9a7da69357c3d8fbe600f1a725de41aecb269842721a2": {
+      "name": "researcher-v3.md",
+      "profile_sha256": "889c264e120448ce8d2ead41cb0868825b4635501068b60b8bf93b68c6c3870c",
+      "instruction_channel": "developerInstructions"
+    },
+    "9f84c623da409d4541cc2924f0e783e4fe27fc4195bc7d8654a2ba9b1a826a08": {
+      "name": "researcher-v4.md",
+      "profile_sha256": "b8e3299866fcbd93474ac50a7b0b47d73c49c29617f3ca61fa70b0b97dce2d57",
+      "instruction_channel": "developerInstructions"
+    }
+  },
+  "researcher_v5": {
+    "state": "DEFERRED_NOT_RUN",
+    "native_loaded": "NOT_RUN",
+    "real_answer": "NOT_RUN",
+    "human_signoff": "NOT_GIVEN",
+    "profile_sha256": "0502e676e96807a23ad1225804256dd87a4c8dded190d8159d0764e7d674f12a",
+    "additional_trial_required": false
+  },
+  "researcher_v4_user_acceptance": "ACCEPTED",
+  "decision_record": "../decisions/RESEARCHER_V4_ACCEPTED_2026-10-25.json",
+  "turn11": "CANCELLED"
+}

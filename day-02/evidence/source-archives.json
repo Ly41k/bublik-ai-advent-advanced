@@ -1,0 +1,44 @@
+[
+  {
+    "source_id": "A04",
+    "name": "bublik-day2-bugfix-v2-r4.zip",
+    "archive_sha256": "6e13f6840734e4169e9bc5a77dc8df0c0c6d3e09b56b21dd2968d3da2c3a375b",
+    "manifest_file_entries_verified": 127,
+    "status": "PASS"
+  },
+  {
+    "source_id": "A26",
+    "name": "bublik-day2-gate3-final-review.zip",
+    "archive_sha256": "3e4df8f4362dc09d806a6fe8b0563c18f499da93e12e6e5bd4bcde6f9429cd0f",
+    "manifest_file_entries_verified": 426,
+    "status": "PASS"
+  },
+  {
+    "source_id": "A38",
+    "name": "bublik-day2-gate4-review-with-screenshots-r2.zip",
+    "archive_sha256": "161fb6a3518f62105bc3e52fe0a1b70afcc5e9f9fc4d334cf895127ff7116837",
+    "manifest_file_entries_verified": 49,
+    "status": "PASS"
+  },
+  {
+    "source_id": "A43",
+    "name": "bublik-day2-researcher-v4-turn10-r2.zip",
+    "archive_sha256": "d4c609702dbc3122b81f7c907c9206d93e3a09803b001c584f63ce428752a742",
+    "manifest_file_entries_verified": 309,
+    "status": "PASS"
+  },
+  {
+    "source_id": "A44",
+    "name": "bublik-day2-researcher-v4-turn10-independent-review-r1.zip",
+    "archive_sha256": "aa01b94bc8dd275fc2b2d63850474beaab6147d282b610eaa5dd27b5e7b7afb7",
+    "manifest_file_entries_verified": 426,
+    "status": "PASS"
+  },
+  {
+    "source_id": "A48",
+    "name": "bublik-day2-researcher-v5-integration-preparation-r1.zip",
+    "archive_sha256": "6d3932a98f4dd286ad91637c0000f3bf795bf2dd9d07d92a71ff2f03a785903e",
+    "manifest_file_entries_verified": 423,
+    "status": "PASS"
+  }
+]

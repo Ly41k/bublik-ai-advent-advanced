@@ -1,0 +1,12 @@
+{
+  "status": "PASS_EXISTING_BYTES_ONLY",
+  "main_sha256": "e80bc0c17c120c74b25992155e8abaf29407d3bc56c5f1cd50e66b2490285121",
+  "budget_sha256": "afba3b0790ce5fe58d76d97a888cd70031aa192b7e55a242110145a3f8bcf016",
+  "main_events": 19802,
+  "budget_events": 28,
+  "hash_chains": "PASS",
+  "ten_actual_rpc_replays": "PASS",
+  "new_payloads_sent": 0,
+  "private_journals_exported": false,
+  "hidden_server_compaction": "NOT_CLAIMED"
+}

@@ -1,0 +1,65 @@
+{
+  "screenshots_in_public_candidate": 0,
+  "reason": "Original Terminal pixels include private machine paths/history; originals excluded, logs supplied instead.",
+  "historical_views": [
+    {
+      "id": "01-bug",
+      "title": "Bug Fix historical Attempt 02",
+      "original_sha256": "2939be6df02f41bd5ea8c20cf68cc682ed2c25ad21bfdd0f9b03fe03d6b48549",
+      "original_live_capture": false,
+      "public_pixels": "EXCLUDED"
+    },
+    {
+      "id": "02-red",
+      "title": "RED_EXPECTED",
+      "original_sha256": "d5b0e9549f0e8619855cd3fb64d763674205575b383ea0f6a1aa7fb4d7cdbc16",
+      "original_live_capture": false,
+      "public_pixels": "EXCLUDED"
+    },
+    {
+      "id": "03-green",
+      "title": "GREEN",
+      "original_sha256": "8a6f8d7a511646c31639c6e5f9a062999bb866f58c3d5af3c02dbcee33c5053e",
+      "original_live_capture": false,
+      "public_pixels": "EXCLUDED"
+    },
+    {
+      "id": "04-research",
+      "title": "Researcher",
+      "original_sha256": "dc5229f366cc7abba57300c369ba3b0c3c5cb9bbafc7bcc60b952b67ffdad3dc",
+      "original_live_capture": false,
+      "public_pixels": "EXCLUDED"
+    },
+    {
+      "id": "05-switch",
+      "title": "Profile switching",
+      "original_sha256": "282af441e34286540b414c36a263b5c730a29575331309b9ce94de38e663dfa7",
+      "original_live_capture": false,
+      "public_pixels": "EXCLUDED"
+    },
+    {
+      "id": "06-restart",
+      "title": "Restart/history",
+      "original_sha256": "1bffaa5fd2472dc2b6526812b49b3a8c4c8636b8e5894fe23fafe758c5c00a17",
+      "original_live_capture": false,
+      "public_pixels": "EXCLUDED"
+    },
+    {
+      "id": "07-final-gate",
+      "title": "Final technical Quality Gate",
+      "original_sha256": "f6751dfdfaff93bcedcb620a123410dd1d83f14e9aca25dfb14f93123e71cc8a",
+      "original_live_capture": false,
+      "public_pixels": "EXCLUDED"
+    },
+    {
+      "id": "08-git-index",
+      "title": "Actual Mac Git audit",
+      "original_sha256": "c35aa82796d444d8fc9e35c78ffaae1b7cebddb8be756a41b335370c6619996d",
+      "original_live_capture": false,
+      "public_pixels": "EXCLUDED"
+    }
+  ],
+  "appendix_originals_excluded": 2,
+  "pixel_redaction_performed": false,
+  "limitation": "No claim that a historical evidence-view screenshot proves a successful first live run."
+}

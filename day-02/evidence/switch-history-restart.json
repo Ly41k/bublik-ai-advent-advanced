@@ -1,0 +1,58 @@
+{
+  "scope": "SANITIZED_HISTORICAL_OBSERVATIONS",
+  "source_sha256": "8cbd94062af1de7906d741e485d716e49c0f6cff1e7a667dd3f155e8eb3a87aa",
+  "same_user_conversation": true,
+  "turns": [
+    {
+      "absolute_turn": 7,
+      "profile": "tester",
+      "profile_version": "v3",
+      "developer_sha256": "4c9247225f296cef3a895ad87952083404bbec4d439ceacead704bdc0f942e68",
+      "pid": 92956,
+      "startup_active": "tester",
+      "replay_events": 23,
+      "payload_sha256": "469eba075c09b6dc4c266d5da24e7a434c1ea8258e1a2cd13664194e824622cc",
+      "replay_bytes": 91683,
+      "full_replay": "PASS",
+      "files_unchanged": true,
+      "response_sha256": "b220f7ee66631874f7088d2f9536b6d7e519c6c3a989e04ba3d70d0710c1bc4d"
+    },
+    {
+      "absolute_turn": 8,
+      "profile": "researcher",
+      "profile_version": "v3",
+      "developer_sha256": "3cb72312ce49299314d9a7da69357c3d8fbe600f1a725de41aecb269842721a2",
+      "pid": 92956,
+      "startup_active": "tester",
+      "replay_events": 27,
+      "payload_sha256": "c4f5d158e46b3a035c915581afaaa4b6362ba2133b9edbb333e59e0a6a4c7445",
+      "replay_bytes": 107607,
+      "full_replay": "PASS",
+      "files_unchanged": true,
+      "response_sha256": "f177815ca9ab64a7515bf3f5faced436d932c8d407a54fc4b963cec93d8caad9"
+    },
+    {
+      "absolute_turn": 9,
+      "profile": "researcher",
+      "profile_version": "v3",
+      "developer_sha256": "3cb72312ce49299314d9a7da69357c3d8fbe600f1a725de41aecb269842721a2",
+      "pid": 93237,
+      "startup_active": "researcher",
+      "replay_events": 30,
+      "payload_sha256": "42c819668e0adaa0b294d0ea900e4b212563ea2275a54c18d181e3fdc715e19f",
+      "replay_bytes": 129137,
+      "full_replay": "PASS",
+      "files_unchanged": true,
+      "response_sha256": "5f3be1fe14a7de041ccf6afe40e6d83f8875f7d5588f8a9b83157c3fabd7e2e1"
+    }
+  ],
+  "restart": {
+    "old_pid": 92956,
+    "new_pid": 93237,
+    "old_exit_code": 0,
+    "new_exit_code": 0,
+    "active_researcher_restored": true,
+    "all_user_and_assistant_messages_replayed": true
+  },
+  "limitation": "Host console process restarted. Codex global state durability and Task Service RAM persistence are not asserted."
+}

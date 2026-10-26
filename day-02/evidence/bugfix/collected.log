@@ -1,0 +1,26 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.13.3, pytest-9.1.1, pluggy-1.7.0 -- <PRIVATE_HOME_PATH>
+rootdir: <PRIVATE_RUNTIME_PATH>
+configfile: pyproject.toml
+plugins: anyio-4.15.1
+collecting ... collected 13 items
+
+<Dir app>
+  <Dir tests>
+    <Module test_task_status_invariant.py>
+      Task status invariants hold on construction and dataclass replacement.
+      <Function test_constructor_rejects_invalid_status[None]>
+      <Function test_constructor_rejects_invalid_status[42]>
+      <Function test_constructor_rejects_invalid_status[invalid-status]>
+      <Function test_constructor_rejects_invalid_status[status3]>
+      <Function test_constructor_rejects_invalid_status[status4]>
+      <Function test_replace_rejects_invalid_status[None]>
+      <Function test_replace_rejects_invalid_status[42]>
+      <Function test_replace_rejects_invalid_status[invalid-status]>
+      <Function test_replace_rejects_invalid_status[status3]>
+      <Function test_replace_rejects_invalid_status[status4]>
+      <Function test_supported_status_survives_construction_and_replace[todo]>
+      <Function test_supported_status_survives_construction_and_replace[done]>
+      <Function test_default_status_is_todo>
+
+========================= 13 tests collected in 0.01s ==========================

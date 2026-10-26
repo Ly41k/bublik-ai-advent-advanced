@@ -1,0 +1,44 @@
+{
+  "status": "PASS",
+  "python": "3.13.3",
+  "scope": "HISTORICAL_MAC_PROGRAMMING_ONLY",
+  "source_sha256": "7f23ded303462b0b9f972abbb6f7628c0330c5a8903c6c2fc2cda615f5d1b583",
+  "checks": [
+    {
+      "id": "compile",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "id": "import",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "id": "ruff",
+      "exit_code": 0,
+      "stdout": "All checks passed!\n",
+      "stderr": ""
+    },
+    {
+      "id": "format",
+      "exit_code": 0,
+      "stdout": "30 files already formatted\n",
+      "stderr": ""
+    },
+    {
+      "id": "pytest",
+      "exit_code": 0,
+      "stdout": "........................................................................ [ 65%]\n......................................                                   [100%]\n110 passed in 1.13s\n",
+      "stderr": ""
+    },
+    {
+      "id": "acceptance17",
+      "exit_code": 0,
+      "stdout": "============================= test session starts ==============================\nplatform darwin -- Python 3.13.3, pytest-9.1.1, pluggy-1.7.0 -- <PRIVATE_HOME_PATH>\nrootdir: <PRIVATE_TEMP_PATH>\nconfigfile: ../../../../bublik-final-gate-78dhn487/app/pyproject.toml\nplugins: anyio-4.15.1\ncollecting ... collected 17 items\n\n../../bublik-day2-r4.RLrrDd/bublik-day2-handoff/day-02/control/test_external_acceptance.py::test_status_round_trip_and_repeated_requests PASSED [  5%]\n../../bublik-day2-r4.RLrrDd/bublik-day2-handoff/day-02/control/test_external_acceptance.py::test_unknown_task_returns_exact_error PASSED [ 11%]\n../../bublik-day2-r4.RLrrDd/bublik-day2-handoff/day-02/control/test_external_acceptance.py::test_malformed_identifier_is_rejected PASSED [ 17%]\n../../bublik-day2-r4.RLrrDd/bublik-day2-handoff/day-02/control/test_external_acceptance.py::test_invalid_payload_does_not_change_storage[payload0] PASSED [ 23%]\n../../bublik-day2-r4.RLrrDd/bublik-day2-handoff/day-02/control/test_external_acceptance.py::test_invalid_payload_does_not_change_storage[payload1] PASSED [ 29%]\n../../bublik-day2-r4.RLrrDd/bublik-day2-handoff/day-02/control/test_external_acceptance.py::test_invalid_payload_does_not_change_storage[payload2] PASSED [ 35%]\n../../bublik-day2-r4.RLrrDd/bublik-day2-handoff/day-02/control/test_external_acceptance.py::test_invalid_payload_does_not_change_storage[payload3] PASSED [ 41%]\n../../bublik-day2-r4.RLrrDd/bublik-day2-handoff/day-02/control/test_external_acceptance.py::test_invalid_payload_does_not_change_storage[payload4] PASSED [ 47%]\n../../bublik-day2-r4.RLrrDd/bublik-day2-handoff/day-02/control/test_external_acceptance.py::test_invalid_payload_does_not_change_storage[payload5] PASSED [ 52%]\n../../bublik-day2-r4.RLrrDd/bublik-day2-handoff/day-02/control/test_external_acceptance.py::test_invalid_payload_does_not_change_storage[payload6] PASSED [ 58%]\n../../bublik-day2-r4.RLrrDd/bublik-day2-handoff/day-02/control/test_external_acceptance.py::test_invalid_payload_does_not_change_storage[payload7] PASSED [ 64%]\n../../bublik-day2-r4.RLrrDd/bublik-day2-handoff/day-02/control/test_external_acceptance.py::test_invalid_payload_does_not_change_storage[payload8] PASSED [ 70%]\n../../bublik-day2-r4.RLrrDd/bublik-day2-handoff/day-02/control/test_external_acceptance.py::test_invalid_payload_does_not_change_storage[payload9] PASSED [ 76%]\n../../bublik-day2-r4.RLrrDd/bublik-day2-handoff/day-02/control/test_external_acceptance.py::test_invalid_payload_does_not_change_storage[payload10] PASSED [ 82%]\n../../bublik-day2-r4.RLrrDd/bublik-day2-handoff/day-02/control/test_external_acceptance.py::test_invalid_payload_does_not_change_storage[payload11] PASSED [ 88%]\n../../bublik-day2-r4.RLrrDd/bublik-day2-handoff/day-02/control/test_external_acceptance.py::test_missing_body_is_rejected_without_changing_task PASSED [ 94%]\n../../bublik-day2-r4.RLrrDd/bublik-day2-handoff/day-02/control/test_external_acceptance.py::test_update_does_not_change_another_task PASSED [100%]\n\n============================== 17 passed in 0.29s ==============================\n",
+      "stderr": ""
+    }
+  ]
+}

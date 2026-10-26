@@ -1,0 +1,27 @@
+{
+  "scope": "CURRENT_OFFLINE_PACKAGING_CHECKS_ONLY",
+  "python": "3.12.14",
+  "source_compile_count": 30,
+  "source_compile": "PASS",
+  "pure_profile_parser": "PASS_VALID_AND_REJECTED_INPUTS",
+  "profile_instruction_sha256": {
+    "tester": "4c9247225f296cef3a895ad87952083404bbec4d439ceacead704bdc0f942e68",
+    "researcher": "9f84c623da409d4541cc2924f0e783e4fe27fc4195bc7d8654a2ba9b1a826a08"
+  },
+  "copied_or_projected_files_verified": 69,
+  "new_model_turns": 0,
+  "native_runtime_imports": "NONE",
+  "app_tests_current_run": "NOT_RUN",
+  "historical_app_gate": "110_PYTEST_17_EXTERNAL_PASS_MAC_ONLY",
+  "manifest_check": "PASS",
+  "privacy_check": "PASS_TARGETED_SCAN_AND_ALLOWLIST",
+  "privacy_findings": 0,
+  "relative_document_links": "PASS",
+  "historical_input_originals": "MANIFESTS_PASS_NO_WRITES",
+  "revision": "r2",
+  "historical_provenance_files_unchanged": 69,
+  "current_researcher_user_acceptance": "ACCEPTED",
+  "v5": "DEFERRED_NOT_RUN",
+  "turn11": "CANCELLED",
+  "git_staging_scope": "SEPARATE_WORK_CHECKOUT_REVIEW_REPORT_OUTSIDE_INDEX"
+}
