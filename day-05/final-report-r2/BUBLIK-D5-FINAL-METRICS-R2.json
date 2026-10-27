@@ -1,0 +1,483 @@
+{
+  "document_id": "BUBLIK-D5-FINAL-REPORT-R2",
+  "status": "CONTROL_CORRECTED / PUBLICATION_NOT_AUTHORIZED",
+  "experimental_status": "PARTIAL_DELIVERY / NOT_COMPLETE",
+  "source": {
+    "repo": "https://github.com/Ly41k/bublik-ai-advent-advanced",
+    "main_sha": "ddb66fb2c9aa898bf90b3d6847c5275753815b58",
+    "source_subtree": "day-03/app",
+    "baseline_commit": "ac13cfd79c2986c3335e12dcefc20acd4c67d75d",
+    "tree_sha": "af9e1ac454da83a487605d7014de5336f46f656f"
+  },
+  "inputs": {
+    "tracker_sha256": "7e00a4c9775b3f87f08690a37a47b158c766cbca17bd1e96c4862adb0ff6264b",
+    "rules_v1_sha256": "1359e2984e588963162f7e267e000243f131be5bfdd8d9b36776281417cf0725",
+    "rules_v2_sha256": "0ae8d9c295fa685d8e55fa79bacdefa239be017171211b6be0e1af3f800e13ab"
+  },
+  "cloud": {
+    "cloud_r1": {
+      "status": "COMPLETE",
+      "stop_reason": "COMPLETE_POOL",
+      "consecutive_committed": 15,
+      "uninterrupted_minutes": 11.446167133283334,
+      "average_completed_task_seconds": 45.050784,
+      "runtime_model_id": "NOT_EXPOSED",
+      "tasks": [
+        {
+          "id": "D5-01",
+          "result": "PASS",
+          "profile": "Research",
+          "duration_seconds": 38.242489278,
+          "commit_sha": "d10af17057d45ab3c6d4056cbd514ff018db49e6",
+          "validation_attempts": 1
+        },
+        {
+          "id": "D5-02",
+          "result": "PASS",
+          "profile": "Feature",
+          "duration_seconds": 27.667967672,
+          "commit_sha": "1e0e54bbe7f4f543246fa5fb8c168e09e2344f8a",
+          "validation_attempts": 1
+        },
+        {
+          "id": "D5-03",
+          "result": "PASS",
+          "profile": "Bug Fix",
+          "duration_seconds": 29.802510218,
+          "commit_sha": "95ea210776b216175b0e8bdc5f6b874c0268b722",
+          "validation_attempts": 1
+        },
+        {
+          "id": "D5-04",
+          "result": "PASS",
+          "profile": "Refactor",
+          "duration_seconds": 32.667128868,
+          "commit_sha": "9a0c117032de7ebd2ed01668b992b08bdc3a6f59",
+          "validation_attempts": 1
+        },
+        {
+          "id": "D5-05",
+          "result": "PASS",
+          "profile": "Feature",
+          "duration_seconds": 23.614560753,
+          "commit_sha": "eae16c5e70fc2cfe9987f28d4878fd0c74f4121c",
+          "validation_attempts": 1
+        },
+        {
+          "id": "D5-06",
+          "result": "PASS",
+          "profile": "Feature",
+          "duration_seconds": 78.605032329,
+          "commit_sha": "234493d1c63ed55d74a07e0fe07d61b1f34953e2",
+          "validation_attempts": 2
+        },
+        {
+          "id": "D5-07",
+          "result": "PASS",
+          "profile": "Feature",
+          "duration_seconds": 25.706456625,
+          "commit_sha": "72b2d0e395e72e89bb16411644a069004c03c8df",
+          "validation_attempts": 1
+        },
+        {
+          "id": "D5-08",
+          "result": "PASS",
+          "profile": "Feature",
+          "duration_seconds": 61.68068095,
+          "commit_sha": "4d05b5ee290e059deffd6f364af88d9ab751f205",
+          "validation_attempts": 1
+        },
+        {
+          "id": "D5-09",
+          "result": "PASS",
+          "profile": "Refactor",
+          "duration_seconds": 28.663409382,
+          "commit_sha": "3a686fa0e5d6e0670e6fe10cbfde3ebcda41681d",
+          "validation_attempts": 1
+        },
+        {
+          "id": "D5-10",
+          "result": "PASS",
+          "profile": "Bug Fix",
+          "duration_seconds": 53.478435609,
+          "commit_sha": "3dc29d92a2cc120c2983360bdd19a5fa080855a8",
+          "validation_attempts": 1
+        },
+        {
+          "id": "D5-11",
+          "result": "PASS",
+          "profile": "Feature",
+          "duration_seconds": 72.886692374,
+          "commit_sha": "752c6c44191c24de01d339b051a3ce8d9b7e47b0",
+          "validation_attempts": 2
+        },
+        {
+          "id": "D5-12",
+          "result": "PASS",
+          "profile": "Feature",
+          "duration_seconds": 29.777572611,
+          "commit_sha": "d5ebd52f99aeaa639b1aeadd6ba5f3543b66b4c7",
+          "validation_attempts": 1
+        },
+        {
+          "id": "D5-13",
+          "result": "PASS",
+          "profile": "Feature",
+          "duration_seconds": 69.749828129,
+          "commit_sha": "1c6744c926688b203556a28aefad747108945ee9",
+          "validation_attempts": 1
+        },
+        {
+          "id": "D5-14",
+          "result": "PASS",
+          "profile": "Refactor",
+          "duration_seconds": 34.068705038,
+          "commit_sha": "63577429c17ae4fe5fb59152701da2fbf358fc43",
+          "validation_attempts": 1
+        },
+        {
+          "id": "D5-15",
+          "result": "PASS",
+          "profile": "Research",
+          "duration_seconds": 69.150291866,
+          "commit_sha": "cbca8036ed6e6cddd0faeee35c8cb9ec93607570",
+          "validation_attempts": 1
+        }
+      ],
+      "first_pass": {
+        "numerator": 13,
+        "denominator": 15,
+        "percent": 86.6666667
+      }
+    },
+    "cloud_r2": {
+      "status": "STOPPED",
+      "stop_reason": "SESSION_LOST",
+      "consecutive_committed": 11,
+      "uninterrupted_minutes": null,
+      "average_completed_task_seconds": 39.034538,
+      "runtime_model_id": "NOT_EXPOSED",
+      "tasks": [
+        {
+          "id": "D5-01",
+          "result": "PASS",
+          "profile": "Research",
+          "duration_seconds": 38.447733482,
+          "commit_sha": "acd40b874be25a8e265641214a3e84033c824cad",
+          "validation_attempts": 1
+        },
+        {
+          "id": "D5-02",
+          "result": "PASS",
+          "profile": "Feature",
+          "duration_seconds": 29.830224632,
+          "commit_sha": "14f462c82dc491e985b2f03747c141fe8a6210cf",
+          "validation_attempts": 1
+        },
+        {
+          "id": "D5-03",
+          "result": "PASS",
+          "profile": "Bug Fix",
+          "duration_seconds": 44.182782363,
+          "commit_sha": "bb25cb62c11082dc96ac59049c0b1c5700d2b561",
+          "validation_attempts": 1
+        },
+        {
+          "id": "D5-04",
+          "result": "PASS",
+          "profile": "Refactor",
+          "duration_seconds": 28.675881776,
+          "commit_sha": "5cc4ef537c9cdde2fd1a43879355aef051a2f238",
+          "validation_attempts": 1
+        },
+        {
+          "id": "D5-05",
+          "result": "PASS",
+          "profile": "Feature",
+          "duration_seconds": 27.585162855,
+          "commit_sha": "8deddcf4759f0aa4039ce79ad7755f1e90938d94",
+          "validation_attempts": 1
+        },
+        {
+          "id": "D5-06",
+          "result": "PASS",
+          "profile": "Feature",
+          "duration_seconds": 56.693535985,
+          "commit_sha": "bf29817ffe5f43b0019a52fd1bba9046add97af7",
+          "validation_attempts": 1
+        },
+        {
+          "id": "D5-07",
+          "result": "PASS",
+          "profile": "Feature",
+          "duration_seconds": 28.779083368,
+          "commit_sha": "0a707eb8b5f16d140f0ad5624e222c79a6e68620",
+          "validation_attempts": 1
+        },
+        {
+          "id": "D5-08",
+          "result": "PASS",
+          "profile": "Feature",
+          "duration_seconds": 56.396879287,
+          "commit_sha": "8ac1e29f2271d23ba07f77bc27f439b56b114e05",
+          "validation_attempts": 1
+        },
+        {
+          "id": "D5-09",
+          "result": "PASS",
+          "profile": "Refactor",
+          "duration_seconds": 25.905653143,
+          "commit_sha": "9bad625691245b8e42c070bce86ee419a11fc513",
+          "validation_attempts": 1
+        },
+        {
+          "id": "D5-10",
+          "result": "PASS",
+          "profile": "Bug Fix",
+          "duration_seconds": 35.043061752,
+          "commit_sha": "7d7f5e1c86028df6c2f62243ed5503a787e69adf",
+          "validation_attempts": 1
+        },
+        {
+          "id": "D5-11",
+          "result": "PASS",
+          "profile": "Feature",
+          "duration_seconds": 57.839918501,
+          "commit_sha": "0c20fe425a8cf847d441d6f312bb06acf762efef",
+          "validation_attempts": 1
+        },
+        {
+          "id": "D5-12",
+          "result": "BLOCKED",
+          "profile": "Feature",
+          "duration_seconds": null,
+          "commit_sha": null,
+          "validation_attempts": 1
+        },
+        {
+          "id": "D5-13",
+          "result": "NOT_RUN",
+          "profile": null,
+          "duration_seconds": null,
+          "commit_sha": null,
+          "validation_attempts": 0
+        },
+        {
+          "id": "D5-14",
+          "result": "NOT_RUN",
+          "profile": null,
+          "duration_seconds": null,
+          "commit_sha": null,
+          "validation_attempts": 0
+        },
+        {
+          "id": "D5-15",
+          "result": "NOT_RUN",
+          "profile": null,
+          "duration_seconds": null,
+          "commit_sha": null,
+          "validation_attempts": 0
+        }
+      ],
+      "first_pass": {
+        "numerator": 11,
+        "denominator": 12,
+        "percent": 91.6666667,
+        "meaning": "includes D5-12 denominator without commit; 12/12 first validation groups successful"
+      },
+      "uninterrupted_minutes_lower_bound": 7.7819005888833335
+    },
+    "cloud_r2_replay": {
+      "status": "STOPPED",
+      "stop_reason": "EVIDENCE_RECORDER_STATE_ERROR",
+      "consecutive_committed": 10,
+      "uninterrupted_minutes": 4.573154343433333,
+      "average_completed_task_seconds": 23.110424,
+      "runtime_model_id": "NOT_EXPOSED",
+      "tasks": [
+        {
+          "id": "D5-01",
+          "result": "PASS",
+          "profile": "Research",
+          "duration_seconds": 23.189273941,
+          "commit_sha": "44ad508239cb60bf4d39f6e5867981f7c77bbe48",
+          "validation_attempts": 1
+        },
+        {
+          "id": "D5-02",
+          "result": "PASS",
+          "profile": "Feature",
+          "duration_seconds": 20.053935235,
+          "commit_sha": "77c9b98c2cc4e0822249ba55f2b3602338a67f0b",
+          "validation_attempts": 1
+        },
+        {
+          "id": "D5-03",
+          "result": "PASS",
+          "profile": "Bug Fix",
+          "duration_seconds": 21.59054299,
+          "commit_sha": "8c277660117429355ff6129624e6882d3d44c279",
+          "validation_attempts": 1
+        },
+        {
+          "id": "D5-04",
+          "result": "PASS",
+          "profile": "Refactor",
+          "duration_seconds": 21.173096633,
+          "commit_sha": "53ae05f03146a9e1feea31ce62b5c0cd0a362a35",
+          "validation_attempts": 1
+        },
+        {
+          "id": "D5-05",
+          "result": "PASS",
+          "profile": "Feature",
+          "duration_seconds": 21.082665826,
+          "commit_sha": "ba55b467cad97ae0bdd826f0da5bb4de45e477af",
+          "validation_attempts": 1
+        },
+        {
+          "id": "D5-06",
+          "result": "PASS",
+          "profile": "Feature",
+          "duration_seconds": 34.368966898,
+          "commit_sha": "424ceb6e159ae06daed1d881ed606aae0d0a756e",
+          "validation_attempts": 1
+        },
+        {
+          "id": "D5-07",
+          "result": "PASS",
+          "profile": "Feature",
+          "duration_seconds": 20.543267906,
+          "commit_sha": "1262f300426fb5704ad2bdfd2bc53a656bbff98c",
+          "validation_attempts": 1
+        },
+        {
+          "id": "D5-08",
+          "result": "PASS",
+          "profile": "Feature",
+          "duration_seconds": 28.113767179,
+          "commit_sha": "395eaaf0eed51ceacbb26e0f763d8ffc0237052c",
+          "validation_attempts": 1
+        },
+        {
+          "id": "D5-09",
+          "result": "PASS",
+          "profile": "Refactor",
+          "duration_seconds": 16.853431,
+          "commit_sha": "d9ebc5d6783942b4546f36a7fdbd7715382e85e8",
+          "validation_attempts": 1
+        },
+        {
+          "id": "D5-10",
+          "result": "PASS",
+          "profile": "Bug Fix",
+          "duration_seconds": 24.13528996,
+          "commit_sha": "b069fd76f20a07ab07bf1a956244fc31f9d07573",
+          "validation_attempts": 1
+        },
+        {
+          "id": "D5-11",
+          "result": "BLOCKED",
+          "profile": "Feature",
+          "duration_seconds": 42.815543768,
+          "commit_sha": null,
+          "validation_attempts": null
+        },
+        {
+          "id": "D5-12",
+          "result": "NOT_RUN",
+          "profile": null,
+          "duration_seconds": null,
+          "commit_sha": null,
+          "validation_attempts": null
+        },
+        {
+          "id": "D5-13",
+          "result": "NOT_RUN",
+          "profile": null,
+          "duration_seconds": null,
+          "commit_sha": null,
+          "validation_attempts": null
+        },
+        {
+          "id": "D5-14",
+          "result": "NOT_RUN",
+          "profile": null,
+          "duration_seconds": null,
+          "commit_sha": null,
+          "validation_attempts": null
+        },
+        {
+          "id": "D5-15",
+          "result": "NOT_RUN",
+          "profile": null,
+          "duration_seconds": null,
+          "commit_sha": null,
+          "validation_attempts": null
+        }
+      ],
+      "first_pass": {
+        "numerator": 10,
+        "denominator": 11,
+        "percent": 90.9090909,
+        "evidence": "assistant_transcription_only; primary D5-11 compile command_end and validation_end absent; persisted recorder 10/10; 10/11 is a secondary estimate"
+      },
+      "persisted_first_pass": {
+        "numerator": 10,
+        "denominator": 10
+      }
+    }
+  },
+  "local": {
+    "admission": {
+      "task_id": "BUBLIK-D5-LOCAL-MAC-ADMISSION-R2",
+      "verdict": "ADMISSION_FAIL_OR_BLOCKED",
+      "codex_status": "EXIT_0",
+      "model": "qwen2.5-coder:7b",
+      "duration_seconds": 38.937,
+      "initial_commit": "b8e760d6bcedace2dd8b73a308148f6855c845f5",
+      "final_commit": "b8e760d6bcedace2dd8b73a308148f6855c845f5",
+      "exactly_one_commit": false,
+      "changed_files": [],
+      "clean_git_tree": true,
+      "unittest_3_tests_pass": false,
+      "codex_tool_event_records": 0,
+      "codex_sessions": 1,
+      "operator_retries": 0,
+      "model_http_requests": "NOT_EXPOSED",
+      "official_15_task_benchmark": "NOT_RUN"
+    },
+    "admission_control_decision": "CLOSED / ADMISSION_FAIL — TOOL_PROTOCOL_NOT_EXECUTED",
+    "official_15_task_benchmark": "NOT_RUN"
+  },
+  "source_archives": {
+    "cloud_r1": {
+      "filename": "BUBLIK-D5-CLOUD-R1-EVIDENCE(1).zip",
+      "sha256": "bfd59691bdae545411d3e0511c1245f99e322fbb78369e8ba5411c4025ec571b",
+      "zip_member_count": 642
+    },
+    "cloud_r2": {
+      "filename": "BUBLIK-D5-CLOUD-R2-EVIDENCE(1).zip",
+      "sha256": "a28b353770916d55334dc68ed913498ce5f9ad6723572a13f54df86c80d78fa1",
+      "zip_member_count": 514
+    },
+    "cloud_r2_replay": {
+      "filename": "BUBLIK-D5-CLOUD-R2-REPLAY-R1-EVIDENCE(1).zip",
+      "sha256": "07991246d9009f0b7e967bbc39c17e1c083640071a5afa842667653b34415173",
+      "zip_member_count": 436
+    },
+    "local_admission": {
+      "filename": "BUBLIK-D5-LOCAL-MAC-ADMISSION-R2-EVIDENCE.zip",
+      "sha256": "cc0b145b7b3deede7e09cfda9998b5f8fbc0f72521b39abe21a3381257faee83",
+      "zip_member_count": 14
+    }
+  },
+  "limitations": [
+    "Cloud runtime model ID NOT_EXPOSED",
+    "Cloud R2 complete elapsed unavailable after SESSION_LOST",
+    "Replay D5-11 tool result != persisted recorder events",
+    "Local admission != official 15-task benchmark",
+    "No causal impact of Rules v2 proven",
+    "No GitHub publication/merge authorized"
+  ]
+}
