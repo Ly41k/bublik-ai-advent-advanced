@@ -1,0 +1,40 @@
+{
+  "task_id": "BUBLIK-D4-FINAL-DELIVERY-R2-VIDEO-RECORDED",
+  "algorithm": "SHA256",
+  "self_excluded": true,
+  "files": {
+    "CONTROL_REVIEW_SUMMARY_RU.md": {
+      "bytes": 4372,
+      "sha256": "25f58d60a460874ff45ac7fd871f4b35d55ed995665e6a65ccd541413f7a6399"
+    },
+    "DAY4_DELIVERY_DECISION.json": {
+      "bytes": 23459,
+      "sha256": "0e60bc003e2bb1e97b99f9e06e0e2d9a3adee92d3f2aa572f028261914ad4507"
+    },
+    "DAY4_FINAL_REPORT_RU.md": {
+      "bytes": 6316,
+      "sha256": "267279adbf402981bac107f132df82ced964d87d6f28039dc2906d336a22ade6"
+    },
+    "DAY4_PRIVACY_AND_PUBLICATION_RU.md": {
+      "bytes": 4280,
+      "sha256": "216ef5a34a75f705d9c6a4e60a8c6542759d192e0ae7c8e2fe6e2551b0f9d9f6"
+    },
+    "DAY4_PUBLICATION_PLAN_RU.md": {
+      "bytes": 5857,
+      "sha256": "b00246c5f068b000cf397b02054cfa0ca01de679103b94c897d7e6ce509a6713"
+    },
+    "DAY4_REQUIREMENTS_MATRIX.md": {
+      "bytes": 17058,
+      "sha256": "85c88117779f64ae2c416e61d96ed4e83e0c6fd4d789227f708760942ed5e62e"
+    },
+    "DAY4_TIMELINE_AND_ATTRIBUTION_RU.md": {
+      "bytes": 6469,
+      "sha256": "a6a2a6675606d1724e80cee4b71454d5cdaf79aa651f3b2c73f6adeb49f9b911"
+    },
+    "DAY4_VIDEO_STATUS_RU.md": {
+      "bytes": 4438,
+      "sha256": "96389abb833ccac66daa9b875600f019973cd5c844169b62a52d317e27e0a5b3"
+    }
+  },
+  "scope": "8 report documents only; no raw evidence/media/code"
+}

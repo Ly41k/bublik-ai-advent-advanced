@@ -1,0 +1,604 @@
+{
+  "task_id": "BUBLIK-D4-FINAL-DELIVERY-R2-VIDEO-RECORDED",
+  "verdict": "READY_FOR_CONTROL_REVIEW",
+  "gate0": "ACCEPTED",
+  "gate1": "ACCEPTED",
+  "gate2": "ACCEPTED",
+  "gate3": "FUNCTIONAL_RECOVERY_ACCEPTED",
+  "gate3_attribution": "HUMAN_ASSISTED",
+  "gate3_original_agent": "FAIL",
+  "gate3_tool_probe": "FAIL",
+  "gate3_earlier_chat_apply": "BLOCKED",
+  "gate4": "FUNCTIONAL_PASS_HUMAN_ASSISTED_ACCEPTED",
+  "gate4_first_qwen": "STATIC_FAIL / PARTIAL_CONTENT",
+  "gate4_red": "PREPARED_BASELINE_2_FAILED_1_PASSED",
+  "gate4_green": "3/3",
+  "gate5": "EVIDENCE_COMPARISON_ACCEPTED",
+  "comparable_speed_throughput_cost": "NOT_ESTABLISHED",
+  "gate6": "PARTIAL_ACCEPTED",
+  "gate6_final": true,
+  "gate6_r1_raw": "GATE6_BLOCKED",
+  "gate6_r2": "EVIDENCE_ADDED",
+  "gate6_r3": "FAIL",
+  "gate6_r3_after_probes": "NOT_RUN",
+  "gate6_r3_indent_origin": "UNDETERMINED",
+  "gate6_repeats": "CANCELLED_BY_CONTROL",
+  "native_agent": "NOT_MET",
+  "day4_status": "NOT_COMPLETE",
+  "delivery_state": "PARTIAL_DELIVERY_CANDIDATE",
+  "video_status": "VIDEO_RECORDED_USER_CONFIRMED",
+  "actual_video": "NOT_RECEIVED",
+  "video_review": "NOT_RUN",
+  "video_terminal_only": "INTENDED_NOT_VALIDATED",
+  "video_uploaded": "NOT_VERIFIED",
+  "video_public": "NOT_VERIFIED",
+  "teacher_acceptance": "NOT_ESTABLISHED",
+  "publication_authorized": false,
+  "prepared_Europe_Kyiv": "2026-10-27T09:37:42.302398+02:00",
+  "binding_control": {
+    "filename": "BUBLIK-D4-FINAL-DELIVERY-R2-VIDEO-RECORDED-CONTROL(1).md",
+    "sha256": "6c6ce25158d39bc872e9b7cd14edbae1842211bb79e9da2620683d966cd2c253",
+    "role": "LATEST_BINDING_CONTROL_LEDGER_AND_VIDEO_USER_CONFIRMATION"
+  },
+  "video_confirmation_provenance": "Latest Control quotes user: видео есть; no actual video was supplied with this handoff",
+  "video_file_path": null,
+  "video_sha256": null,
+  "video_duration_seconds": null,
+  "video_upload_url": null,
+  "video_preparation_S8_historical_video_recorded_field": false,
+  "historical_preparation_field_preserved_not_overwritten": true,
+  "reports": [
+    "DAY4_FINAL_REPORT_RU.md",
+    "DAY4_REQUIREMENTS_MATRIX.md",
+    "DAY4_TIMELINE_AND_ATTRIBUTION_RU.md",
+    "DAY4_VIDEO_STATUS_RU.md",
+    "DAY4_PRIVACY_AND_PUBLICATION_RU.md",
+    "DAY4_DELIVERY_DECISION.json",
+    "DAY4_PUBLICATION_PLAN_RU.md",
+    "CONTROL_REVIEW_SUMMARY_RU.md",
+    "SHA256_MANIFEST.json"
+  ],
+  "proposed_publication_directory": "day-04/final-delivery-r2/",
+  "publication_plan_only": true,
+  "remote_main_sha": "NOT_CHECKED_NO_GIT_OPERATIONS",
+  "historical_main_baseline_reference_only": "9f2c3bfd7dcf9003dc0c579573d38e7b21ff1e21",
+  "sources": {
+    "S1": {
+      "filename": "bublik-day4-gate3-recovery-evidence-r1.zip",
+      "sha256": "e74ac7732d69e0abe418ad623b93fac8e596217bb7abcb2fdd96ff426eb79286",
+      "bytes": 17420,
+      "role": "Gate 3 recovery",
+      "availability": "REVIEWED_IN_THIS_DELIVERY",
+      "integrity": {
+        "manifest": "manifest.json",
+        "manifest_files_verified": 29,
+        "ZIP_entries": 30,
+        "CRC": "PASS",
+        "safe_paths": "PASS",
+        "unique_entries": "PASS",
+        "manifest_scope": "PASS"
+      },
+      "private_original_not_embedded": true,
+      "reviewed_members": {
+        "GATE3_RECOVERY_REPORT_RU.md": {
+          "sha256": "e5ec2eb2d1399e0d2ad845190b274810e434390880f596378815ba18e9eaeda8",
+          "bytes": 3846,
+          "source_type": "ARCHIVED_BYTES_READ_ONLY"
+        },
+        "source/src/bublik/application/service.py": {
+          "sha256": "070d4b90f0249d1f285d1698914eda77675fd756104699ee93fb46521e8ce70b",
+          "bytes": 1255,
+          "source_type": "ARCHIVED_BYTES_READ_ONLY"
+        },
+        "source/src/bublik/api/routes.py": {
+          "sha256": "2e421cd012340e1e2b6add40aea27c2cd4fb44ec9596bd8b53b85485975e60b0",
+          "bytes": 2089,
+          "source_type": "ARCHIVED_BYTES_READ_ONLY"
+        },
+        "source/src/bublik/api/schemas.py": {
+          "sha256": "40811e1f333c4a958bc2ca49366a9eca98c785ec84955207b17f956158692883",
+          "bytes": 970,
+          "source_type": "ARCHIVED_BYTES_READ_ONLY"
+        },
+        "logs/pytest-38.stdout.txt": {
+          "sha256": "5820660ec3010de64a702de867f5df2cf30c67130e042248a991f9440cddf42b",
+          "bytes": 99,
+          "source_type": "ARCHIVED_BYTES_READ_ONLY"
+        },
+        "logs/acceptance-17.stdout.txt": {
+          "sha256": "2c92763ebc85148ceb3debe387f9b6bea1b772e6478ca8a5f6125160e4af8444",
+          "bytes": 99,
+          "source_type": "ARCHIVED_BYTES_READ_ONLY"
+        },
+        "logs/ruff-lint.json": {
+          "sha256": "5d0dbc36432efd0f20ba33b229898847bae916d1c281e33c672fe63ad63ede37",
+          "bytes": 593,
+          "source_type": "ARCHIVED_BYTES_READ_ONLY"
+        },
+        "logs/ruff-format.json": {
+          "sha256": "105b96a297cfec571cae7209f8875ef8eccb83bb6dad51f182f4a8e71d71b0d0",
+          "bytes": 614,
+          "source_type": "ARCHIVED_BYTES_READ_ONLY"
+        },
+        "logs/compile.json": {
+          "sha256": "dfdf8d76cee782df9886bdaf8d4a1088feffdfe79308ab6b95ac5916aee8850a",
+          "bytes": 623,
+          "source_type": "ARCHIVED_BYTES_READ_ONLY"
+        },
+        "logs/pytest-38.xml": {
+          "sha256": "1a8281c92a70505d2682edb45c15121ab88fd44f16a25d86309ff7370b5660a6",
+          "bytes": 5113,
+          "source_type": "ARCHIVED_BYTES_READ_ONLY"
+        },
+        "logs/acceptance-17.xml": {
+          "sha256": "45d2160f9a3b956c9ba980733e4885cf02d05680a9656d37b22aa75fd971a21e",
+          "bytes": 2684,
+          "source_type": "ARCHIVED_BYTES_READ_ONLY"
+        }
+      }
+    },
+    "S2": {
+      "filename": "bublik-day4-gate4-first-model-attempt-r1.zip",
+      "sha256": "62cace9c211596694b3eb15e7f60e76846d1f36153222e6224ad22d1c95d1add",
+      "bytes": 1682858,
+      "role": "Gate 4 first answer",
+      "availability": "REVIEWED_IN_THIS_DELIVERY",
+      "integrity": {
+        "manifest": "bublik-day4-gate4-first-model-attempt-r1/SHA256_MANIFEST.json",
+        "manifest_files_verified": 23,
+        "ZIP_entries": 24,
+        "CRC": "PASS",
+        "safe_paths": "PASS",
+        "unique_entries": "PASS",
+        "manifest_scope": "PASS"
+      },
+      "private_original_not_embedded": true,
+      "reviewed_members": {
+        "bublik-day4-gate4-first-model-attempt-r1/GATE4_FIRST_MODEL_ATTEMPT_R1_REVIEW_RU.md": {
+          "sha256": "7a90a311e3b5d39c3bd7cbf882a74011eddaad6f215cf48599ddecc22114d9fd",
+          "bytes": 9470,
+          "source_type": "ARCHIVED_BYTES_READ_ONLY"
+        },
+        "bublik-day4-gate4-first-model-attempt-r1/evidence/console/console.original.txt": {
+          "sha256": "6d738d84c50c42347e269bd4b6c1b4fa5f6293f15fab3f7978b6cb908c7841f2",
+          "bytes": 15137,
+          "source_type": "ARCHIVED_BYTES_READ_ONLY"
+        }
+      }
+    },
+    "S3": {
+      "filename": "bublik-day4-gate4-human-assisted-r3-review.zip",
+      "sha256": "a2204ebdc362d3bd63528d08e773312b99cf8f3c8c33fc6a17a36bfb51006be0",
+      "bytes": 114995,
+      "role": "Gate 4 final review",
+      "availability": "REVIEWED_IN_THIS_DELIVERY",
+      "integrity": {
+        "manifest": "SHA256_MANIFEST.json",
+        "manifest_files_verified": 5,
+        "ZIP_entries": 6,
+        "CRC": "PASS",
+        "safe_paths": "PASS",
+        "unique_entries": "PASS",
+        "manifest_scope": "PASS"
+      },
+      "private_original_not_embedded": true,
+      "reviewed_members": {
+        "GATE4_BUGFIX_HUMAN_ASSISTED_R3_REVIEW_RU.md": {
+          "sha256": "c113793d07ab8d717e9f2bda06eac906821aaf62063df9f86d030e9cf6366b14",
+          "bytes": 12570,
+          "source_type": "ARCHIVED_BYTES_READ_ONLY"
+        },
+        "independent-review.json": {
+          "sha256": "07e2abe9d75986d952543f1d7c500ab4dcbb2ced7ecd0e7682946da2a2138597",
+          "bytes": 17341,
+          "source_type": "ARCHIVED_BYTES_READ_ONLY"
+        },
+        "evidence/mac-original/bublik-day4-gate4-human-assisted-r3.zip": {
+          "sha256": "7c39f2d33038a2de6c449fd9d944b094674c6ecf906e190fc0a097f36aa3c71d",
+          "bytes": 243354,
+          "source_type": "ARCHIVED_BYTES_READ_ONLY"
+        }
+      }
+    },
+    "S4": {
+      "filename": "bublik-day4-gate5-evidence-comparison-r1.zip",
+      "sha256": "3d1cd3f2b29d335e3f7e27cd25e7e5ec686217be87761e172a62293cfba1d8a1",
+      "bytes": 32230,
+      "role": "Gate 5 comparison",
+      "availability": "REVIEWED_IN_THIS_DELIVERY",
+      "integrity": {
+        "manifest": "SHA256_MANIFEST.json",
+        "manifest_files_verified": 4,
+        "ZIP_entries": 5,
+        "CRC": "PASS",
+        "safe_paths": "PASS",
+        "unique_entries": "PASS",
+        "manifest_scope": "PASS"
+      },
+      "private_original_not_embedded": true,
+      "reviewed_members": {
+        "GATE5_CLOUD_VS_LOCAL_COMPARISON_RU.md": {
+          "sha256": "4f610945eff275d654270e59bddb1da75e7a61ffbf5c94b36a25d2127c0a40a1",
+          "bytes": 21695,
+          "source_type": "ARCHIVED_BYTES_READ_ONLY"
+        },
+        "GATE5_EVIDENCE_MATRIX.json": {
+          "sha256": "648e0ea9aec16b39befd27a9c729d10431f36853e439aad372fc4b10e22e88a3",
+          "bytes": 65842,
+          "source_type": "ARCHIVED_BYTES_READ_ONLY"
+        }
+      }
+    },
+    "S5": {
+      "filename": "bublik-day4-gate6-offline-r1-review-private.zip",
+      "sha256": "6da1c47e4541e657e1831efb29e29c536c49514353f73efa03016489ead30254",
+      "bytes": 3623034,
+      "role": "Gate 6 R1 review",
+      "availability": "REVIEWED_IN_THIS_DELIVERY",
+      "integrity": {
+        "manifest": "manifest.json",
+        "manifest_files_verified": 21,
+        "ZIP_entries": 22,
+        "CRC": "PASS",
+        "safe_paths": "PASS",
+        "unique_entries": "PASS",
+        "manifest_scope": "PASS"
+      },
+      "private_original_not_embedded": true,
+      "reviewed_members": {
+        "GATE6_OFFLINE_REVIEW_RU.md": {
+          "sha256": "1147488ea701d6ae68f36ea34c0887002909c3e2a50feb452460ea40da17e732",
+          "bytes": 14625,
+          "source_type": "ARCHIVED_BYTES_READ_ONLY"
+        },
+        "GATE6_OFFLINE_CHECKS.json": {
+          "sha256": "c2421b2ca2f47e5b6ddc26dae2ef97c11ef42117f9702cd8fae4549e0d6587ba",
+          "bytes": 41921,
+          "source_type": "ARCHIVED_BYTES_READ_ONLY"
+        }
+      }
+    },
+    "S6": {
+      "filename": "bublik-day4-gate6-existing-console-r2-review-private.zip",
+      "sha256": "202ef445344661db4ad64e32f13582146375cf6c7de0179e1875b55374726832",
+      "bytes": 999398,
+      "role": "Gate 6 R2 review",
+      "availability": "REVIEWED_IN_THIS_DELIVERY",
+      "integrity": {
+        "manifest": "manifest.json",
+        "manifest_files_verified": 16,
+        "ZIP_entries": 17,
+        "CRC": "PASS",
+        "safe_paths": "PASS",
+        "unique_entries": "PASS",
+        "manifest_scope": "PASS"
+      },
+      "private_original_not_embedded": true,
+      "reviewed_members": {
+        "GATE6_EXISTING_CONSOLE_R2_RESULT.json": {
+          "sha256": "31d0c0384dbbb13265ff7bb5fe05e4a97c2312a7f0a30baabb8959a137bc6a94",
+          "bytes": 2837,
+          "source_type": "ARCHIVED_BYTES_READ_ONLY"
+        },
+        "evidence/OBSERVATIONS.json": {
+          "sha256": "0f753f6356157973e031642c6056b5417baa99a21816ea3d88507f0e5e8833f9",
+          "bytes": 1982,
+          "source_type": "ARCHIVED_BYTES_READ_ONLY"
+        }
+      }
+    },
+    "S7": {
+      "filename": "bublik-day4-gate6-functional-r3-review-private.zip",
+      "sha256": "cb36539ba6ceb358433cab456d1b16b80e0299c33a176ec91635180cc193c536",
+      "bytes": 6837821,
+      "role": "Gate 6 R3 review",
+      "availability": "REVIEWED_IN_THIS_DELIVERY",
+      "integrity": {
+        "manifest": "manifest.json",
+        "manifest_files_verified": 24,
+        "ZIP_entries": 25,
+        "CRC": "PASS",
+        "safe_paths": "PASS",
+        "unique_entries": "PASS",
+        "manifest_scope": "PASS"
+      },
+      "private_original_not_embedded": true,
+      "reviewed_members": {
+        "STATUS.json": {
+          "sha256": "852e3600d06a3d956857642ba786e3140281222cd69927229ef327bf0be8a461",
+          "bytes": 3316,
+          "source_type": "ARCHIVED_BYTES_READ_ONLY"
+        },
+        "evidence/SCRATCH_BYTES_ANALYSIS.json": {
+          "sha256": "0373d43522120f9d8ed01ef523f00906e441c04420382b70aab4e1910ad7e4f6",
+          "bytes": 1243,
+          "source_type": "ARCHIVED_BYTES_READ_ONLY"
+        },
+        "evidence/NETWORK_REVIEW.json": {
+          "sha256": "8b6caefa8c723904049b09470889cca6e46666b3b0dd12e1ec326ad922a031b8",
+          "bytes": 1405,
+          "source_type": "ARCHIVED_BYTES_READ_ONLY"
+        },
+        "GATE6_FUNCTIONAL_R3_REVIEW_RU.md": {
+          "sha256": "80604eda3ca80dd6998c296c84345354af232e2343deb16bbecb3ab56fa3d5d9",
+          "bytes": 15784,
+          "source_type": "ARCHIVED_BYTES_READ_ONLY"
+        }
+      }
+    },
+    "S8": {
+      "filename": "bublik-day4-video-terminal-r2.zip",
+      "sha256": "f29f7dd61391684604486f52c48c550f4271e03810c2e1b960666a5fe3b25bef",
+      "bytes": 37652,
+      "role": "Preparatory terminal-only video script, NOT actual video",
+      "availability": "REVIEWED_IN_THIS_DELIVERY",
+      "integrity": {
+        "manifest": "day4-video-terminal-r2/SHA256_MANIFEST.json",
+        "manifest_files_verified": 21,
+        "ZIP_entries": 22,
+        "CRC": "PASS",
+        "safe_paths": "PASS",
+        "unique_entries": "PASS",
+        "manifest_scope": "PASS"
+      },
+      "private_original_not_embedded": true,
+      "reviewed_members": {
+        "day4-video-terminal-r2/DAY4_VIDEO_DELIVERY_STATUS.json": {
+          "sha256": "942824ca9e9bc1ff669a1f8db81714c5bbfde7b03cb0d74a7002234e528a5fad",
+          "bytes": 11920,
+          "source_type": "ARCHIVED_BYTES_READ_ONLY"
+        },
+        "day4-video-terminal-r2/DAY4_VIDEO_SCRIPT_RU.md": {
+          "sha256": "12a3e8ac734c7c5105c1ca98bf77fc91110a70d556c6c0d6c6c2f9c6ad510cb3",
+          "bytes": 8930,
+          "source_type": "ARCHIVED_BYTES_READ_ONLY"
+        },
+        "day4-video-terminal-r2/DAY4_VIDEO_EVIDENCE_MAP.md": {
+          "sha256": "942c42b6644bdc3ae276ca077487e20f044c27db327ef108cffbc7ae8dfad065",
+          "bytes": 22146,
+          "source_type": "ARCHIVED_BYTES_READ_ONLY"
+        }
+      }
+    }
+  },
+  "nested_gate4_source": {
+    "outer_source": "S3",
+    "member": "evidence/mac-original/bublik-day4-gate4-human-assisted-r3.zip",
+    "sha256": "7c39f2d33038a2de6c449fd9d944b094674c6ecf906e190fc0a097f36aa3c71d",
+    "integrity": {
+      "manifest": "SHA256_MANIFEST.json",
+      "manifest_files_verified": 89,
+      "ZIP_entries": 90,
+      "CRC": "PASS",
+      "safe_paths": "PASS",
+      "unique_entries": "PASS",
+      "manifest_scope": "PASS"
+    },
+    "reviewed_members": {
+      "inputs/accepted-r2-RED_EXPECTED.stdout.txt": {
+        "sha256": "63f8b5c6133e0c51619b05c280aac1fff75aa356294ef933a914bb7e4226d9a5",
+        "bytes": 1445
+      },
+      "inputs/accepted-r2-RED_EXPECTED.xml": {
+        "sha256": "5d248a650d73e6b8c6ad9c6d79e5c7ae5d1a0b3a08ae00d605e780770ae17df1",
+        "bytes": 1601
+      },
+      "red-adjudication-r3.json": {
+        "sha256": "1ae5695cc473ecdd6701f81cf9bb81eacdcd94ce211f5d0af4f07fc0db42c1b2",
+        "bytes": 1164
+      },
+      "GREEN.stdout.txt": {
+        "sha256": "e0a6ea218ea5d725ce7272da8d68d45a029e489423e03af6960c7bff0f7fe414",
+        "bytes": 98
+      },
+      "DAY2_13.stdout.txt": {
+        "sha256": "edf3d333fef3a773826ab22829091a2348d9f8a79032da0074fd997d1b9f76d9",
+        "bytes": 99
+      },
+      "EXISTING_38.stdout.txt": {
+        "sha256": "5820660ec3010de64a702de867f5df2cf30c67130e042248a991f9440cddf42b",
+        "bytes": 99
+      },
+      "FULL_TESTS.stdout.txt": {
+        "sha256": "ed1c75fda3b4ed3509c39f7e15c80bec75c42dd122fa03c579be7d496cd8747a",
+        "bytes": 99
+      },
+      "DAY1_17.stdout.txt": {
+        "sha256": "6e2ff8346f32031453bf74d7b33efb5d6944a328f23006e950459699bead23b7",
+        "bytes": 99
+      },
+      "observed-files/src/bublik/domain/task.py": {
+        "sha256": "b20675b9984517e034c800acf49edc44e7477455409caadf2863c082ed2d5690",
+        "bytes": 1003
+      },
+      "COMPILE.json": {
+        "sha256": "77d7f4c7efea221b385096a888947b0827cd123ace4dfd86e3ab2c879230e809",
+        "bytes": 748
+      },
+      "IMPORT.json": {
+        "sha256": "54525ff395728f451143219c4cbe4790c35cdeee93ad97ba31cf9ec64956fbdb",
+        "bytes": 737
+      },
+      "RUFF_LINT.json": {
+        "sha256": "ce18b5a7e51107ad589bf60b45084e5404ef936b947755a303df000d193052f8",
+        "bytes": 734
+      },
+      "RUFF_FORMAT.json": {
+        "sha256": "90252037d1dbe4a5a15f017b2d35c7f9e3921737dedd83318f4313f25c872b8b",
+        "bytes": 750
+      },
+      "GREEN.xml": {
+        "sha256": "0d56d0f15e318df1d2ea6ea2b57d28c6f570a72a8c849295c291779cb6195288",
+        "bytes": 579
+      },
+      "DAY2_13.xml": {
+        "sha256": "f9ca7872b05ad6ffdeeab306a8db0b18591a1dc36a8c5cf382b192d8010ec6b2",
+        "bytes": 1882
+      },
+      "EXISTING_38.xml": {
+        "sha256": "2e072ccecde2d000e8bd0a2d385ebee36f6843454630942d150442007e35b735",
+        "bytes": 5113
+      },
+      "FULL_TESTS.xml": {
+        "sha256": "3d802f0d33b1867ec222abcee0c279fa68e7d512fd7fd2d609d109e45f5c9b55",
+        "bytes": 5432
+      },
+      "DAY1_17.xml": {
+        "sha256": "23ab65610946ff1972f04520714c87bffcf167f6229b355cd0e2a9f9458aef00",
+        "bytes": 2684
+      }
+    }
+  },
+  "test_counts_from_archives": {
+    "gate3_existing": 38,
+    "gate3_frozen_Day1": 17,
+    "gate4_prepared_red": {
+      "failed": 2,
+      "passed": 1
+    },
+    "gate4_green": 3,
+    "gate4_frozen_Day2": 13,
+    "gate4_existing": 38,
+    "gate4_combined": 41,
+    "gate4_frozen_Day1": 17,
+    "combined_identity": "41 = 38 + 3; NOT_ADDITIONAL_41",
+    "parsed_XML_count": 8,
+    "XML_reading_not_test_execution": true
+  },
+  "scope_activity": {
+    "model_calls": 0,
+    "live_Chat_FIM": 0,
+    "tests_run": 0,
+    "installs": 0,
+    "offline_network_probes_or_toggles": 0,
+    "Git_operations": 0,
+    "git_mutations": 0,
+    "source_config_rules_edits": 0,
+    "historic_evidence_edits": 0,
+    "video_recording_processing_uploads": 0,
+    "publication": 0
+  },
+  "input_integrity": {
+    "named_files": 10,
+    "before": {
+      "BUBLIK-D4-FINAL-DELIVERY-R2-VIDEO-RECORDED-CONTROL(1).md": {
+        "bytes": 8804,
+        "sha256": "6c6ce25158d39bc872e9b7cd14edbae1842211bb79e9da2620683d966cd2c253"
+      },
+      "FINAL_REPORT_RU.md": {
+        "bytes": 2518,
+        "sha256": "b3587bb126f8dbbf359ba4d9926aa59b89fc469a6318214a256b653608f7935c"
+      },
+      "bublik-day4-gate3-recovery-evidence-r1.zip": {
+        "bytes": 17420,
+        "sha256": "e74ac7732d69e0abe418ad623b93fac8e596217bb7abcb2fdd96ff426eb79286"
+      },
+      "bublik-day4-gate4-first-model-attempt-r1.zip": {
+        "bytes": 1682858,
+        "sha256": "62cace9c211596694b3eb15e7f60e76846d1f36153222e6224ad22d1c95d1add"
+      },
+      "bublik-day4-gate4-human-assisted-r3-review.zip": {
+        "bytes": 114995,
+        "sha256": "a2204ebdc362d3bd63528d08e773312b99cf8f3c8c33fc6a17a36bfb51006be0"
+      },
+      "bublik-day4-gate5-evidence-comparison-r1.zip": {
+        "bytes": 32230,
+        "sha256": "3d1cd3f2b29d335e3f7e27cd25e7e5ec686217be87761e172a62293cfba1d8a1"
+      },
+      "bublik-day4-gate6-offline-r1-review-private.zip": {
+        "bytes": 3623034,
+        "sha256": "6da1c47e4541e657e1831efb29e29c536c49514353f73efa03016489ead30254"
+      },
+      "bublik-day4-gate6-existing-console-r2-review-private.zip": {
+        "bytes": 999398,
+        "sha256": "202ef445344661db4ad64e32f13582146375cf6c7de0179e1875b55374726832"
+      },
+      "bublik-day4-gate6-functional-r3-review-private.zip": {
+        "bytes": 6837821,
+        "sha256": "cb36539ba6ceb358433cab456d1b16b80e0299c33a176ec91635180cc193c536"
+      },
+      "bublik-day4-video-terminal-r2.zip": {
+        "bytes": 37652,
+        "sha256": "f29f7dd61391684604486f52c48c550f4271e03810c2e1b960666a5fe3b25bef"
+      }
+    },
+    "after": {
+      "BUBLIK-D4-FINAL-DELIVERY-R2-VIDEO-RECORDED-CONTROL(1).md": {
+        "bytes": 8804,
+        "sha256": "6c6ce25158d39bc872e9b7cd14edbae1842211bb79e9da2620683d966cd2c253"
+      },
+      "FINAL_REPORT_RU.md": {
+        "bytes": 2518,
+        "sha256": "b3587bb126f8dbbf359ba4d9926aa59b89fc469a6318214a256b653608f7935c"
+      },
+      "bublik-day4-gate3-recovery-evidence-r1.zip": {
+        "bytes": 17420,
+        "sha256": "e74ac7732d69e0abe418ad623b93fac8e596217bb7abcb2fdd96ff426eb79286"
+      },
+      "bublik-day4-gate4-first-model-attempt-r1.zip": {
+        "bytes": 1682858,
+        "sha256": "62cace9c211596694b3eb15e7f60e76846d1f36153222e6224ad22d1c95d1add"
+      },
+      "bublik-day4-gate4-human-assisted-r3-review.zip": {
+        "bytes": 114995,
+        "sha256": "a2204ebdc362d3bd63528d08e773312b99cf8f3c8c33fc6a17a36bfb51006be0"
+      },
+      "bublik-day4-gate5-evidence-comparison-r1.zip": {
+        "bytes": 32230,
+        "sha256": "3d1cd3f2b29d335e3f7e27cd25e7e5ec686217be87761e172a62293cfba1d8a1"
+      },
+      "bublik-day4-gate6-offline-r1-review-private.zip": {
+        "bytes": 3623034,
+        "sha256": "6da1c47e4541e657e1831efb29e29c536c49514353f73efa03016489ead30254"
+      },
+      "bublik-day4-gate6-existing-console-r2-review-private.zip": {
+        "bytes": 999398,
+        "sha256": "202ef445344661db4ad64e32f13582146375cf6c7de0179e1875b55374726832"
+      },
+      "bublik-day4-gate6-functional-r3-review-private.zip": {
+        "bytes": 6837821,
+        "sha256": "cb36539ba6ceb358433cab456d1b16b80e0299c33a176ec91635180cc193c536"
+      },
+      "bublik-day4-video-terminal-r2.zip": {
+        "bytes": 37652,
+        "sha256": "f29f7dd61391684604486f52c48c550f4271e03810c2e1b960666a5fe3b25bef"
+      }
+    },
+    "all_equal": true,
+    "outer_archives_verified": 8,
+    "outer_manifest_hash_checks": 143,
+    "nested_Gate4_manifest_checks": 89,
+    "scope_limit": "Named local sources only; not whole-Mac or remote repository integrity audit"
+  },
+  "old_Work_day04_draft": "PRESERVED; intermediate report not used as current ledger; tighter additive path only proposed",
+  "new_package_scope": {
+    "report_documents": 8,
+    "manifest_files": 1,
+    "allowed_extensions": [
+      ".md",
+      ".json"
+    ],
+    "raw_ZIPs_included": 0,
+    "images_included": 0,
+    "code_or_launchers_included": 0,
+    "media_included": 0
+  },
+  "unresolved": [
+    "Native local Agent NOT_MET",
+    "Gate6 PARTIAL final, R3 FAIL, repeat attempts CANCELLED",
+    "Comparable e2e latency/throughput/cost not established",
+    "Actual video not received/reviewed; uploaded/public/teacher acceptance not established",
+    "Control authorization for Draft PR/publication absent; remote/main not checked in this no-Git task"
+  ],
+  "privacy_checks": {
+    "method": "Read all generated reports + deterministic path/hostname/secret/IP/MAC scan + fixed ZIP allowlist; report-scope only",
+    "known_private_value_matches": 0,
+    "claim": "Sanitized publication candidate requiring Control sign-off, not permission to publish"
+  },
+  "next_requested_control_decision": "Accept/return this report-only partial candidate; assess actual video separately when supplied; only then decide future Draft PR authorization after remote/main and Day1–3 checks",
+  "next_model_or_gate6_experiment": "CANCELLED_NO_RETRY",
+  "day5": "NOT_STARTED_NOT_INFERRED",
+  "gate2_qualification": "CHAT_SYSTEM_RULES_DEMONSTRATED; AGENT_RULES_NOT_ESTABLISHED",
+  "day4_overall": "PARTIAL_DELIVERY / NOT_COMPLETE",
+  "full_course_minimum_pass": false
+}
