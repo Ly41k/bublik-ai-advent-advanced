@@ -1,0 +1,68 @@
+{
+  "primary20": {
+    "n": 20,
+    "base": {
+      "strict_correct": 1,
+      "strict_accuracy": 0.05,
+      "strict_accuracy_percent_rounded_1dp": 5.0,
+      "strict_format": 5,
+      "strict_format_rate": 0.25,
+      "strict_format_percent_rounded_1dp": 25.0
+    },
+    "tuned": {
+      "strict_correct": 12,
+      "strict_accuracy": 0.6,
+      "strict_accuracy_percent_rounded_1dp": 60.0,
+      "strict_format": 20,
+      "strict_format_rate": 1.0,
+      "strict_format_percent_rounded_1dp": 100.0
+    },
+    "changes": {
+      "improved": 11,
+      "regressed": 0,
+      "unchanged": 2,
+      "both_wrong_changed": 7
+    }
+  },
+  "supplemental120": {
+    "n": 120,
+    "base": {
+      "strict_correct": 11,
+      "strict_accuracy": 0.09166666666666666,
+      "strict_accuracy_percent_rounded_1dp": 9.2,
+      "strict_format": 21,
+      "strict_format_rate": 0.175,
+      "strict_format_percent_rounded_1dp": 17.5
+    },
+    "tuned": {
+      "strict_correct": 82,
+      "strict_accuracy": 0.6833333333333333,
+      "strict_accuracy_percent_rounded_1dp": 68.3,
+      "strict_format": 120,
+      "strict_format_rate": 1.0,
+      "strict_format_percent_rounded_1dp": 100.0
+    },
+    "changes": {
+      "improved": 72,
+      "regressed": 1,
+      "unchanged": 14,
+      "both_wrong_changed": 33
+    }
+  },
+  "loss_summary": {
+    "train": {
+      "logged_points": 40,
+      "first_iteration": 10,
+      "last_iteration": 400,
+      "first_loss": 3.542339324951172,
+      "last_loss": 0.16522154808044434
+    },
+    "validation": {
+      "logged_points": 9,
+      "first_iteration": 0,
+      "last_iteration": 399,
+      "first_loss": 5.746957302093506,
+      "last_loss": 0.22683323919773102
+    }
+  }
+}
