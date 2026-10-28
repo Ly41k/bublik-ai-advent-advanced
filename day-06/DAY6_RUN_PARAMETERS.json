@@ -1,0 +1,95 @@
+{
+  "model": {
+    "id": "mlx-community/SmolLM2-360M-Instruct",
+    "revision": "5d5e6fee5beb5d4d4d85e2203ef23e1230a9aac7",
+    "format": "MLX",
+    "floating_precision": "bfloat16",
+    "quantized": false
+  },
+  "dataset": {
+    "id": "dair-ai/emotion",
+    "revision": "cab853a1dbdf4c42c2b3ef2173804746df8825fe",
+    "configuration": "split",
+    "original_counts": {
+      "train": 16000,
+      "validation": 2000,
+      "test": 2000
+    },
+    "training_count": 3996,
+    "validation_count": 498
+  },
+  "platform": {
+    "device": "MacBook Pro",
+    "chip": "Apple M1 Pro",
+    "unified_memory_gib": 32,
+    "os": "macOS",
+    "os_version": "26.5.2",
+    "python": "3.13.3",
+    "acceleration": "Metal"
+  },
+  "stack": {
+    "mlx": "0.32.4",
+    "mlx-lm": "0.32.2",
+    "datasets": "4.8.5",
+    "huggingface_hub": "1.33.0",
+    "transformers": "5.21.0"
+  },
+  "training": {
+    "fine_tune_type": "lora",
+    "optimizer": "adam",
+    "iters": 400,
+    "batch_size": 4,
+    "learning_rate": 0.0001,
+    "num_layers": 8,
+    "max_seq_length": 512,
+    "mask_prompt": true,
+    "seed": 20261027,
+    "steps_per_report": 10,
+    "steps_per_eval": 50,
+    "val_batches": 10,
+    "save_every": 100,
+    "grad_checkpoint": false,
+    "grad_accumulation_steps": 1,
+    "clear_cache_threshold": 0,
+    "lr_schedule": null,
+    "lora_parameters": {
+      "rank": 8,
+      "scale": 20.0,
+      "dropout": 0.0,
+      "keys": [
+        "self_attn.q_proj",
+        "self_attn.v_proj"
+      ]
+    }
+  },
+  "elapsed": {
+    "seconds": 90.590454,
+    "scope": "worker_lifecycle_including_model_load_and_final_checks"
+  },
+  "decoding": {
+    "temperature": 0.0,
+    "max_new_tokens": 12,
+    "seed": 20261027,
+    "sampler": "greedy",
+    "repetition_penalty": null
+  },
+  "evaluation": {
+    "primary": {
+      "count": 20,
+      "split": "held-out test",
+      "frozen_before_base": true,
+      "base_before_training": true
+    },
+    "supplemental": {
+      "count": 120,
+      "per_class": 20,
+      "selection_seed": 20261028,
+      "split": "additional held-out test",
+      "frozen_before_inference": true,
+      "inference_only": true,
+      "same_trained_adapter": true,
+      "sample_extension_after_results": false
+    }
+  },
+  "training_runs": 1
+}
