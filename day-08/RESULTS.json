@@ -1,0 +1,201 @@
+{
+  "schema": "bublik-d8-public-aggregates-v1",
+  "status": "G5_OFFLINE_PUBLICATION_PREPARED_NOT_PUBLISHED",
+  "date": "2026-10-30",
+  "source": "Aggregates accepted in independent G4 Control Review; no ML rerun during publication preparation.",
+  "setup": {
+    "model": "mlx-community/SmolLM2-360M-Instruct",
+    "revision": "5d5e6fee5beb5d4d4d85e2203ef23e1230a9aac7",
+    "hardware": "Mac M1 Pro, 32 GB",
+    "train_examples": 96,
+    "valid_examples": 20,
+    "primary_eval_items": 40,
+    "dimensions": {
+      "FORMAT": 8,
+      "STYLE": 8,
+      "KNOWLEDGE": 12,
+      "OOD": 12
+    },
+    "fictional_facts": 6,
+    "knowledge_direct_items": 6,
+    "knowledge_paraphrase_items": 6,
+    "optimizer_updates": 150,
+    "lora_rank": 8,
+    "lora_scale": 20,
+    "lora_layers": "last 8 q/v projections",
+    "batch_size": 4,
+    "learning_rate": 0.0001,
+    "max_new_tokens": 96,
+    "temperature": 0.0,
+    "sampler": "greedy",
+    "runs": 1,
+    "reserve_evaluation": "NOT_RUN",
+    "retraining": "NOT_RUN"
+  },
+  "strict_40": {
+    "Base": {
+      "n": 40,
+      "correct": 1,
+      "FORMAT": 0,
+      "STYLE": 0,
+      "KNOWLEDGE": 0,
+      "OOD": 1
+    },
+    "Base+Prompt": {
+      "n": 40,
+      "correct": 1,
+      "FORMAT": 0,
+      "STYLE": 0,
+      "KNOWLEDGE": 0,
+      "OOD": 1
+    },
+    "TunedBest": {
+      "n": 40,
+      "correct": 11,
+      "FORMAT": 5,
+      "STYLE": 3,
+      "KNOWLEDGE": 1,
+      "OOD": 2
+    },
+    "TunedLate": {
+      "n": 40,
+      "correct": 11,
+      "FORMAT": 5,
+      "STYLE": 3,
+      "KNOWLEDGE": 1,
+      "OOD": 2
+    }
+  },
+  "tuned_details": {
+    "json_shape_valid": 8,
+    "json_shape_n": 8,
+    "wrong_target_format": 3,
+    "knowledge_direct_correct": 1,
+    "knowledge_direct_n": 6,
+    "knowledge_paraphrase_correct": 0,
+    "knowledge_paraphrase_n": 6
+  },
+  "base_facts_knowledge_only": {
+    "n": 12,
+    "strict_correct": 0,
+    "secondary_content_correct": 9,
+    "secondary_status": "POST_HOC_CONTENT_INSPECTION_NOT_FROZEN_SCORE",
+    "actual_rag": false
+  },
+  "paired_base_tuned": {
+    "gains": 11,
+    "losses": 1,
+    "both_wrong": 28,
+    "both_correct": 0,
+    "delta_percentage_points": 25
+  },
+  "ood": {
+    "n": 12,
+    "strict_base_correct": 1,
+    "strict_tuned_correct": 2,
+    "strict_paired_regressions": 1,
+    "strict_regression_control_review": "FACTUAL_REGRESSION_CONFIRMED",
+    "owner_adjudication": "PENDING",
+    "secondary_content_review": {
+      "kind": "POST_HOC_MANUAL_CONTROL_ADJUDICATION_NOT_FROZEN_BENCHMARK",
+      "base_correct": 9,
+      "tuned_correct": 3,
+      "semantic_losses": 7,
+      "semantic_gains": 1,
+      "both_correct": 2,
+      "both_incorrect": 2
+    },
+    "scope": "Small synthetic local probe set; broad model-wide degradation not established."
+  },
+  "loss": {
+    "steps": [
+      25,
+      50,
+      75,
+      100,
+      125,
+      150
+    ],
+    "train": [
+      2.1253,
+      0.9489,
+      0.6156,
+      0.4604,
+      0.2884,
+      0.2708
+    ],
+    "valid": [
+      1.4303,
+      0.8935,
+      0.5985,
+      0.4604,
+      0.422,
+      0.3011
+    ],
+    "train_scope": "Mean previous 25 mini-batch losses before each optimizer update; reported after the stated update.",
+    "valid_scope": "Full 20 validation items after the stated optimizer update.",
+    "overfit_signal": "NOT_OBSERVED",
+    "criterion": "Two consecutive validation-loss increases while training loss falls.",
+    "turning_point": "NOT_OBSERVED"
+  },
+  "checkpoints": {
+    "saved_steps": [
+      50,
+      100,
+      150
+    ],
+    "best_step": 150,
+    "late_step": 150,
+    "same_adapter": true,
+    "best_late_raw_identical_items": 40,
+    "selection": "MIN_FULL_VALID_LOSS_AMONG_50_100_150_TIE_EARLIEST",
+    "distinct_best_late_comparison": false
+  },
+  "measurements": {
+    "training_routine_seconds": 82.29,
+    "training_timer_scope": "Includes model load, checkpoints and reload; not pure GPU training.",
+    "median_generation_seconds": {
+      "Base": 0.1645,
+      "Base+Prompt": 0.2029,
+      "TunedBest": 0.1581
+    },
+    "latency_scope": "Synchronized generation after tokenization and model loading; output lengths differ.",
+    "prompt_tokens_40": {
+      "Base": 1778,
+      "Base+Prompt": 7658,
+      "TunedBest": 7658
+    },
+    "output_tokens_40": {
+      "Base": 1042,
+      "Base+Prompt": 1549,
+      "TunedBest": 360
+    },
+    "adapter_bytes_each": 822576,
+    "base_weight_bytes": 723674815,
+    "size_scope": "Disk file size, not peak RAM or full system size.",
+    "monetary_cost": "NOT_MEASURED",
+    "power": "NOT_MEASURED",
+    "peak_ram": "NOT_MEASURED",
+    "monetary_savings": "NOT_MEASURED",
+    "end_to_end_speedup": "NOT_ESTABLISHED"
+  },
+  "scoring": {
+    "FORMAT": "JSON object with exact allowed label and exact target; shape separately counted.",
+    "STYLE": "Entire raw output exact-match to frozen rule.",
+    "KNOWLEDGE": "Entire raw output exact-match to invented code.",
+    "OOD": "NFKC, casefold and whitespace normalization; no punctuation/explanation repair.",
+    "secondary_review_replaces_primary": false
+  },
+  "chart": {
+    "path": "loss_curve.png",
+    "sha256": "db9181d7a2a069076203e8dfe144f57e754c0c2f33de594b9eb6323318f02067",
+    "origin": "Unmodified chart supplied by Control; six saved loss measurements."
+  },
+  "limits": {
+    "private_dataset_included": false,
+    "private_answers_included": false,
+    "weights_included": false,
+    "model_reproduction_from_public_package": false,
+    "owner_ood_signoff_claimed": false
+  }
+}

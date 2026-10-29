@@ -1,0 +1,39 @@
+{
+  "schema": "bublik-d8-g5-public-manifest-v1",
+  "scope": "PUBLIC_REPORT_AND_AGGREGATES_ONLY",
+  "excludes": [
+    "MANIFEST.sha256.json (self)"
+  ],
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 7846,
+      "sha256": "d62ec1848c7b2c6f45d8439a6438eae0a104f73606b25daa877883b8e048bd0b"
+    },
+    {
+      "path": "REPRODUCIBILITY.md",
+      "bytes": 4096,
+      "sha256": "b36fbecc2b577997419c99d275ea3e408bc9b0f59d2289929407cd53b8daf771"
+    },
+    {
+      "path": "RESULTS.json",
+      "bytes": 5497,
+      "sha256": "878851b94b08f07d9eb3b1d6d2e18e783b2411d8b1bc0b57ae5b4f17ff7d1eb8"
+    },
+    {
+      "path": "loss_curve.png",
+      "bytes": 86705,
+      "sha256": "db9181d7a2a069076203e8dfe144f57e754c0c2f33de594b9eb6323318f02067"
+    },
+    {
+      "path": "tests/test_publication.py",
+      "bytes": 4072,
+      "sha256": "ee11e8949a344ec2aa18b017604d8b59c9d043ce0dc5ac0453c506ffcbd7550d"
+    },
+    {
+      "path": "verify_publication.py",
+      "bytes": 9012,
+      "sha256": "e2ab858ae182385bc6cd115a0c8e4fc4609087019c49088a8951486a596209a9"
+    }
+  ]
+}
