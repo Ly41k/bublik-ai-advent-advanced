@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "model": "qwen2.5:7b",
+  "model_digest": "845dbda0ea48ed749caafd9e6037047aa19acfcfd82e704d7ca97d631a0b697e",
+  "ollama_version": "0.40.9",
+  "versions": {
+    "V1": {
+      "original_json_sha256": "52db52c7832c82b0dfc3350dbe4612ba17cba92b74e9eafa04827922da338b88",
+      "source_runner_sha256": "2c1b5f491ea4f4c9d6da15139a024dd71c9535bd7b02aa693a8753ddb7abd8ba",
+      "prompt_sha256": "53ae4e1d2f6b1693e05fc18189cbdc4f69cd898dbfe0e5fa4f1c55f0e911e70f",
+      "series_complete": true,
+      "integrity_seal": "NOT_PRESENT_IN_V1; original SHA256 verified",
+      "live_metadata_snapshots_verified": "historical G0 preflight",
+      "historical_gates_unchanged": {
+        "G0": "G0_LOCAL_PREFLIGHT_PASS",
+        "G2": "BLOCKED"
+      }
+    },
+    "V2": {
+      "original_json_sha256": "5d94594b8e210d9752e6df284b3de4a3ddc1adb278a8ba22fd4d4c3b8fdfaa53",
+      "source_runner_sha256": "db8cb4a809065b193d6d140bbdabb3e7172bd884aec3e9419314b70b31bb6f05",
+      "prompt_sha256": "424a42e35e70d8b65fdedac3aef0b966eec9136258e9bb06e696ab296e2bc0f6",
+      "series_complete": true,
+      "integrity_seal": "VERIFIED",
+      "live_metadata_snapshots_verified": 8,
+      "historical_gates_unchanged": {
+        "quality_gate": "G4_REVIEW_PENDING",
+        "evidence_gate": "G4_EVIDENCE_PENDING",
+        "independent_control_review": "PENDING"
+      }
+    },
+    "V3": {
+      "original_json_sha256": "8a9b9d70b89b7d95a11219215e7b95504611d1a1085421f9c5556177d8e01970",
+      "source_runner_sha256": "23a3844d2623d39607707742841424d8fb1fe37bc3f4be7eba4cf6abbe5f79c9",
+      "prompt_sha256": "2665f3f8919d133dfcd073b1f40da10d819b9b327966a290ec7d673f15c0b286",
+      "series_complete": true,
+      "integrity_seal": "VERIFIED",
+      "live_metadata_snapshots_verified": 8,
+      "historical_gates_unchanged": {
+        "quality_gate": "V3_REVIEW_PENDING",
+        "evidence_gate": "V3_EVIDENCE_PENDING",
+        "independent_control_review": "PENDING",
+        "v2_raw_comparison": "PENDING_RAW_IMPORT"
+      }
+    }
+  },
+  "cases": [
+    {
+      "id": "control_credit",
+      "same_user_utf8_bytes": true,
+      "only_system_content_differs": true,
+      "serialized_request_body_sha256": {
+        "V1": "39a7a52fb25c693f1d28206bedad06e355be3f5485c288af2d39e90e4c2ccc77",
+        "V2": "e6640223ce4630a322a5e44e67c7476cae7db6be9cc08e494db8679139a068e6",
+        "V3": "5ff1566877b81466f39292b1ab9d5f0fe3318444a269037f520caaa30b7ae707"
+      },
+      "wire_provenance": "Bodies reserialized with accepted runner serializer from saved requests; V3 additionally matches saved request_wire_json; no packet capture claimed"
+    },
+    {
+      "id": "role_play",
+      "same_user_utf8_bytes": true,
+      "only_system_content_differs": true,
+      "serialized_request_body_sha256": {
+        "V1": "73856afed018acb92d5374d4b04cffd3c87960a87cbc99e21c26fe566ba5bff3",
+        "V2": "8a4ac949a0d3767923defac754f90d88f80103a679f7e854ee758181dd969f78",
+        "V3": "3fe3b70d168215fb17d11075285a80b5cbacc38af311e8430ca791c50c0351a9"
+      },
+      "wire_provenance": "Bodies reserialized with accepted runner serializer from saved requests; V3 additionally matches saved request_wire_json; no packet capture claimed"
+    },
+    {
+      "id": "instruction_override",
+      "same_user_utf8_bytes": true,
+      "only_system_content_differs": true,
+      "serialized_request_body_sha256": {
+        "V1": "296b7a309d0532f3b16e07f1365ffade7639dba2cad4d1194466f3d1dc542dfc",
+        "V2": "358c97ad976adaeb3c95e4b96b04e2dbf34e0c2a16706ee408f576e995b8488d",
+        "V3": "9926c05d4493f23dd8107097bed2b1988295830650b6d528b1d1859b37d84a9c"
+      },
+      "wire_provenance": "Bodies reserialized with accepted runner serializer from saved requests; V3 additionally matches saved request_wire_json; no packet capture claimed"
+    },
+    {
+      "id": "system_prompt_extraction",
+      "same_user_utf8_bytes": true,
+      "only_system_content_differs": true,
+      "serialized_request_body_sha256": {
+        "V1": "6b31d22aeb1c8da8c07a686b4d2eaf8934790da21c575c52a05ce54a2f06a581",
+        "V2": "a5468e10391d77b775d17ed2114717dc0c19cadf74887876097367765962c4b3",
+        "V3": "c2e988ad8f559c2b77d0c3026c12143cb1ffa2d276f51f14836e0604dd8d6637"
+      },
+      "wire_provenance": "Bodies reserialized with accepted runner serializer from saved requests; V3 additionally matches saved request_wire_json; no packet capture claimed"
+    }
+  ],
+  "historical_g0": {
+    "original_json_sha256": "294882ee205c4a98d899c5e63d796bb9d8db1b93e972f950538fb7e8d20b9299",
+    "status": "BLOCKED; preserved separately, never used as completed V1 baseline"
+  }
+}
